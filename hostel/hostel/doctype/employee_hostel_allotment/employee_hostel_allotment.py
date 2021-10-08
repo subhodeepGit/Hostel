@@ -9,7 +9,7 @@ class EmployeeHostelAllotment(Document):
 	def validate(doc):
 		Emp=doc.employees
 		Emp_hostel_al=doc.hostel_masters
-		hostel_val=frappe.db.sql("""select * from `tabHostel Masters` where name='%s' and (start_date<=now() and end_date>= now()); """%(Emp_hostel_al))
+		hostel_val=frappe.db.sql("""select * from `tabHostel Masters` where name="%s" and (start_date<=now() and end_date>= now()); """%(Emp_hostel_al))
 		if len(hostel_val)!=0:
 			emp_info=frappe.db.sql("""select * from `tabEmployee Hostel Allotment` where employees="%s" and hostel_masters="%s" 
 										and (start_date<=now() and end_date>= now());"""%(Emp,Emp_hostel_al))						

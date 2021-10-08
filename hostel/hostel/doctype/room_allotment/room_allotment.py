@@ -11,7 +11,7 @@ import datetime
 class RoomAllotment(Document):
 	@frappe.whitelist()
 	def validate(doc):
-		Stu_info=frappe.db.sql(""" select * from `tabRoom Allotment` as RA where RA.student='%s'"""%(doc.student))
+		Stu_info=frappe.db.sql(""" select * from `tabRoom Allotment` as RA where RA.student="%s" """%(doc.student))
 		df1=pd.DataFrame({
 			'Al_no':[],'creation':[],'modified':[],'modified_by':[],
 			'owner':[],'docstatus':[],'parent':[],'parentfield':[],
@@ -44,7 +44,7 @@ class RoomAllotment(Document):
 			# a=frappe.utils.get_email(frappe.session.user);
 			# print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa %s"%a)
 			if frappe.session.user!="Administrator":
-				Emp_all_info=frappe.db.sql(""" select * from `tabEmployee Hostel Allotment` where employees= '%s';"""%(frappe.session.user))
+				Emp_all_info=frappe.db.sql(""" select * from `tabEmployee Hostel Allotment` where employees= "%s";"""%(frappe.session.user))
 				df2=pd.DataFrame({
 									'name':[],'employee':[],'employees':[],'start_date':[],'end_date':[],'hostel_masters':[],'user_name':[]
 								})
@@ -62,7 +62,7 @@ class RoomAllotment(Document):
 				##### Emp hostel Allotment#####	
 				into=''
 				if len(emp_hostel)==1:
-					info="(HM.hostel_name='%s') and (HM.start_date<=now() and HM.end_date>= now())"%(emp_hostel[0])
+					info="""(HM.hostel_name="%s") and (HM.start_date<=now() and HM.end_date>= now())"""%(emp_hostel[0])
 				elif len(emp_hostel)>=1:
 					info='(HM.hostel_name IN %s ) and (HM.start_date<=now() and HM.end_date>= now())'%(str(tuple(emp_hostel)))
 				else:
