@@ -1,0 +1,130 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2021-09-15 13:12:29.437272",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "hostel_id",
+  "naming_series",
+  "room_type_id",
+  "room_number",
+  "room_capacity",
+  "floor_number",
+  "column_break_6",
+  "room_description",
+  "validity",
+  "actual_room_type",
+  "actual_capacity",
+  "block"
+ ],
+ "fields": [
+  {
+   "fieldname": "hostel_id",
+   "fieldtype": "Link",
+   "label": "Hostel",
+   "options": "Hostel Masters"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Room ID",
+   "options": "RID.-"
+  },
+  {
+   "fieldname": "room_type_id",
+   "fieldtype": "Link",
+   "label": "Room Type",
+   "options": "Room Type"
+  },
+  {
+   "fieldname": "room_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Room Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "room_capacity",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Room Capacity",
+   "options": "\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10",
+   "reqd": 1
+  },
+  {
+   "fieldname": "floor_number",
+   "fieldtype": "Select",
+   "label": "Floor Number",
+   "options": "\nBasement\nGround Floor\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "room_description",
+   "fieldtype": "Link",
+   "label": "Room Description",
+   "options": "Room Description",
+   "reqd": 1
+  },
+  {
+   "fieldname": "validity",
+   "fieldtype": "Select",
+   "label": "Validity",
+   "options": "\nApproved\nDis-Approved",
+   "reqd": 1
+  },
+  {
+   "fieldname": "actual_room_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Actual Room Type",
+   "options": "Room Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "actual_capacity",
+   "fieldtype": "Select",
+   "label": "Actual Capacity",
+   "options": "\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10",
+   "reqd": 1
+  },
+  {
+   "fieldname": "block",
+   "fieldtype": "Data",
+   "label": "Block"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-10-08 15:02:32.151605",
+ "modified_by": "Administrator",
+ "module": "Hostel",
+ "name": "Room Masters",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "hostel_id",
+ "track_changes": 1
+}
