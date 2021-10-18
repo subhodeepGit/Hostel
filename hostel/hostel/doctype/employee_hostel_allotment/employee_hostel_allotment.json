@@ -50,9 +50,11 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "Today",
    "fieldname": "start_date",
    "fieldtype": "Date",
-   "label": "Start Date"
+   "label": "Start Date",
+   "read_only": 1
   },
   {
    "default": "9999-12-01",
@@ -79,7 +81,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-08 15:01:17.106333",
+ "modified": "2021-10-13 12:07:15.831784",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Employee Hostel Allotment",

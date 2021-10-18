@@ -1,41 +1,34 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:description",
- "creation": "2021-09-17 15:24:24.535221",
+ "creation": "2021-10-13 18:32:39.739329",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "description",
-  "date"
+  "complaint_no",
+  "doc_fetch"
  ],
  "fields": [
   {
-   "fieldname": "description",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Description",
-   "reqd": 1,
-   "unique": 1
+   "fieldname": "complaint_no",
+   "fieldtype": "Link",
+   "label": "Complaint No",
+   "options": "Indisciplinary Complaint Registration"
   },
   {
-   "default": "Today",
-   "fieldname": "date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Date",
-   "read_only": 1,
-   "reqd": 1
+   "fieldname": "doc_fetch",
+   "fieldtype": "Table",
+   "label": "Doc Fetch",
+   "options": "Indisciplinary Complaint Registration Student"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-12 11:30:21.151217",
+ "modified": "2021-10-13 19:42:54.913004",
  "modified_by": "Administrator",
  "module": "Hostel",
- "name": "Allotment Type Flag",
- "naming_rule": "By fieldname",
+ "name": "TestFetch",
  "owner": "Administrator",
  "permissions": [
   {
@@ -53,6 +46,5 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "title_field": "description",
  "track_changes": 1
 }

@@ -1,14 +1,14 @@
 // Copyright (c) 2021, SOUL and contributors
 // For license information, please see license.txt
-
-frappe.ui.form.on('T1 Hostel', "sample", function(frm) {
+frappe.ui.form.on('test3', {
+	refresh: function(frm) {
 		document.getElementById('generate').onclick = function() {
 
 			var values = ["dog", "cat", "parrot", "rabbit"];
 		  
-			var select = document.createElement("generate");
-			select.frm.doc.name = "pets";
-			select.frm.doc.id = "pets"
+			var select = document.createElement("select");
+			select.name = "pets";
+			select.id = "pets"
 		  
 			for (const val of values) {
 			  var option = document.createElement("option");
@@ -21,6 +21,7 @@ frappe.ui.form.on('T1 Hostel', "sample", function(frm) {
 			label.innerHTML = "Choose your pets: "
 			label.htmlFor = "pets";
 		  
-			document.getElementById("generate").appendChild(label).appendChild(select);
+			document.getElementById("container").appendChild(label).appendChild(select);
 		  }
+		}
 });

@@ -9,9 +9,9 @@
  "field_order": [
   "room_description",
   "status",
+  "column_break_3",
   "start_date",
-  "end_date",
-  "allotable"
+  "end_date"
  ],
  "fields": [
   {
@@ -31,13 +31,16 @@
    "reqd": 1
   },
   {
+   "default": "Today",
    "fieldname": "start_date",
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Start Date",
+   "read_only": 1,
    "reqd": 1
   },
   {
+   "default": "9999-12-01",
    "fieldname": "end_date",
    "fieldtype": "Date",
    "in_list_view": 1,
@@ -45,16 +48,13 @@
    "reqd": 1
   },
   {
-   "fieldname": "allotable",
-   "fieldtype": "Select",
-   "label": "Allotable",
-   "options": "\nYes\nNo",
-   "reqd": 1
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-08 15:02:23.733222",
+ "modified": "2021-10-11 17:08:06.438010",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Description",
