@@ -1,41 +1,38 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:description",
- "creation": "2021-09-17 15:24:24.535221",
+ "creation": "2021-10-12 12:25:12.633953",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "description",
-  "date"
+  "test",
+  "sample",
+  "generate"
  ],
  "fields": [
   {
-   "fieldname": "description",
+   "fieldname": "test",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Description",
-   "reqd": 1,
-   "unique": 1
+   "label": "test"
   },
   {
-   "default": "Today",
-   "fieldname": "date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Date",
-   "read_only": 1,
-   "reqd": 1
+   "fieldname": "sample",
+   "fieldtype": "Select",
+   "label": "sample"
+  },
+  {
+   "fieldname": "generate",
+   "fieldtype": "Button",
+   "label": "generate"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-12 11:30:21.151217",
+ "modified": "2021-10-12 16:50:27.910545",
  "modified_by": "Administrator",
  "module": "Hostel",
- "name": "Allotment Type Flag",
- "naming_rule": "By fieldname",
+ "name": "test3",
  "owner": "Administrator",
  "permissions": [
   {
@@ -53,6 +50,5 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "title_field": "description",
  "track_changes": 1
 }

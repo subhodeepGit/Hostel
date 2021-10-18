@@ -6,18 +6,24 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "f1"
+  "sample",
+  "generate"
  ],
  "fields": [
   {
-   "fieldname": "f1",
-   "fieldtype": "Data",
-   "label": "F1"
+   "fieldname": "sample",
+   "fieldtype": "Select",
+   "label": "Sample"
+  },
+  {
+   "fieldname": "generate",
+   "fieldtype": "Button",
+   "label": "Generate"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-08 14:57:47.991501",
+ "modified": "2021-10-12 16:39:53.599570",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "T1 Hostel",

@@ -1,8 +1,59 @@
 # Copyright (c) 2021, SOUL and contributors
 # For license information, please see license.txt
 
-# import frappe
+import frappe
 from frappe.model.document import Document
+import pandas as pd
 
 class RoomChange(Document):
-	pass
+	@frappe.whitelist()
+	def validate(doc):
+		Al_no=doc.allotment_number
+		preferred_hostel=doc.preferred_hostel
+		preferred_room=doc.preferred_room
+		preferred_room_type=doc.preferred_room_type
+		workflow_state=doc.workflow_state
+		Room_change_info=frappe.db.sql("""SELECT `name`,`allotment_number`,`student`,`student_name`,`hostel`,`room_number`,`room_type`,
+		`preferred_hostel`,`preferred_room`,`preferred_room_type`,`workflow_state`,`application_status` 
+		FROM `tabRoom Change` WHERE `allotment_number`="%s" """%(Al_no))
+		
+		Room_change_df=pd.DataFrame({
+			'Room_doc_no':[],'allotment_number':[],'student':[],'student_name':[],
+			'Pre_hostel':[],'Pre_room_no':[],'Pre_room_type':[],'preferred_hostel':[],
+			'preferred_room':[],'preferred_room_type':[],'workflow_state':[],'application_status':[]
+		})
+		for t in range(len(Room_change_info)):
+			s=pd.Series([Room_change_info[t][0],Room_change_info[t][1],Room_change_info[t][2],Room_change_info[t][3],Room_change_info[t][4],Room_change_info[t][5],
+						Room_change_info[t][6],Room_change_info[t][7],Room_change_info[t][8],Room_change_info[t][9],Room_change_info[t][10],Room_change_info[t][11]],
+								index=['Room_doc_no','allotment_number','student','student_name',
+										'Pre_hostel','Pre_room_no','Pre_room_type','preferred_hostel',
+										'preferred_room','preferred_room_type','workflow_state','application_status'])
+			Room_change_df=Room_change_df.append(s,ignore_index=True)	
+
+		chk_df=Room_change_df[(Room_change_df['workflow_state']!="Withdrawl")|(Room_change_df['workflow_state']!="Reject")|(Room_change_df['workflow_state']!="Reported")]
+		if workflow_state=="Submit":
+			chk_df=chk_df[(chk_df['application_status'].isnull())|(chk_df['application_status']=="Open")].reset_index()
+			if len(chk_df)!=0:
+				frappe.throw("Document already Present Dco no %s"%(chk_df['Room_doc_no'][0]))
+			else:
+				pass
+		elif workflow_state=="Reported":
+			if preferred_hostel == None or  preferred_room == None:
+				frappe.throw("Please provide Hostel and Room number")
+			else:
+				if preferred_room != chk_df["Pre_room_no"][0]:
+					User=frappe.session.user	
+					Room_no_info=frappe.db.sql("""Select `room_number` from `tabRoom Masters` WHERE `name`="%s" """%(preferred_room))
+					Room_no_info=Room_no_info[0][0]
+					frappe.db.sql("""UPDATE `tabRoom Allotment` SET `hostel_id`="%s",`room_id`="%s",
+						`room_type`="%s",`room_number`="%s" WHERE `name`="%s" """%(preferred_hostel,preferred_room,preferred_room_type,Room_no_info,Al_no))
+
+					pass
+				else:
+					frappe.throw("Preferred room number and Present room number are same")
+
+
+
+		
+
+		

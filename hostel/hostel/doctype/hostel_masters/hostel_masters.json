@@ -97,12 +97,15 @@
    "label": "No. Of Blocks"
   },
   {
+   "default": "Today",
    "fieldname": "start_date",
    "fieldtype": "Date",
    "label": "Start Date",
+   "read_only": 1,
    "reqd": 1
   },
   {
+   "default": "9999-12-01",
    "fieldname": "end_date",
    "fieldtype": "Date",
    "label": "End Date",
@@ -145,7 +148,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-08 15:03:40.054425",
+ "modified": "2021-10-12 18:01:33.503325",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Masters",
