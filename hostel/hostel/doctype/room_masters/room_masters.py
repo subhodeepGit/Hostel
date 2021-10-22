@@ -1,7 +1,7 @@
 # Copyright (c) 2021, SOUL and contributors
 # For license information, please see license.txt
 
-from ed_tec.ed_tec.doctype.student import validate
+# from ed_tec.ed_tec.doctype.student import validate
 import frappe
 from frappe.model.document import Document
 import pandas as pd

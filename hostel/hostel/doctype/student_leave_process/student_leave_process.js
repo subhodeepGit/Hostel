@@ -1,7 +1,7 @@
 // Copyright (c) 2021, SOUL and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on('Long Leave', {
+frappe.ui.form.on('Student Leave Process', {
 	setup: function (frm) {
 		frm.set_query("allotment_number", function() {
 			return {
@@ -9,4 +9,4 @@ frappe.ui.form.on('Long Leave', {
 			};
 		});
 	}
-});
+})
