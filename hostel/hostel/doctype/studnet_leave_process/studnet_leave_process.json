@@ -2,56 +2,48 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "naming_series:",
- "creation": "2021-09-21 10:53:45.687892",
+ "creation": "2021-10-21 10:37:07.198782",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
   "allotment_number",
-  "room_masters",
   "student",
   "student_name",
+  "start_date",
+  "column_break_6",
   "hostel",
   "room_number",
-  "room_no",
-  "column_break_7",
   "room_type",
-  "guardians_application",
-  "students_application",
-  "address_proof",
   "end_date",
-  "application_status"
+  "section_break_11",
+  "leave_approval_process_section",
+  "comment",
+  "parent_application",
+  "status"
  ],
  "fields": [
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "hidden": 1,
-   "in_standard_filter": 1,
-   "label": "Deallotment Number",
-   "options": "DP-.YYYY.-"
+   "label": "Room Change ID",
+   "options": "HL-.YYYY.-"
   },
   {
+   "fetch_from": "student.naming_series",
    "fieldname": "allotment_number",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Allotment Number",
    "options": "Room Allotment"
   },
   {
-   "fieldname": "room_masters",
-   "fieldtype": "Link",
-   "hidden": 1,
-   "label": "Room Masters",
-   "options": "Room Masters"
-  },
-  {
    "fetch_from": "allotment_number.student",
    "fieldname": "student",
    "fieldtype": "Data",
-   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Student",
    "read_only": 1
   },
@@ -60,6 +52,7 @@
    "fieldname": "student_name",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Student Name",
    "read_only": 1
   },
@@ -76,65 +69,68 @@
    "fetch_from": "allotment_number.room_id",
    "fieldname": "room_number",
    "fieldtype": "Data",
-   "hidden": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Room Number",
    "read_only": 1
   },
   {
-   "fetch_from": "allotment_number.room_number",
-   "fieldname": "room_no",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Room No.",
-   "read_only": 1
-  },
-  {
-   "fieldname": "column_break_7",
+   "fieldname": "column_break_6",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "guardians_application",
-   "fieldtype": "Attach",
-   "label": "Guardian's Application"
-  },
-  {
-   "fieldname": "students_application",
-   "fieldtype": "Attach",
-   "label": "Student's Application"
-  },
-  {
-   "fieldname": "address_proof",
-   "fieldtype": "Attach",
-   "label": "Address Proof"
-  },
-  {
-   "fieldname": "end_date",
-   "fieldtype": "Date",
-   "in_standard_filter": 1,
-   "label": "End Date"
-  },
-  {
-   "fieldname": "application_status",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "label": "Application status"
   },
   {
    "fetch_from": "allotment_number.room_type",
    "fieldname": "room_type",
    "fieldtype": "Data",
-   "in_standard_filter": 1,
    "label": "Room Type",
    "read_only": 1
+  },
+  {
+   "fieldname": "section_break_11",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "<p><i>--Application Writing Area</i></p>",
+   "fieldname": "comment",
+   "fieldtype": "Long Text",
+   "label": "<h4>Application</h4>",
+   "mandatory_depends_on": "if (frm.doc.application_form === 0);"
+  },
+  {
+   "fieldname": "parent_application",
+   "fieldtype": "Attach",
+   "label": "Parent Application"
+  },
+  {
+   "fieldname": "leave_approval_process_section",
+   "fieldtype": "Section Break",
+   "label": "Leave Approval Process"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "status"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-18 15:54:46.198779",
+ "modified": "2021-10-21 11:40:24.018336",
  "modified_by": "Administrator",
  "module": "Hostel",
- "name": "Deallotment Process",
+ "name": "Studnet Leave Process",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
@@ -153,5 +149,7 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "track_changes": 1
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }

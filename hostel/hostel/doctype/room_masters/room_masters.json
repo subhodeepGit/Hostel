@@ -24,7 +24,10 @@
   {
    "fieldname": "hostel_id",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Hostel",
+   "no_copy": 1,
    "options": "Hostel Masters",
    "reqd": 1
   },
@@ -106,7 +109,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-14 17:49:58.980777",
+ "modified": "2021-10-21 09:53:43.676839",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Masters",
