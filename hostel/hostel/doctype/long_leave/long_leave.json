@@ -8,14 +8,19 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
+  "column_break_5",
   "allotment_number",
   "student",
   "student_name",
-  "column_break_5",
+  "column_break_6",
   "hostel",
   "room_number",
-  "communication_of_institution_section",
+  "room_type",
+  "reporting_of_long_leave_section",
   "long_leave_start_date",
+  "column_break_12",
+  "status_of_reporting",
+  "section_break_10",
   "medium_of_communication",
   "attach_email",
   "phone_number",
@@ -25,7 +30,8 @@
   "no",
   "reply_by_email__letter",
   "confirmation_phone_number",
-  "pending"
+  "pending",
+  "status"
  ],
  "fields": [
   {
@@ -58,7 +64,8 @@
   },
   {
    "fieldname": "column_break_5",
-   "fieldtype": "Column Break"
+   "fieldtype": "Section Break",
+   "label": "Student information"
   },
   {
    "fetch_from": "allotment_number.hostel_id",
@@ -68,16 +75,11 @@
    "read_only": 1
   },
   {
-   "fetch_from": "allotment_number.room_id",
+   "fetch_from": "allotment_number.room_number",
    "fieldname": "room_number",
    "fieldtype": "Data",
    "label": "Room Number",
    "read_only": 1
-  },
-  {
-   "fieldname": "communication_of_institution_section",
-   "fieldtype": "Section Break",
-   "label": "Communication from Institution"
   },
   {
    "fieldname": "long_leave_start_date",
@@ -85,6 +87,7 @@
    "label": "Long leave start date"
   },
   {
+   "depends_on": "eval:!doc.__islocal;",
    "fieldname": "medium_of_communication",
    "fieldtype": "Select",
    "label": "Medium of Communication",
@@ -99,10 +102,12 @@
   {
    "depends_on": "eval:doc.medium_of_communication=='Telephone';",
    "fieldname": "phone_number",
-   "fieldtype": "Data",
-   "label": "Phone Number"
+   "fieldtype": "Int",
+   "label": "Phone Number",
+   "length": 10
   },
   {
+   "depends_on": "eval:doc.medium_of_communication;",
    "fieldname": "column_break_7",
    "fieldtype": "Section Break",
    "label": "Student Response"
@@ -144,11 +149,48 @@
    "fieldname": "pending",
    "fieldtype": "Data",
    "label": "Pending Comments"
+  },
+  {
+   "fieldname": "section_break_10",
+   "fieldtype": "Section Break",
+   "label": "Communication from Institution"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "allotment_number.room_type",
+   "fieldname": "room_type",
+   "fieldtype": "Data",
+   "label": "Room Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "status"
+  },
+  {
+   "fieldname": "reporting_of_long_leave_section",
+   "fieldtype": "Section Break",
+   "label": "Reporting of Long Leave"
+  },
+  {
+   "fieldname": "status_of_reporting",
+   "fieldtype": "Select",
+   "label": "Status of Reporting",
+   "options": "\nNo Response\nWilling to Report\nNot Going to Report\nPending\nProceed for De-allotment"
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-08 15:03:49.110190",
+ "modified": "2021-10-22 09:58:03.058342",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Long Leave",

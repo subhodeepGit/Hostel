@@ -30,7 +30,7 @@ class RoomChange(Document):
 										'preferred_room','preferred_room_type','workflow_state','application_status'])
 			Room_change_df=Room_change_df.append(s,ignore_index=True)	
 
-		chk_df=Room_change_df[(Room_change_df['workflow_state']!="Withdrawl")|(Room_change_df['workflow_state']!="Reject")|(Room_change_df['workflow_state']!="Reported")]
+		chk_df=Room_change_df[(Room_change_df['workflow_state']!="Withdrawl")|(Room_change_df['workflow_state']!="Reject")|(Room_change_df['workflow_state']!="Reported")].reset_index()
 		if workflow_state=="Submit":
 			chk_df=chk_df[(chk_df['application_status'].isnull())|(chk_df['application_status']=="Open")].reset_index()
 			if len(chk_df)!=0:
@@ -54,6 +54,12 @@ class RoomChange(Document):
 
 
 
-		
+# @frappe.whitelist()
+# @frappe.validate_and_sanitize_search_inputs
+# def ra_query(doctype, txt, searchfield, start, page_len, filters):
+# 	return frappe.db.sql("""
+# 		SELECT `student` FROM `tabRoom Allotment` WHERE `start_date` <= now() AND `end_date` >= now() 
+# 	"""
+# 	)	
 
 		
