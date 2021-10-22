@@ -6,7 +6,7 @@ from frappe.model.document import Document
 import pandas as pd
 import datetime
 
-class StudnetLeaveProcess(Document):
+class StudentLeaveProcess(Document):
 	def validate(doc):
 		Al_no=doc.allotment_number
 		ST_date=pd.to_datetime(doc.start_date).date()
@@ -36,5 +36,8 @@ class StudnetLeaveProcess(Document):
 				if ST_date<=ED_date and (ST_date<=datetime.date.today()):
 					pass
 				else:
-					frappe.throw("Please check Start Date and End Date of Leave")		
+					frappe.throw("Please check Start Date and End Date of Leave")	
+
 		
+
+	
