@@ -20,16 +20,18 @@
    "unique": 1
   },
   {
+   "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Date",
+   "read_only": 1,
    "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-08 15:03:12.737910",
+ "modified": "2021-10-12 11:30:21.151217",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Allotment Type Flag",

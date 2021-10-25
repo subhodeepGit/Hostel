@@ -2,7 +2,7 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "naming_series:",
- "creation": "2021-09-20 11:43:36.142564",
+ "creation": "2021-10-21 10:37:07.198782",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -11,17 +11,17 @@
   "allotment_number",
   "student",
   "student_name",
+  "start_date",
+  "column_break_6",
   "hostel",
   "room_number",
-  "column_break_6",
   "room_type",
-  "preferred_hostel",
-  "preferred_room",
-  "preferred_room_type",
-  "application_form",
-  "application_status",
+  "end_date",
   "section_break_11",
-  "comment"
+  "leave_approval_process_section",
+  "comment",
+  "parent_application",
+  "status"
  ],
  "fields": [
   {
@@ -29,7 +29,7 @@
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Room Change ID",
-   "options": "RC-.YYYY.-"
+   "options": "HL-.YYYY.-"
   },
   {
    "fetch_from": "student.naming_series",
@@ -86,30 +86,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "preferred_hostel",
-   "fieldtype": "Link",
-   "label": "Preferred Hostel",
-   "options": "Hostel Masters"
-  },
-  {
-   "fieldname": "preferred_room",
-   "fieldtype": "Link",
-   "label": "Preferred Room",
-   "options": "Room Masters"
-  },
-  {
-   "fetch_from": "preferred_room.actual_room_type",
-   "fieldname": "preferred_room_type",
-   "fieldtype": "Data",
-   "label": "Preferred Room Type",
-   "read_only": 1
-  },
-  {
-   "fieldname": "application_form",
-   "fieldtype": "Attach",
-   "label": "Application"
-  },
-  {
    "fieldname": "section_break_11",
    "fieldtype": "Section Break"
   },
@@ -121,19 +97,40 @@
    "mandatory_depends_on": "if (frm.doc.application_form === 0);"
   },
   {
-   "fieldname": "application_status",
+   "fieldname": "parent_application",
+   "fieldtype": "Attach",
+   "label": "Parent Application"
+  },
+  {
+   "fieldname": "leave_approval_process_section",
+   "fieldtype": "Section Break",
+   "label": "Leave Approval Process"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
    "fieldtype": "Data",
    "hidden": 1,
-   "label": "Application Status",
-   "read_only": 1
+   "label": "status"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-14 10:42:27.415722",
+ "modified": "2021-10-21 11:40:24.018336",
  "modified_by": "Administrator",
  "module": "Hostel",
- "name": "Room Change",
+ "name": "Student Leave Process",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
@@ -152,5 +149,7 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "track_changes": 1
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }

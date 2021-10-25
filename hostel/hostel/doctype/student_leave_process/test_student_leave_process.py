@@ -4,5 +4,5 @@
 # import frappe
 import unittest
 
-class TestT1Hostel(unittest.TestCase):
+class TestStudentLeaveProcess(unittest.TestCase):
 	pass

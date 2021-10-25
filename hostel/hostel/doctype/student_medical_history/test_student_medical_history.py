@@ -4,5 +4,5 @@
 # import frappe
 import unittest
 
-class TestTestLongLeaveDuplicate(unittest.TestCase):
+class TestStudentMedicalHistory(unittest.TestCase):
 	pass
