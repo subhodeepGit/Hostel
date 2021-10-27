@@ -12,6 +12,8 @@ class RoomMasters(Document):
 		hostel_id=doc.hostel_id
 		room_number=doc.room_number
 		Room_id=doc.name
+		validity=doc.validity
+		actual_room_type=doc.actual_room_type
 
 		info=''' RM WHERE RM.hostel_id="%s" and RM.room_number="%s" and RM.validity="Approved" '''%(hostel_id,room_number) 
 		Type="General"
@@ -26,7 +28,21 @@ class RoomMasters(Document):
 		else:
 			if len(hostel_df)!=0:
 				if hostel_id==hostel_df['hostel_id'][0] and hostel_df['room_number'][0]==room_number:
-					pass
+					if hostel_df['validity'][0]==validity:
+						if hostel_df['actual_room_type'][0]==actual_room_type:
+							pass
+						else:
+							frappe.db.sql("""UPDATE `tabRoom Allotment` SET `room_type`="%s" WHERE `room_id`="%s" and (`start_date`<=now() and `end_date`>=now())"""%\
+									(actual_room_type,Room_id))
+							frappe.msgprint(msg="Student Record is updated", title='Update')		
+							pass
+					else:
+						info=frappe.db.sql("""SELECT * FROM `tabRoom Allotment` WHERE `room_id`="%s" and (`start_date`<= now() and `end_date`>=now())"""%(Room_id))
+						if len(info)==0:
+							pass
+						else:
+							frappe.throw("Already Students are allotted presently")
+
 				else:
 					frappe.throw("Hostel Name or Room Number can't be changed")
 			elif len(hostel_df)==0 and len(Ck_df)!=0:
@@ -70,3 +86,18 @@ def Room_master_sql(info,Type):
 											'actual_room_type','actual_capacity','block'])
 				hostel_df=hostel_df.append(s,ignore_index=True)	
 			return hostel_df
+
+
+
+@frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def room_type_query(doctype, txt, searchfield, start, page_len, filters):
+	return frappe.db.sql("""SELECT `name` from `tabRoom Type` WHERE `start_date`<=now() and `end_date`>=now()""")
+
+
+
+@frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def room_description_query(doctype, txt, searchfield, start, page_len, filters):
+	return frappe.db.sql("""SELECT `name` from `tabRoom Description` WHERE `start_date`<=now() and `end_date`>=now()""")
+	
