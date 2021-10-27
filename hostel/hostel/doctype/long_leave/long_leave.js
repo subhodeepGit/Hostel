@@ -8,5 +8,6 @@ frappe.ui.form.on('Long Leave', {
 				query: "hostel.hostel.doctype.room_change.room_change.ra_query"
 			};
 		});
+		// frm.set_value('data_11', 'Problem not Resolved')
 	}
 });

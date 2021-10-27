@@ -10,69 +10,76 @@ class LongLeave(Document):
 	def validate(doc):
 		long_leave=doc.name
 		Al_no=doc.allotment_number
-		status_of_reporting=doc.status_of_reporting
-		info=''' WHERE `allotment_number`="%s" and `status_of_reporting`!="Close Application"'''%(Al_no)
-		Long_leave_df=Long_leave_def(info)
-		if len(Long_leave_df)==0 or (Long_leave_df['long_leave_doc_no'][0]==long_leave and Long_leave_df['status_of_reporting'][0]==None):
-			if 	len(Long_leave_df)==0 and status_of_reporting=="Notification To Administration":
-				status_of_reporting = "Notification To Administration"
-				#frappe.db.sql(""" UPDATE `tabLong Leave` SET `status`="%s" WHERE `name`="%s" """%(status_of_reporting,long_leave))
+		workflow_state=doc.workflow_state
+		print("\n\n\n\n")
+		print(workflow_state)
+		if workflow_state=="Submit":
+			info=''' WHERE `allotment_number`="%s" and  workflow_state!="Close Application" '''%(Al_no)
+			long_leave_df=Long_leave_def(info)
+			if len(long_leave_df)==0:
 				pass
 			else:
-				frappe.throw("Please change Status of Reporting to 'Notification To Administration' ")	
-		elif len(Long_leave_df)!=0 and Long_leave_df['long_leave_doc_no'][0]==long_leave and \
-			Long_leave_df['status_of_reporting'][0]=="Notification To Administration":
-			medium_of_communication=doc.medium_of_communication
-			if status_of_reporting=="Communication to the Student":
-				if medium_of_communication=="Telephone":
-					phone_number=int(doc.phone_number)
-					if phone_number!=0 and phone_number!=None:
-						frappe.db.sql("""UPDATE `tabLong Leave` SET `status_of_application`="%s" WHERE `name`="%s" """%(status_of_reporting,long_leave))
+				frappe.throw("Alreay Document ")
+		elif workflow_state=="Communication to the Student":
+			medium_of_communicatinon=doc.medium_of_communicatinon
+			print("\n\n\n\n\n")
+			print(medium_of_communicatinon)
+			if medium_of_communicatinon!="":
+				if medium_of_communicatinon=="Telephone":
+					phone_no=doc.phone_no
+					if phone_no!="":
 						pass
 					else:
-						frappe.throw("Communication Phone No is not Mentioned")
-				elif medium_of_communication=="Letter / Email":
-					attach_email=doc.attach_email
-					if attach_email!=None:
-						frappe.db.sql("""UPDATE `tabLong Leave` SET `status`="%s" WHERE `name`="%s" """%(status_of_reporting,long_leave))
+						frappe.throw("Kindly maintained Phone no.")
+				elif medium_of_communicatinon=="Email":
+					email_attachment=doc.email_attachment
+					email_id=doc.email_id
+					if email_attachment!="" and email_id!="":
 						pass
 					else:
-						frappe.throw("letter is not attached")
-				else:
-					frappe.throw("No Communication Mediam Mantained")				
+						frappe.throw("Kindly Maintain Email id and and Attachment")
+				elif medium_of_communicatinon=="Postal":
+					address_line_1=doc.address_line_1
+					pincode=doc.pincode
+					city=doc.city
+					state=doc.state
+					letter_attacmnent=doc.letter_attacmnent
+					if address_line_1!=None and pincode!=None and city!=None and state!=None and letter_attacmnent!=None:
+						pass
+					else:
+						frappe.throw("Address line not Maintainted")
 			else:
-				frappe.throw("No communication has been made by University/ College to the students") 	
-		elif len(Long_leave_df)!=0 and Long_leave_df['long_leave_doc_no'][0]==long_leave and \
-			Long_leave_df['status_of_reporting'][0]=="Communication to the Student":
-			info="""UPDATE `tabLong Leave` SET `docstatus` = '1' WHERE `tabLong Leave`.`name` = 'LL-2021-00002';"""
-			#frappe.db.sql("""UPDATE `tabLong Leave` SET `status`="%s" WHERE `name`="%s" """%(status_of_reporting,long_leave))
-			
-			pass					
-		else:
-			frappe.throw("Application is open on Doc No %s"%(Long_leave_df['long_leave_doc_no'][0]))
+				frappe.throw("Medium Communication not Maintainted")	
+		elif workflow_state=="Proceed for De-allotment":	
+			frappe.db.sql("""UPDATE `tabRoom Allotment` SET `end_date`= now(), `allotment_type`="Long Leave De-allotment" WHERE `name`="%s" """%(Al_no))
+			pass	
+					
+						
 
 
-		
+
+
 
 
 
 def Long_leave_def(info):
-		Long_leave=frappe.db.sql("""SELECT `name`,`allotment_number`,`student`,`student_name`,`hostel`,`room_number`,`long_leave_start_date`,
-		`medium_of_communication`,`reply_of_student`,`yes`,`no`,`reply_by_email__letter`,
-		`confirmation_phone_number`,`pending`,`status_of_reporting` from `tabLong Leave`"""+info)
+		Long_leave=frappe.db.sql("""SELECT name,allotment_number,student,student_name,hostel,room_number,start_date,data_11,medium_of_communicatinon,
+									letter_attacmnent,phone_no,medium_of_communicatinon_from_student,communication_phone_no,repply_of_letter
+								from `tabLong Leave`"""+info)
 
 		Long_leave_df=pd.DataFrame({
-				'long_leave_doc_no':[],'allotment_number':[],'student':[],'student_name':[],
-				'hostel':[],'room_number':[],'long_leave_start_date':[],'medium_of_communication':[],
-				'reply_of_student':[],'yes':[],'no':[],'reply_by_email__letter':[],'confirmation_phone_number':[],'pending':[],'status_of_reporting':[]
+				'long_leave_doc_no':[],'allotment_number':[],'student':[],'student_name':[],'hostel':[],'room_number':[],
+								'start_date':[],'status':[],'medium_of_communicatinon':[],'letter_attacmnent':[],'phone_no':[],
+								'medium_of_communicatinon_from_student':[],'communication_phone_no':[],'repply_of_letter':[]
 			})
 		
 		for t in range(len(Long_leave)):
 			s=pd.Series([Long_leave[t][0],Long_leave[t][1],Long_leave[t][2],Long_leave[t][3],Long_leave[t][4],Long_leave[t][5],
 						Long_leave[t][6],Long_leave[t][7],Long_leave[t][8],Long_leave[t][9],Long_leave[t][10],Long_leave[t][11],
-						Long_leave[t][12],Long_leave[t][13],Long_leave[t][14]],
-								index=['long_leave_doc_no','allotment_number','student','student_name',
-										'hostel','room_number','long_leave_start_date','medium_of_communication',
-										'reply_of_student','yes','no','reply_by_email__letter','confirmation_phone_number','pending','status_of_reporting'])
+						Long_leave[t][12],Long_leave[t][13]],
+								index=['long_leave_doc_no','allotment_number','student','student_name','hostel','room_number',
+								'start_date','status','medium_of_communicatinon','letter_attacmnent','phone_no',
+								'medium_of_communicatinon_from_student','communication_phone_no','repply_of_letter'])
 			Long_leave_df=Long_leave_df.append(s,ignore_index=True)
 		return Long_leave_df	
+	

@@ -40,48 +40,6 @@ class RoomAllotment(Document):
 				pass
 
 
-	# @frappe.whitelist()
-	# def onload_post_render(doc):
-	# 	# Room_info=frappe.db.sql(""" select * from `tabRoom Masters` as RM where RM.hostel_id='%s';"""%(doc.student))
-	# 	# a=frappe.utils.get_email(frappe.session.user);
-	# 	# print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa %s"%a)
-	# 	if frappe.session.user!="Administrator":
-	# 		Emp_all_info=frappe.db.sql(""" select * from `tabEmployee Hostel Allotment` where employees= "%s";"""%(frappe.session.user))
-	# 		df2=pd.DataFrame({
-	# 							'name':[],'employee':[],'employees':[],'start_date':[],'end_date':[],'hostel_masters':[],'user_name':[]
-	# 						})
-	# 		for t in range(len(Emp_all_info)):
-	# 			s=pd.Series([Emp_all_info[t][0],Emp_all_info[t][11],Emp_all_info[t][18],Emp_all_info[t][19],Emp_all_info[t][20],Emp_all_info[t][21],
-	# 						Emp_all_info[t][23]],
-	# 								index=['name','employee','employees','start_date','end_date','hostel_masters','user_name'])
-	# 			df2=df2.append(s,ignore_index=True)	
-
-	# 		emp_hostel=[]
-	# 		df2=df2[(df2['start_date']<=datetime.date.today())&(df2['end_date']>=datetime.date.today())].reset_index()
-	# 		for t in range(len(df2)):
-	# 			emp_hostel.append(df2['hostel_masters'][t])
-
-	# 		##### Emp hostel Allotment#####	
-	# 		into=''
-	# 		if len(emp_hostel)==1:
-	# 			info="""(HM.hostel_name="%s") and (HM.start_date<=now() and HM.end_date>= now())"""%(emp_hostel[0])
-	# 		elif len(emp_hostel)>=1:
-	# 			info='(HM.hostel_name IN %s ) and (HM.start_date<=now() and HM.end_date>= now())'%(str(tuple(emp_hostel)))
-	# 		else:
-	# 			frappe.throw("Please contact the Administrator")
-
-	# 		Hostel_sel_emp=	frappe.db.sql("""select * from `tabHostel Masters` as HM where """+info)
-	# 		df3=pd.DataFrame({ 'Hostel_name':[]})
-	# 		for t in range(len(Hostel_sel_emp)):
-	# 			s=pd.Series(
-	# 				[str(Hostel_sel_emp[t][0])],index=['Hostel_name']
-	# 			)
-	# 			df3=df3.append(s,ignore_index=True)	
-	# 		print(df3['Hostel_name'])	
-	# 	else:
-	# 		return
-
-
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
 def test_query(doctype, txt, searchfield, start, page_len, filters):
@@ -103,4 +61,14 @@ def test_query(doctype, txt, searchfield, start, page_len, filters):
 # 	"""
 # 	)	
 
-
+@frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def vacancy_query(doctype, txt, searchfield, start, page_len, filters):
+	return frappe.db.sql("""SELECT HR.name,HR.room_number,HR.actual_capacity,HR.hostel_id, 
+							(SELECT count(RA.room_id)
+							from `tabRoom Allotment` RA
+							WHERE RA.room_id=HR.name
+							And (RA.start_date<=now() and RA.end_date>=now()) 
+							)AS Vacancy 
+							from `tabRoom Masters` as HR
+							where HR.validity="Approved" """)	
