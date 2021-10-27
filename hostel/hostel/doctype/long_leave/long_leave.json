@@ -22,11 +22,19 @@
   "adminstration_communication_section",
   "medium_of_communicatinon",
   "letter_attacmnent",
+  "email_attachment",
   "phone_no",
+  "email_id",
+  "column_break_18",
+  "address_line_1",
+  "address_line_2",
+  "pincode",
+  "city",
+  "state",
   "student_reply_section",
   "medium_of_communicatinon_from_student",
   "communication_phone_no",
-  "repply_of_letter"
+  "reply_of_letter"
  ],
  "fields": [
   {
@@ -124,11 +132,13 @@
    "options": "\nTelephone\nEmail\nPostal"
   },
   {
+   "depends_on": "eval:doc.medium_of_communicatinon == \"Postal\";",
    "fieldname": "letter_attacmnent",
    "fieldtype": "Attach",
    "label": "Letter Attacmnent"
   },
   {
+   "depends_on": "eval:doc.medium_of_communicatinon == \"Telephone\";",
    "fieldname": "phone_no",
    "fieldtype": "Data",
    "label": "Phone No"
@@ -150,14 +160,60 @@
    "label": "Communication Phone no"
   },
   {
-   "fieldname": "repply_of_letter",
+   "depends_on": "eval:doc.medium_of_communicatinon == \"Email\";",
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "label": "Email Id"
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.medium_of_communicatinon == \"Postal\";",
+   "fieldname": "address_line_1",
+   "fieldtype": "Data",
+   "label": "Address Line 1"
+  },
+  {
+   "depends_on": "eval:doc.medium_of_communicatinon == \"Postal\";",
+   "fieldname": "address_line_2",
+   "fieldtype": "Data",
+   "label": "Address Line 2"
+  },
+  {
+   "depends_on": "eval:doc.medium_of_communicatinon == \"Postal\";",
+   "fieldname": "pincode",
+   "fieldtype": "Data",
+   "label": "Pincode"
+  },
+  {
+   "depends_on": "eval:doc.medium_of_communicatinon == \"Postal\";",
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "depends_on": "eval:doc.medium_of_communicatinon == \"Postal\";",
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State"
+  },
+  {
+   "fieldname": "reply_of_letter",
    "fieldtype": "Attach",
-   "label": "Repply of Letter"
+   "label": "Reply of Letter"
+  },
+  {
+   "depends_on": "eval:doc.medium_of_communicatinon == \"Email\";",
+   "fieldname": "email_attachment",
+   "fieldtype": "Attach",
+   "label": "Email Attachment"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-25 15:28:25.354194",
+ "modified": "2021-10-26 16:44:40.252991",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Long Leave",

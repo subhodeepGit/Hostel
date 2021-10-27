@@ -7,18 +7,27 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "hostel_id",
   "naming_series",
-  "room_type_id",
-  "room_number",
-  "room_capacity",
+  "hostel_and_room_info_section",
+  "hostel_id",
   "floor_number",
-  "column_break_6",
-  "room_description",
   "validity",
+  "column_break_4",
+  "room_number",
+  "room_description",
+  "block",
+  "default_room_type_info_section",
+  "room_type_id",
+  "room_capacity",
+  "column_break_6",
+  "default_room_type_feature",
+  "default_room_description",
+  "current_room_type_section",
   "actual_room_type",
   "actual_capacity",
-  "block"
+  "column_break_19",
+  "room_type_feature",
+  "description"
  ],
  "fields": [
   {
@@ -42,7 +51,7 @@
    "fieldname": "room_type_id",
    "fieldtype": "Link",
    "in_standard_filter": 1,
-   "label": "Room Type",
+   "label": "Default Room Type",
    "options": "Room Type",
    "reqd": 1
   },
@@ -54,11 +63,12 @@
    "reqd": 1
   },
   {
+   "fetch_from": "room_type_id.capacity",
    "fieldname": "room_capacity",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "Room Capacity",
-   "options": "\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10",
+   "label": "Default Room Capacity",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -91,14 +101,14 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Actual Room Type",
+   "label": "Current Room Type",
    "options": "Room Type",
    "reqd": 1
   },
   {
    "fieldname": "actual_capacity",
    "fieldtype": "Select",
-   "label": "Actual Capacity",
+   "label": "Current Room Capacity",
    "options": "\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10",
    "reqd": 1
   },
@@ -107,11 +117,62 @@
    "fieldtype": "Data",
    "label": "Block",
    "reqd": 1
+  },
+  {
+   "fieldname": "hostel_and_room_info_section",
+   "fieldtype": "Section Break",
+   "label": "Hostel and Room Info"
+  },
+  {
+   "fieldname": "default_room_type_info_section",
+   "fieldtype": "Section Break",
+   "label": "Default Room Type Info"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "current_room_type_section",
+   "fieldtype": "Section Break",
+   "label": "Current Room Type "
+  },
+  {
+   "fetch_from": "room_type_id.feature",
+   "fieldname": "default_room_type_feature",
+   "fieldtype": "Data",
+   "label": "Default Room Type Feature",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "room_type_id.description",
+   "fieldname": "default_room_description",
+   "fieldtype": "Data",
+   "label": "Default Room Description",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "actual_room_type.feature",
+   "fieldname": "room_type_feature",
+   "fieldtype": "Data",
+   "label": "Room Type Feature",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_19",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "actual_room_type.description",
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-25 16:38:11.874591",
+ "modified": "2021-10-26 10:15:59.653238",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Masters",

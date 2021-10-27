@@ -11,13 +11,49 @@ class LongLeave(Document):
 		long_leave=doc.name
 		Al_no=doc.allotment_number
 		workflow_state=doc.workflow_state
-		if workflow_state=="Notification To Administration":
+		print("\n\n\n\n")
+		print(workflow_state)
+		if workflow_state=="Submit":
 			info=''' WHERE `allotment_number`="%s" and  workflow_state!="Close Application" '''%(Al_no)
 			long_leave_df=Long_leave_def(info)
 			if len(long_leave_df)==0:
 				pass
 			else:
 				frappe.throw("Alreay Document ")
+		elif workflow_state=="Communication to the Student":
+			medium_of_communicatinon=doc.medium_of_communicatinon
+			print("\n\n\n\n\n")
+			print(medium_of_communicatinon)
+			if medium_of_communicatinon!="":
+				if medium_of_communicatinon=="Telephone":
+					phone_no=doc.phone_no
+					if phone_no!="":
+						pass
+					else:
+						frappe.throw("Kindly maintained Phone no.")
+				elif medium_of_communicatinon=="Email":
+					email_attachment=doc.email_attachment
+					email_id=doc.email_id
+					if email_attachment!="" and email_id!="":
+						pass
+					else:
+						frappe.throw("Kindly Maintain Email id and and Attachment")
+				elif medium_of_communicatinon=="Postal":
+					address_line_1=doc.address_line_1
+					pincode=doc.pincode
+					city=doc.city
+					state=doc.state
+					letter_attacmnent=doc.letter_attacmnent
+					if address_line_1!=None and pincode!=None and city!=None and state!=None and letter_attacmnent!=None:
+						pass
+					else:
+						frappe.throw("Address line not Maintainted")
+			else:
+				frappe.throw("Medium Communication not Maintainted")	
+		elif workflow_state=="Proceed for De-allotment":	
+			frappe.db.sql("""UPDATE `tabRoom Allotment` SET `end_date`= now(), `allotment_type`="Long Leave De-allotment" WHERE `name`="%s" """%(Al_no))
+			pass	
+					
 						
 
 
