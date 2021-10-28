@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2021-10-28 10:02:21.243068",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "indisciplinary_complaint_registration_id",
+  "description",
+  "attachment",
+  "student_details_section",
+  "student_fetch"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Indisciplinary Actions Number",
+   "options": "IA-.YYYY.-"
+  },
+  {
+   "fieldname": "indisciplinary_complaint_registration_id",
+   "fieldtype": "Link",
+   "label": "Indisciplinary Complaint Registration ID",
+   "options": "Indisciplinary Complaint Registration"
+  },
+  {
+   "fieldname": "student_details_section",
+   "fieldtype": "Section Break",
+   "label": "Student Details"
+  },
+  {
+   "fieldname": "student_fetch",
+   "fieldtype": "Table",
+   "label": "Student",
+   "options": "Indisciplinary Complaint Registration Student",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "indisciplinary_complaint_registration_id.description",
+   "fieldname": "description",
+   "fieldtype": "Long Text",
+   "label": "Description",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "indisciplinary_complaint_registration_id.attach_8",
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "label": "Attachment",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-10-28 16:08:10.127490",
+ "modified_by": "Administrator",
+ "module": "Hostel",
+ "name": "Indisciplinary Actions",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

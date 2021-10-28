@@ -9,7 +9,7 @@ from datetime import datetime
 
 class HostelClearance(Document):
 	@frappe.whitelist()
-	def on_update(doc):
+	def before_save(doc):
 		#doc status-0
 		allotment_number=doc.allotment_number
 		due_status=doc.due_status

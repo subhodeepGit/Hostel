@@ -73,7 +73,7 @@
   },
   {
    "fieldname": "attach_8",
-   "fieldtype": "Attach",
+   "fieldtype": "Attach Image",
    "label": "Attach File"
   },
   {
@@ -90,7 +90,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-08 15:02:41.864694",
+ "modified": "2021-10-28 13:06:29.334004",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Indisciplinary Complaint Registration",
