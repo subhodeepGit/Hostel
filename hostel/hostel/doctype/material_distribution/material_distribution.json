@@ -28,7 +28,8 @@
   "blanket",
   "bedsheet_cum_pillow_cover",
   "section_break_11",
-  "comment"
+  "comment",
+  "amended_from"
  ],
  "fields": [
   {
@@ -169,11 +170,21 @@
   {
    "fieldname": "column_break_17",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Material Distribution",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2021-10-28 17:55:47.321225",
+ "modified": "2021-10-28 18:34:38.728141",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Material Distribution",
@@ -195,5 +206,7 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "track_changes": 1
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }

@@ -25,9 +25,11 @@
   "current_room_type_section",
   "actual_room_type",
   "actual_capacity",
+  "vacancy",
   "column_break_19",
   "room_type_feature",
-  "description"
+  "description",
+  "previous_room_capacity"
  ],
  "fields": [
   {
@@ -168,11 +170,21 @@
    "fieldtype": "Data",
    "label": "Description",
    "read_only": 1
+  },
+  {
+   "fieldname": "vacancy",
+   "fieldtype": "Data",
+   "label": "Vacancy"
+  },
+  {
+   "fieldname": "previous_room_capacity",
+   "fieldtype": "Data",
+   "label": "Previous Room Capacity"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-26 10:15:59.653238",
+ "modified": "2021-10-29 15:16:37.317781",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Masters",

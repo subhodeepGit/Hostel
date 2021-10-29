@@ -10,6 +10,7 @@
   "naming_series",
   "employee",
   "employee_name",
+  "previous_complaint_id",
   "column_break_4",
   "reporting_date",
   "status",
@@ -86,11 +87,17 @@
    "fieldtype": "Table",
    "label": "Student",
    "options": "Indisciplinary Complaint Registration Student"
+  },
+  {
+   "fieldname": "previous_complaint_id",
+   "fieldtype": "Link",
+   "label": "Previous Complaint ID",
+   "options": "Indisciplinary Complaint Registration"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-28 13:06:29.334004",
+ "modified": "2021-10-29 11:49:03.623291",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Indisciplinary Complaint Registration",
