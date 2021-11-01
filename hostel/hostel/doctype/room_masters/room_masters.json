@@ -174,17 +174,20 @@
   {
    "fieldname": "vacancy",
    "fieldtype": "Data",
-   "label": "Vacancy"
+   "label": "Vacancy",
+   "read_only": 1
   },
   {
    "fieldname": "previous_room_capacity",
    "fieldtype": "Data",
-   "label": "Previous Room Capacity"
+   "hidden": 1,
+   "label": "Previous Room Capacity",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-29 15:16:37.317781",
+ "modified": "2021-11-01 10:45:17.847841",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Masters",
@@ -208,5 +211,7 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "title_field": "room_number",
- "track_changes": 1
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }

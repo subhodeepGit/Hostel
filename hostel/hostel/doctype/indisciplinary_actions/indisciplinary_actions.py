@@ -1,13 +1,16 @@
 # Copyright (c) 2021, SOUL and contributors
 # For license information, please see license.txt
 
+import re
+from time import process_time
 import frappe
 from frappe.model.document import Document
 import pandas as pd
 
 class IndisciplinaryActions(Document):
+	
 	@frappe.whitelist()
-	def before_save(doc):
+	def on_update(doc):
 		#doc status-0
 		type_of_decision=doc.type_of_decision
 		if type_of_decision=="Warning Letter":
@@ -49,21 +52,26 @@ class IndisciplinaryActions(Document):
 				indisciplinary_complaint_registration_id=doc.indisciplinary_complaint_registration_id
 				info=frappe.db.sql("""SELECT `allotment_number` from `tabIndisciplinary Complaint Registration Student` WHERE `parent`="%s" """%\
 												(indisciplinary_complaint_registration_id))	
-				type_of_suspension="Debar Letter"													
+				type_of_suspension="Debar"													
 				for t in range(len(info)):
-					frappe.db.sql("""UPDATE `tabRoom Allotment` SET `allotment_type`="%s" WHERE `name`="%s" """%(type_of_suspension,info[t][0]))
+					frappe.db.sql("""UPDATE `tabRoom Allotment` SET `allotment_type`="%s",`end_date`="%s" WHERE `name`="%s" """%\
+										(type_of_suspension,issue_of_debar_letter,info[t][0]))
 				pass
 			else:
 				frappe.throw("Kindly provide 'Date of Letter Issue' and 'Debar Letter'")
 		elif type_of_decision=="Parents Call Letter":
-
-			pass
-		else:
-			frappe.throw("No field selected")
-	@frappe.whitelist()		
-	def on_update(doc):
-		type_of_decision=doc.type_of_decision
-		if type_of_decision=="Disciplinary Committee":
+			Doc_no=doc.name
+			issue_of_parents_call_letter=doc.issue_of_parents_call_letter
+			attachment_of_parents_call_letter=doc.attachment_of_parents_call_letter
+			parents_meeting_date=doc.parents_meeting_date
+			parents_undertaking=doc.parents_undertaking
+			if (issue_of_parents_call_letter!=None and attachment_of_parents_call_letter!=None) and (parents_meeting_date==None and parents_undertaking==None):
+				pass
+			elif (parents_meeting_date!=None and parents_undertaking!=None) and (issue_of_parents_call_letter!=None and attachment_of_parents_call_letter!=None):
+				pass
+			else:
+					frappe.throw("1st step Letter has to issue and 2nd step parents reporting has to be issued")		
+		elif type_of_decision=="Disciplinary Committee":
 			ia_id = doc.name
 			in_doc_info=frappe.db.sql("""SELECT * FROM `tabIndisciplinary Actions` where  name="%s" """%(ia_id))
 			if len(in_doc_info)!=0:
@@ -75,8 +83,10 @@ class IndisciplinaryActions(Document):
 					s = pd.Series([al.emp_id],index = ['Emp_no'])
 					emp_df = emp_df.append(s,ignore_index = True)
 				duplicate = emp_df[emp_df.duplicated()].reset_index()
+				print(duplicate)
 				if len(duplicate) == 0:
 					pass
+					# return True
 				else:
 					b=""
 					for t in range(len(duplicate)):
@@ -84,7 +94,12 @@ class IndisciplinaryActions(Document):
 						b=b+a
 					frappe.throw("Duplicate value found on Employee ID "+b)
 			else:
-				pass 
+				pass	
+		else:
+			frappe.throw("No field selected")
+
+
+	
 
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs

@@ -31,7 +31,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-12 11:30:21.151217",
+ "modified": "2021-10-29 16:02:03.732665",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Allotment Type Flag",
@@ -54,5 +54,7 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "title_field": "description",
- "track_changes": 1
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }
