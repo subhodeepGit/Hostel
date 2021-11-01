@@ -26,7 +26,11 @@ class RoomAllotment(Document):
 				if room_info_vac["validity"][0]=="Approved":
 					if room_info_vac["room_description"][0]=="student Room":
 						if room_info_vac["Vacancy"][0]>0:
-							pass
+							ck_data=df1[df1['allotment_type']=="Debar"].reset_index()
+							if len(ck_data)==0:
+								pass
+							else:
+								frappe.throw("Student is Debar. He/She can't be allotted")
 						else:
 							Al_stu=vacancy_quety_vali("Alloted_student",room_id)
 							a=""

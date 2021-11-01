@@ -64,7 +64,8 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Hostel",
-   "options": "Hostel Masters"
+   "options": "Hostel Masters",
+   "reqd": 1
   },
   {
    "default": "Today",
@@ -100,7 +101,8 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Room ID",
-   "options": "Room Masters"
+   "options": "Room Masters",
+   "reqd": 1
   },
   {
    "fetch_from": "room_id.actual_room_type",
@@ -199,7 +201,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-28 17:22:52.490279",
+ "modified": "2021-10-30 13:24:11.714440",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Allotment",
@@ -222,5 +224,7 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "title_field": "student",
- "track_changes": 1
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }

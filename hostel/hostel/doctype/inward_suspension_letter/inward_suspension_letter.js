@@ -1,18 +1,18 @@
 // Copyright (c) 2021, SOUL and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on('Indisciplinary Complaint Registration', {
+frappe.ui.form.on('Inward Suspension Letter', {
     setup: function (cur_frm) {
         cur_frm.set_query("allotment_number", "student", function() {
             return {
-                query: "hostel.hostel.doctype.indisciplinary_complaint_registration.indisciplinary_complaint_registration.ra_query"
+                query: "hostel.hostel.doctype.inward_suspension_letter.inward_suspension_letter.ra_query"
             };
         });
     }
 })
 
-    // Checking duplicate 
-frappe.ui.form.on("Indisciplinary Complaint Registration Student", "allotment_number", function(frm, cdt, cdn){
+// Checking duplicate 
+frappe.ui.form.on("Inward Suspension Letter Student", "allotment_number", function(frm, cdt, cdn){
     var al_no = frm.doc.student;
     var arr =[];
     for(var i in al_no){
@@ -21,11 +21,10 @@ frappe.ui.form.on("Indisciplinary Complaint Registration Student", "allotment_nu
     }
     for (var j=0;j<arr.length-1;j++){
         for(var k=j+1;k<arr.length;k++){
-            if(arr[j] == arr[k]){
-                // frappe.show_alert('Duplicate Allotment number')
-                // frappe.msgprint(arr[k])                            
+            if(arr[j] == arr[k]){                           
                 frappe.msgprint("Duplicate entry "+arr[k])
             }
         }
     }
 })
+
