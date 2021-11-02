@@ -4,6 +4,7 @@
 import frappe
 from frappe.model.document import Document
 import pandas as pd
+from datetime import date 
 
 class InwardSuspensionLetter(Document):
     @frappe.whitelist()
@@ -49,9 +50,17 @@ class InwardSuspensionLetter(Document):
                 duplicate = stu_df[stu_df.duplicated()].reset_index()
                 if len(duplicate) == 0:
                     if in_doc_info[0][5]==1:
-                        for t in range(len(stu_df)):
-                            frappe.db.sql("""UPDATE `tabRoom Allotment` SET `allotment_type`="%s" WHERE `name`="%s" """%(suspension_type,stu_df['Al_no'][t]))
-                        pass
+                        if suspension_type=="University Debar":
+                            for t in range(len(stu_df)):
+                                frappe.db.sql("""UPDATE `tabRoom Allotment` SET `allotment_type`="%s",`end_date`="%s" WHERE `name`="%s" """%(suspension_type,date.today(),stu_df['Al_no'][t]))
+                                room_info=frappe.db.sql("""SELECT `room_id` FROM `tabRoom Allotment` where `name` ="RA-2021-00004" """)
+                                frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`-1 WHERE `name`="%s" """%(room_info[0][0]))
+                            pass
+                        else:
+                            for t in range(len(stu_df)):
+                                frappe.db.sql("""UPDATE `tabRoom Allotment` SET `allotment_type`="%s" WHERE `name`="%s" """%(suspension_type,stu_df['Al_no'][t]))
+                        
+                            pass
                     else:
                         pass
                 else:

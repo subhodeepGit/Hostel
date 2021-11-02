@@ -26,13 +26,14 @@ class RoomAllotment(Document):
 				if room_info_vac["validity"][0]=="Approved":
 					if room_info_vac["Room_al_status"][0]=="Allotted":
 						if room_info_vac["Vacancy"][0]>0:
-							ck_data=df1[df1['allotment_type']=="Debar"].reset_index()
+							ck_data=df1[(df1['allotment_type']=="Debar") | (df1['allotment_type']=="University Debar") | (df1['allotment_type']=="Passout")
+										| (df1['allotment_type']=="Cancellation of Admission") | (df1['allotment_type']=="Death") ].reset_index()
 							if len(ck_data)==0:
 								room_id=doc.room_id
 								frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`-1 WHERE `name`="%s" """%(room_id))
 								pass
 							else:
-								frappe.throw("Student is Debar. He/She can't be allotted")
+								frappe.throw("Student can't be allotted")
 						else:
 							Al_stu=vacancy_quety_vali("Alloted_student",room_id)
 							a=""
