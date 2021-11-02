@@ -29,7 +29,7 @@ class RoomMasters(Document):
             if previous_room_capacity==actual_capacity:
                 pass
             else:
-                frappe.throw("Vacency Not Avalable")
+                frappe.throw("Vacancy Not Avalable")
         else:
             if len(hostel_df)!=0:
                 if hostel_id==hostel_df['hostel_id'][0] and hostel_df['room_number'][0]==room_number:
@@ -40,7 +40,7 @@ class RoomMasters(Document):
                             if previous_room_capacity==actual_capacity:
                                 pass
                             else:
-                                frappe.throw("Vacency Not Avalable")
+                                frappe.throw("Vacancy Not Avalable")
                         else:
                             previous_room_capacity=doc.previous_room_capacity
                             actual_capacity=doc.actual_capacity
@@ -50,7 +50,7 @@ class RoomMasters(Document):
                                 frappe.msgprint(msg="Student Record is updated", title='Update')
                                 pass
                             else:
-                                frappe.throw("Vacency Not Avalable")                    
+                                frappe.throw("Vacancy Not Avalable")                    
                     else:
                         info=frappe.db.sql("""SELECT * FROM `tabRoom Allotment` WHERE `room_id`="%s" and (`start_date`<= now() and `end_date`>=now())"""%(Room_id))
                         if len(info)==0:
@@ -59,7 +59,7 @@ class RoomMasters(Document):
                             if previous_room_capacity==actual_capacity:
                                 pass
                             else:
-                                frappe.throw("Vacency Not Avalable")
+                                frappe.throw("Vacancy Not Avalable")
                         else:
                             frappe.throw("Already Students are allotted presently")
 

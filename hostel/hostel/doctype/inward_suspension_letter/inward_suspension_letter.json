@@ -17,7 +17,8 @@
   "date_of_the_order",
   "employee_name",
   "section_break_7",
-  "student"
+  "student",
+  "amended_from"
  ],
  "fields": [
   {
@@ -85,11 +86,21 @@
    "hidden": 1,
    "label": "Inward Suspension Letter ID",
    "options": "ISL-.YYYY.-"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Inward Suspension Letter",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2021-11-01 13:32:37.087554",
+ "modified": "2021-11-01 14:59:32.403901",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Inward Suspension Letter",

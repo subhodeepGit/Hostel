@@ -3,17 +3,22 @@
 
 import frappe
 from frappe.model.document import Document
+from frappe.translate import import_translations
+import datetime
 
 class RoomDescription(Document):
 	@frappe.whitelist()
 	def validate(doc):
 		room_description=doc.room_description
-		start_date=doc.start_date
-		end_date=doc.end_date
+		start_date=datetime.datetime.strptime(doc.start_date,'%Y-%m-%d').date()
+		end_date=datetime.datetime.strptime(doc.end_date,'%Y-%m-%d').date()
+		
 		if start_date<=end_date:
 			Room_des_info=frappe.db.sql("""select * from `tabRoom Description` RD where 
 			RD.room_description="%s" and (RD.start_date<= now() and RD.end_date>=now())"""%(room_description))
 			if len(Room_des_info)==0:
+				pass
+			elif len(Room_des_info)!=0 and (Room_des_info[0][12]==start_date and Room_des_info[0][13]==end_date):
 				pass
 			else:
 				frappe.throw("Room Description already present and valid")

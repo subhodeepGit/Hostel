@@ -13,11 +13,13 @@
   "student_name",
   "hostel",
   "room_number",
+  "room_no",
   "column_break_6",
   "room_type",
   "preferred_hostel",
   "preferred_room",
   "preferred_room_type",
+  "preferred_room_number",
   "application_form",
   "application_status",
   "section_break_11",
@@ -37,7 +39,8 @@
    "fieldtype": "Link",
    "in_standard_filter": 1,
    "label": "Allotment Number",
-   "options": "Room Allotment"
+   "options": "Room Allotment",
+   "reqd": 1
   },
   {
    "fetch_from": "allotment_number.student",
@@ -69,6 +72,7 @@
    "fetch_from": "allotment_number.room_id",
    "fieldname": "room_number",
    "fieldtype": "Data",
+   "hidden": 1,
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Room Number",
@@ -126,11 +130,25 @@
    "hidden": 1,
    "label": "Application Status",
    "read_only": 1
+  },
+  {
+   "fetch_from": "allotment_number.room_number",
+   "fieldname": "room_no",
+   "fieldtype": "Data",
+   "label": "Room No.",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "preferred_room.room_number",
+   "fieldname": "preferred_room_number",
+   "fieldtype": "Data",
+   "label": "Preferred Room Number",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-29 16:01:45.783158",
+ "modified": "2021-11-02 11:19:12.585164",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Change",

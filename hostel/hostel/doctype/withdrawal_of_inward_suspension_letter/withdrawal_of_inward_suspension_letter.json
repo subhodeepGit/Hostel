@@ -18,7 +18,8 @@
   "date_of_the_order",
   "employee_name",
   "section_break_7",
-  "student_fetch"
+  "student_fetch",
+  "amended_from"
  ],
  "fields": [
   {
@@ -98,12 +99,23 @@
    "fieldname": "student_fetch",
    "fieldtype": "Table",
    "label": "Students to Suspend",
-   "options": "Inward Suspension Letter Student 1"
+   "options": "Inward Suspension Letter Student",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Withdrawal of Inward Suspension Letter",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2021-11-01 13:14:40.534424",
+ "modified": "2021-11-01 16:37:54.191029",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Withdrawal of Inward Suspension Letter",

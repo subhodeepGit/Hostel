@@ -24,10 +24,12 @@ class RoomAllotment(Document):
 				room_id=doc.room_id
 				room_info_vac=vacancy_quety_vali("Genaral",room_id)
 				if room_info_vac["validity"][0]=="Approved":
-					if room_info_vac["room_description"][0]=="student Room":
+					if room_info_vac["Room_al_status"][0]=="Allotted":
 						if room_info_vac["Vacancy"][0]>0:
 							ck_data=df1[df1['allotment_type']=="Debar"].reset_index()
 							if len(ck_data)==0:
+								room_id=doc.room_id
+								frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`-1 WHERE `name`="%s" """%(room_id))
 								pass
 							else:
 								frappe.throw("Student is Debar. He/She can't be allotted")
@@ -58,22 +60,11 @@ def test_query(doctype, txt, searchfield, start, page_len, filters):
 			
 	
 
-@frappe.whitelist()
-@frappe.validate_and_sanitize_search_inputs
-def vacancy_query(doctype, txt, searchfield, start, page_len, filters):
-	return frappe.db.sql("""SELECT HR.name,HR.room_number,HR.actual_capacity,HR.hostel_id, 
-							(SELECT count(RA.room_id)
-							from `tabRoom Allotment` RA
-							WHERE RA.room_id=HR.name
-							And (RA.start_date<=now() and RA.end_date>=now()) 
-							)AS Vacancy 
-							from `tabRoom Masters` as HR
-							where HR.validity="Approved" """)	
 
 
 def vacancy_quety_vali(flag,info):
 	if flag=="Genaral":
-		vac_info=frappe.db.sql("""SELECT HR.name,HR.room_number,HR.actual_capacity,HR.hostel_id,HR.validity,HR.room_description,
+		vac_info=frappe.db.sql("""SELECT HR.name,HR.room_number,HR.actual_capacity,HR.hostel_id,HR.validity,HR.room_description,HR.status,
 								(HR.actual_capacity-(SELECT count(RA.room_id)
 								from `tabRoom Allotment` RA
 								WHERE RA.room_id=HR.name
@@ -82,11 +73,11 @@ def vacancy_quety_vali(flag,info):
 								from `tabRoom Masters` as HR
 								where HR.name="%s" """%(info))
 		df1=pd.DataFrame({
-			"Room_id":[],"room_number":[],"present_capacity":[],"hostel_id":[],"validity":[],"room_description":[],"Vacancy":[] 
+			"Room_id":[],"room_number":[],"present_capacity":[],"hostel_id":[],"validity":[],"room_description":[],"Room_al_status":[],"Vacancy":[] 
 			})
 		for t in range(len(vac_info)):
 			s=pd.Series([vac_info[t][0],vac_info[t][1],vac_info[t][2],vac_info[t][3],vac_info[t][4],vac_info[t][5],vac_info[t][6]],
-								index=["Room_id","room_number","present_capacity","hostel_id","validity","room_description","Vacancy"])
+								index=["Room_id","room_number","present_capacity","hostel_id","validity","room_description","Room_al_status","Vacancy"])
 			df1=df1.append(s,ignore_index=True)			
 		return df1
 	elif flag=="Student_info":	
@@ -120,15 +111,4 @@ def vacancy_quety_vali(flag,info):
 								index=["Al_no","room_id"])
 			df1=df1.append(s,ignore_index=True)	
 		return df1	
-
-
-
-
-# @frappe.whitelist()
-# @frappe.validate_and_sanitize_search_inputs
-# def test_query(doctype, txt, searchfield, start, page_len, filters):
-# 	return frappe.db.sql("""
-# 		SELECT hostel_name
-# 		FROM `tabHostel Masters`
-# 	"""
-# 	)		
+	

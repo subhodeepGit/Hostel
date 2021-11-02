@@ -15,7 +15,6 @@
   "student_name",
   "blood_group",
   "section_break_7",
-  "guardians",
   "section_break_4",
   "hostel_id",
   "start_date",
@@ -26,6 +25,8 @@
   "room_number",
   "room_type",
   "addon_facilites",
+  "guardians_infroamtion_section",
+  "guardians",
   "section_break_13",
   "employee",
   "designation",
@@ -191,17 +192,23 @@
    "fetch_from": "room_id.room_type_feature",
    "fieldname": "addon_facilites",
    "fieldtype": "Data",
-   "label": "Addon Facilites"
+   "label": "Addon Facilites",
+   "read_only": 1
   },
   {
    "fieldname": "student_info_section",
    "fieldtype": "Section Break",
    "label": "Student Info"
+  },
+  {
+   "fieldname": "guardians_infroamtion_section",
+   "fieldtype": "Section Break",
+   "label": "Guardians Infroamtion"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-30 13:24:11.714440",
+ "modified": "2021-11-02 10:26:37.566127",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Allotment",

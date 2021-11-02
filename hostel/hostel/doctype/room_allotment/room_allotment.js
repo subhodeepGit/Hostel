@@ -7,8 +7,10 @@ frappe.ui.form.on('Room Allotment', {
 			return {
 				filters: [
 					["Room Masters", "hostel_id", "=", frm.doc.hostel_id],
-					["Room Masters", "room_description", "=", "student Room"],
-					["Room Masters", "validity", "=", "Approved"]
+					//["Room Masters", "room_description", "=", "student Room"],
+					["Room Masters", "validity", "=", "Approved"],
+					["Room Masters", "status", "=", "Allotted"],
+					["Room Masters", "vacancy", ">", 0]
 				]
 			}
 		});
