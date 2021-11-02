@@ -18,7 +18,8 @@
   "description",
   "attach_8",
   "section_break_6",
-  "student"
+  "student",
+  "amended_from"
  ],
  "fields": [
   {
@@ -93,11 +94,20 @@
    "fieldtype": "Link",
    "label": "Previous Complaint ID",
    "options": "Indisciplinary Complaint Registration"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Indisciplinary Complaint Registration",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-29 18:23:01.384622",
+ "modified": "2021-11-01 18:08:53.273396",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Indisciplinary Complaint Registration",

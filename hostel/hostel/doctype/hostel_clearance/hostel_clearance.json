@@ -14,6 +14,8 @@
   "column_break_5",
   "hostel",
   "room_number",
+  "room_no",
+  "room_type",
   "section_break_8",
   "end_date",
   "type_of_clearance",
@@ -67,6 +69,7 @@
    "fetch_from": "allotment_number.room_id",
    "fieldname": "room_number",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Room Number",
    "read_only": 1
   },
@@ -118,12 +121,26 @@
    "options": "Hostel Clearance",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fetch_from": "allotment_number.room_type",
+   "fieldname": "room_type",
+   "fieldtype": "Data",
+   "label": "Room Type",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "allotment_number.room_number",
+   "fieldname": "room_no",
+   "fieldtype": "Data",
+   "label": "Room No.",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-10-27 15:38:30.173538",
+ "modified": "2021-11-02 12:26:23.502807",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Clearance",

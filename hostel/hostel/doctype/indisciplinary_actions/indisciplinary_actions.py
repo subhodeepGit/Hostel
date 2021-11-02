@@ -82,17 +82,23 @@ class IndisciplinaryActions(Document):
 				for al in ia.dc_member:
 					s = pd.Series([al.emp_id],index = ['Emp_no'])
 					emp_df = emp_df.append(s,ignore_index = True)
-				duplicate = emp_df[emp_df.duplicated()].reset_index()
-				print(duplicate)
-				if len(duplicate) == 0:
-					pass
-					# return True
+				if 	len(emp_df)!=0:
+					duplicate = emp_df[emp_df.duplicated()].reset_index()
+					if len(duplicate) == 0:
+						issue_of_debar_letter=doc.issue_of_dc_letter
+						attachment_of_dc_letter=doc.attachment_of_dc_letter
+						if issue_of_debar_letter!=None and attachment_of_dc_letter!=None:
+							pass
+						else:
+							frappe.throw("DC Letter and Date of Issue is not Maintained")
+					else:
+						b=""
+						for t in range(len(duplicate)):
+							a="%s  "%(duplicate['Emp_no'][t])
+							b=b+a
+						frappe.throw("Duplicate value found on Employee ID "+b)
 				else:
-					b=""
-					for t in range(len(duplicate)):
-						a="%s  "%(duplicate['Emp_no'][t])
-						b=b+a
-					frappe.throw("Duplicate value found on Employee ID "+b)
+					frappe.throw("No Disciplinary Committee Maintained")		
 			else:
 				pass	
 		else:

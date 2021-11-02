@@ -9,6 +9,7 @@ class InwardSuspensionLetter(Document):
     @frappe.whitelist()
     def on_update(self):
         icr_id = self.name
+        suspension_type=self.suspension_type
         in_doc_info=frappe.db.sql("""select * from `tabInward Suspension Letter` where  name="%s" """%(icr_id))
         if len(in_doc_info)!=0:
             icr = frappe.get_doc("Inward Suspension Letter",icr_id)
@@ -30,9 +31,37 @@ class InwardSuspensionLetter(Document):
                     frappe.throw("Duplicate value found on allotment number "+b)
             else:
                 frappe.throw("No Studnet Entered")        
-        else:
-            pass  
 
+    @frappe.whitelist()
+    def on_submit(self):
+        icr_id = self.name
+        suspension_type=self.suspension_type
+        in_doc_info=frappe.db.sql("""select * from `tabInward Suspension Letter` where  name="%s" """%(icr_id))
+        if len(in_doc_info)!=0:
+            icr = frappe.get_doc("Inward Suspension Letter",icr_id)
+            stu_df = pd.DataFrame({
+                'Al_no':[]
+            })
+            for al in icr.student:
+                s = pd.Series([al.allotment_number],index = ['Al_no'])
+                stu_df = stu_df.append(s,ignore_index = True)
+            if len(stu_df)!=0:    
+                duplicate = stu_df[stu_df.duplicated()].reset_index()
+                if len(duplicate) == 0:
+                    if in_doc_info[0][5]==1:
+                        for t in range(len(stu_df)):
+                            frappe.db.sql("""UPDATE `tabRoom Allotment` SET `allotment_type`="%s" WHERE `name`="%s" """%(suspension_type,stu_df['Al_no'][t]))
+                        pass
+                    else:
+                        pass
+                else:
+                    b=""
+                    for t in range(len(duplicate)):
+                        a="%s  "%(duplicate['Al_no'][t])
+                        b=b+a
+                    frappe.throw("Duplicate value found on allotment number "+b)
+            else:
+                frappe.throw("No Studnet Entered")  
 
 
 

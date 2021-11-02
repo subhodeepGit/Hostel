@@ -38,11 +38,13 @@ class DeallotmentProcess(Document):
 			if End_date==None:
 				frappe.throw("Please provide End Date")	
 			else:
-				Al_data=frappe.db.sql("""select `start_date`,`end_date` from `tabRoom Allotment` as RA WHERE `name`="%s" """%(Al_no))
+				Al_data=frappe.db.sql("""select `start_date`,`end_date`,`room_id` from `tabRoom Allotment` as RA WHERE `name`="%s" """%(Al_no))
 				al_st_date=Al_data[0][0]
 				al_end_date=Al_data[0][1]
+				room_id=Al_data[0][2]
 				if al_st_date<=End_date and al_end_date>=End_date:
 					frappe.db.sql("""UPDATE `tabRoom Allotment` SET `end_date`="%s",`allotment_type`="De-Allotment" WHERE `name`="%s" """%(End_date,Al_no))
+					frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`+1 WHERE `name`="%s" """%(room_id))
 					pass
 				else:
 					frappe.throw("End date is not in range of allotment no:- %s"%(Al_no))

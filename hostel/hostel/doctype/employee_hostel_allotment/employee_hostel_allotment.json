@@ -60,8 +60,7 @@
    "default": "9999-12-01",
    "fieldname": "end_date",
    "fieldtype": "Date",
-   "label": "End Date",
-   "read_only": 1
+   "label": "End Date"
   },
   {
    "fieldname": "hostel_masters",
@@ -81,7 +80,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-13 12:07:15.831784",
+ "modified": "2021-11-02 11:24:17.275761",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Employee Hostel Allotment",
