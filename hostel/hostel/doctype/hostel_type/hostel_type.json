@@ -21,7 +21,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-08 15:02:02.929913",
+ "modified": "2021-10-29 16:01:35.382490",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Type",
@@ -44,5 +44,7 @@
  "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "track_changes": 1
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }

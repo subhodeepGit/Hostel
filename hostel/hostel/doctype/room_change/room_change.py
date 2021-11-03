@@ -42,11 +42,15 @@ class RoomChange(Document):
 				frappe.throw("Please provide Hostel and Room number")
 			else:
 				if preferred_room != chk_df["Pre_room_no"][0]:
-					User=frappe.session.user	
 					Room_no_info=frappe.db.sql("""Select `room_number` from `tabRoom Masters` WHERE `name`="%s" """%(preferred_room))
 					Room_no_info=Room_no_info[0][0]
 					frappe.db.sql("""UPDATE `tabRoom Allotment` SET `hostel_id`="%s",`room_id`="%s",
 						`room_type`="%s",`room_number`="%s" WHERE `name`="%s" """%(preferred_hostel,preferred_room,preferred_room_type,Room_no_info,Al_no))
+					room_id=preferred_room
+					frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`-1 WHERE `name`="%s" """%(room_id))
+					room_id=doc.room_number
+					frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`+1 WHERE `name`="%s" """%(room_id))
+
 
 					pass
 				else:
@@ -58,8 +62,8 @@ class RoomChange(Document):
 @frappe.validate_and_sanitize_search_inputs
 def ra_query(doctype, txt, searchfield, start, page_len, filters):
 	return frappe.db.sql("""
-		SELECT `name`,`student`,`student_name` FROM `tabRoom Allotment` WHERE `start_date` <= now() AND `end_date` >= now() 
+		SELECT `name`,`student`,`student_name`,`hostel_id` FROM `tabRoom Allotment` WHERE (`start_date` <= now() AND `end_date` >= now()) 
+		and (`allotment_type`!="Hostel suspension" and `allotment_type`!="Suspension" and `allotment_type`!="Debar" and 
+		`allotment_type`!="University Suspension" and `allotment_type`!="School Suspension")
 	"""
 	)	
-
-		

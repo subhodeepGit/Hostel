@@ -16,6 +16,7 @@
   "room_number",
   "room_description",
   "block",
+  "status",
   "default_room_type_info_section",
   "room_type_id",
   "room_capacity",
@@ -25,9 +26,11 @@
   "current_room_type_section",
   "actual_room_type",
   "actual_capacity",
+  "vacancy",
   "column_break_19",
   "room_type_feature",
-  "description"
+  "description",
+  "previous_room_capacity"
  ],
  "fields": [
   {
@@ -168,11 +171,33 @@
    "fieldtype": "Data",
    "label": "Description",
    "read_only": 1
+  },
+  {
+   "fieldname": "vacancy",
+   "fieldtype": "Data",
+   "label": "Vacancy",
+   "read_only": 1
+  },
+  {
+   "fieldname": "previous_room_capacity",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Previous Room Capacity",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "room_description.status",
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Status",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-26 10:15:59.653238",
+ "modified": "2021-11-02 11:02:22.515310",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Masters",
@@ -192,9 +217,11 @@
    "write": 1
   }
  ],
- "search_fields": "room_number",
+ "search_fields": "room_number,vacancy",
  "sort_field": "modified",
  "sort_order": "DESC",
  "title_field": "room_number",
- "track_changes": 1
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }

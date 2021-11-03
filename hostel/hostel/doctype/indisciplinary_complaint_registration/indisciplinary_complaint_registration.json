@@ -10,6 +10,7 @@
   "naming_series",
   "employee",
   "employee_name",
+  "previous_complaint_id",
   "column_break_4",
   "reporting_date",
   "status",
@@ -17,7 +18,8 @@
   "description",
   "attach_8",
   "section_break_6",
-  "student"
+  "student",
+  "amended_from"
  ],
  "fields": [
   {
@@ -86,11 +88,26 @@
    "fieldtype": "Table",
    "label": "Student",
    "options": "Indisciplinary Complaint Registration Student"
+  },
+  {
+   "fieldname": "previous_complaint_id",
+   "fieldtype": "Link",
+   "label": "Previous Complaint ID",
+   "options": "Indisciplinary Complaint Registration"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Indisciplinary Complaint Registration",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-08 15:02:41.864694",
+ "modified": "2021-11-01 18:08:53.273396",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Indisciplinary Complaint Registration",
@@ -112,5 +129,7 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "track_changes": 1
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }
