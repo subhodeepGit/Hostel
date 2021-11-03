@@ -62,7 +62,42 @@ class RoomMasters(Document):
                                 frappe.throw("Vacancy Not Avalable")
                         else:
                             frappe.throw("Already Students are allotted presently")
-
+                elif hostel_id!=hostel_df['hostel_id'][0] or hostel_df['room_number'][0]!=room_number:
+                    info=''' RM WHERE RM.hostel_id="%s" and RM.room_number="%s" and RM.validity="Approved" '''%(hostel_id,room_number) 
+                    Type="General"
+                    Ck_df=Room_master_sql(info,Type) # cheacking for same room no and hostel is present 
+                    if len(Ck_df)==0:
+                        if hostel_df['validity'][0]==validity:
+                            if hostel_df['actual_room_type'][0]==actual_room_type:
+                                previous_room_capacity=doc.previous_room_capacity
+                                actual_capacity=doc.actual_capacity
+                                if previous_room_capacity==actual_capacity:
+                                    pass
+                                else:
+                                    frappe.throw("Vacancy Not Avalable")
+                            else:
+                                previous_room_capacity=doc.previous_room_capacity
+                                actual_capacity=doc.actual_capacity
+                                if previous_room_capacity==actual_capacity:
+                                    frappe.db.sql("""UPDATE `tabRoom Allotment` SET `room_type`="%s" WHERE `room_id`="%s" and (`start_date`<=now() and `end_date`>=now())"""%\
+                                        (actual_room_type,Room_id))
+                                    frappe.msgprint(msg="Student Record is updated", title='Update')
+                                    pass
+                                else:
+                                    frappe.throw("Vacancy Not Avalable")                    
+                        else:
+                            info=frappe.db.sql("""SELECT * FROM `tabRoom Allotment` WHERE `room_id`="%s" and (`start_date`<= now() and `end_date`>=now())"""%(Room_id))
+                            if len(info)==0:
+                                previous_room_capacity=doc.previous_room_capacity
+                                actual_capacity=doc.actual_capacity
+                                if previous_room_capacity==actual_capacity:
+                                    pass
+                                else:
+                                    frappe.throw("Vacancy Not Avalable")
+                            else:
+                                frappe.throw("Already Students are allotted presently")  
+                    else:
+                        frappe.throw("Hostel and Room No Exits in the system")                    
                 else:
                     frappe.throw("Hostel Name or Room Number can't be changed")
             elif len(hostel_df)==0 and len(Ck_df)!=0:

@@ -208,7 +208,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-02 10:26:37.566127",
+ "modified": "2021-11-03 09:49:04.258013",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Allotment",
@@ -230,7 +230,7 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "title_field": "student",
+ "title_field": "student_name",
  "track_changes": 1,
  "track_seen": 1,
  "track_views": 1

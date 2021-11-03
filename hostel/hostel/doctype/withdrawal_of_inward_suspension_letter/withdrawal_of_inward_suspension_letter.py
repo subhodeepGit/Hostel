@@ -19,7 +19,6 @@ class WithdrawalofInwardSuspensionLetter(Document):
 	@frappe.whitelist()
 	def on_submit(doc):
 		icr_id = doc.name
-		print("\n\n\n\n\n\n\n")
 		icr = frappe.get_doc("Withdrawal of Inward Suspension Letter",icr_id)
 		stu_df = pd.DataFrame({
 				'Al_no':[]

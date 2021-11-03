@@ -50,6 +50,8 @@ class HostelClearance(Document):
 				if end_date<=Al_df['end_date'][0]:
 					frappe.db.sql(""" UPDATE `tabRoom Allotment` SET `end_date`="%s",`allotment_type`="%s" WHERE `name`="%s" """%\
 								(end_date,type_of_clearance,allotment_number))
+					room_id=doc.room_number			
+					frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`+1 WHERE `name`="%s" """%(room_id))			
 					pass
 				else:
 					frappe.throw("Kindly check the End Date")
@@ -61,6 +63,8 @@ class HostelClearance(Document):
 			if end_date<=Al_df['end_date'][0]:
 				frappe.db.sql(""" UPDATE `tabRoom Allotment` SET `end_date`="%s",`allotment_type`="%s" WHERE `name`="%s" """%\
 								(end_date,type_of_clearance,allotment_number))
+				room_id=doc.room_number			
+				frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`+1 WHERE `name`="%s" """%(room_id))					
 				pass
 			else:
 				frappe.throw("Kindly check the End Date")
@@ -74,6 +78,8 @@ class HostelClearance(Document):
 		allotment_number=doc.allotment_number
 		frappe.db.sql(""" UPDATE `tabRoom Allotment` SET `end_date`="9999-12-01",`allotment_type`="Allotted" WHERE `name`="%s" """%\
 								(allotment_number))
+		room_id=doc.room_number			
+		frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`-1 WHERE `name`="%s" """%(room_id))						
 		pass
 
 
