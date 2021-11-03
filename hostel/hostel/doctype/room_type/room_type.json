@@ -10,6 +10,7 @@
   "room_type",
   "description",
   "capacity",
+  "type_of_room",
   "column_break_4",
   "start_date",
   "end_date",
@@ -62,11 +63,17 @@
    "label": "Feature",
    "options": "\nPremium\nNon-Premium\nSuper-Premium",
    "reqd": 1
+  },
+  {
+   "fieldname": "type_of_room",
+   "fieldtype": "Select",
+   "label": "Type of Room",
+   "options": "\nAC\nNon-AC"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-29 16:01:24.558985",
+ "modified": "2021-11-03 10:05:04.907722",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Type",

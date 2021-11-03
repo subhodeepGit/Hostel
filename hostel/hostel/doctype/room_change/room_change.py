@@ -42,7 +42,6 @@ class RoomChange(Document):
 				frappe.throw("Please provide Hostel and Room number")
 			else:
 				if preferred_room != chk_df["Pre_room_no"][0]:
-					User=frappe.session.user	
 					Room_no_info=frappe.db.sql("""Select `room_number` from `tabRoom Masters` WHERE `name`="%s" """%(preferred_room))
 					Room_no_info=Room_no_info[0][0]
 					frappe.db.sql("""UPDATE `tabRoom Allotment` SET `hostel_id`="%s",`room_id`="%s",
