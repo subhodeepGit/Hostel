@@ -10,6 +10,7 @@
   "room_type",
   "description",
   "capacity",
+  "type_of_room",
   "column_break_4",
   "start_date",
   "end_date",
@@ -42,12 +43,15 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "Today",
    "fieldname": "start_date",
    "fieldtype": "Date",
    "label": "Start Date",
+   "read_only": 1,
    "reqd": 1
   },
   {
+   "default": "9999-12-01",
    "fieldname": "end_date",
    "fieldtype": "Date",
    "label": "End Date",
@@ -59,11 +63,17 @@
    "label": "Feature",
    "options": "\nPremium\nNon-Premium\nSuper-Premium",
    "reqd": 1
+  },
+  {
+   "fieldname": "type_of_room",
+   "fieldtype": "Select",
+   "label": "Type of Room",
+   "options": "\nAC\nNon-AC"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-08 15:02:13.608399",
+ "modified": "2021-11-03 10:05:04.907722",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Type",
@@ -86,5 +96,7 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "title_field": "room_type",
- "track_changes": 1
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }

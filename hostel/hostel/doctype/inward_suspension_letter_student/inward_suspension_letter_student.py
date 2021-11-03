@@ -4,5 +4,5 @@
 # import frappe
 from frappe.model.document import Document
 
-class T1Hostel(Document):
+class InwardSuspensionLetterStudent(Document):
 	pass

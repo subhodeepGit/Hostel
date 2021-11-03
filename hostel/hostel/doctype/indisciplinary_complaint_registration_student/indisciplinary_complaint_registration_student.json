@@ -20,8 +20,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Allotment Number",
-   "options": "Room Allotment",
-   "reqd": 1
+   "options": "Room Allotment"
   },
   {
    "fetch_from": "allotment_number.student",
@@ -65,7 +64,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2021-10-08 15:02:52.089187",
+ "modified": "2021-11-01 18:23:49.398159",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Indisciplinary Complaint Registration Student",

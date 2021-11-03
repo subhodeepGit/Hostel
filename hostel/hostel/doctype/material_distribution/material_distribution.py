@@ -1,0 +1,22 @@
+# Copyright (c) 2021, SOUL and contributors
+# For license information, please see license.txt
+
+import frappe
+from frappe.model.document import Document
+
+class MaterialDistribution(Document):
+	@frappe.whitelist()
+	def validate(doc):
+		allotment_number=doc.allotment_number
+		info=frappe.db.sql("""SELECT `name`,`allotment_number`,`docstatus` FROM `tabMaterial Distribution` WHERE `allotment_number`="%s" and `docstatus`!=2"""%\
+							(allotment_number))
+		print("\n\n\n")
+		print(info[0][2])					
+		if len(info)==0:
+			pass
+		elif len(info)==1 and info[0][2]==0:
+			pass
+		else:
+			frappe.throw("Material already provided to the Student")
+
+

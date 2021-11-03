@@ -3,6 +3,6 @@
 
 frappe.ui.form.on('Hostel Masters', {
 	// refresh: function(frm) {
-
+	// 	frm.start_date=frappe.utils.nowdate()
 	// }
 });
