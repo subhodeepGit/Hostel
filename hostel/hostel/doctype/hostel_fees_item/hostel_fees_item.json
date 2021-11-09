@@ -7,8 +7,7 @@
  "field_order": [
   "student_program",
   "fee_structure",
-  "amount",
-  "due_date"
+  "amount"
  ],
  "fields": [
   {
@@ -24,7 +23,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Fee Structure",
-   "options": "Fee Structure"
+   "options": "Fee Structure Hostel"
   },
   {
    "fetch_from": "fee_structure.total_amount",
@@ -33,19 +32,12 @@
    "in_list_view": 1,
    "label": "Amount",
    "read_only": 1
-  },
-  {
-   "fieldname": "due_date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Due Date",
-   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2021-11-03 11:07:25.202179",
+ "modified": "2021-11-09 10:52:54.149596",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Fees Item",
