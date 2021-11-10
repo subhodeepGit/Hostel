@@ -15,6 +15,8 @@ class RoomAllotment(Document):
 		student=doc.student
 		df1=vacancy_quety_vali("Student_info",student)					
 		if len(df1)==0:
+			room_id=doc.room_id
+			frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`-1 WHERE `name`="%s" """%(room_id))
 			pass
 		else:
 			ck_data=df1[(df1['start_date']<=datetime.date.today())&(df1['end_date']>=datetime.date.today())].reset_index()
@@ -93,8 +95,8 @@ def vacancy_quety_vali(flag,info):
 		for t in range(len(Stu_info)):
 			s=pd.Series([Stu_info[t][0],Stu_info[t][1],Stu_info[t][2],Stu_info[t][3],Stu_info[t][4],Stu_info[t][5],
 						Stu_info[t][6],Stu_info[t][7],Stu_info[t][8],Stu_info[t][9],Stu_info[t][10],Stu_info[t][11],
-						Stu_info[t][12],Stu_info[t][13],Stu_info[t][14],Stu_info[t][15],Stu_info[t][16],Stu_info[t][17],
-						Stu_info[t][18],Stu_info[t][19],Stu_info[t][20]],
+						Stu_info[t][12],Stu_info[t][13],Stu_info[t][16],Stu_info[t][18],Stu_info[t][17],Stu_info[t][19],
+						Stu_info[t][21],Stu_info[t][23],Stu_info[t][25]],
 								index=['Al_no','creation','modified','modified_by',
 										'owner','docstatus','parent','parentfield',
 										'parenttype','idx','naming_series','student',

@@ -52,14 +52,14 @@
   },
   {
    "fieldname": "hostel_phone_number",
-   "fieldtype": "Int",
+   "fieldtype": "Data",
    "label": "Hostel Phone Number 1",
    "length": 10,
    "reqd": 1
   },
   {
    "fieldname": "hostel_phone_number_2",
-   "fieldtype": "Int",
+   "fieldtype": "Data",
    "label": "Hostel Phone Number 2",
    "length": 10
   },
@@ -129,7 +129,8 @@
   {
    "fieldname": "pincode",
    "fieldtype": "Data",
-   "label": "Pincode"
+   "label": "Pincode",
+   "length": 6
   },
   {
    "fieldname": "column_break_20",
@@ -148,7 +149,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-22 17:33:53.640214",
+ "modified": "2021-11-10 12:16:36.873114",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Masters",
