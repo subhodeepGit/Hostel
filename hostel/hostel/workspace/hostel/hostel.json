@@ -316,11 +316,7 @@
    "type": "Link"
   }
  ],
-<<<<<<< HEAD
- "modified": "2021-11-10 15:09:11.025847",
-=======
  "modified": "2021-11-09 17:26:01.750905",
->>>>>>> c09c49e20d2b3ceb033179e77ad80f5782183ef6
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel",
@@ -353,25 +349,15 @@
   {
    "color": "Grey",
    "doc_view": "List",
-<<<<<<< HEAD
-   "label": "Student Medical History",
-   "link_to": "Student Medical History",
-=======
    "label": "Room Info",
    "link_to": "Room Masters",
->>>>>>> c09c49e20d2b3ceb033179e77ad80f5782183ef6
    "type": "DocType"
   },
   {
    "color": "Grey",
    "doc_view": "List",
-<<<<<<< HEAD
-   "label": "Room Info",
-   "link_to": "Room Masters",
-=======
    "label": "Student Medical History",
    "link_to": "Student Medical History",
->>>>>>> c09c49e20d2b3ceb033179e77ad80f5782183ef6
    "type": "DocType"
   },
   {
