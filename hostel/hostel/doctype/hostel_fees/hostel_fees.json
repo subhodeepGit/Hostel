@@ -7,6 +7,18 @@
  "engine": "InnoDB",
  "field_order": [
   "allotment_number",
+  "student_name",
+  "student_id",
+  "column_break_3",
+  "program",
+  "semester",
+  "section_break_3",
+  "hostel",
+  "room_number",
+  "room_type",
+  "column_break_10",
+  "fee_status",
+  "section_break_7",
   "fee_structure",
   "amended_from"
  ],
@@ -24,6 +36,48 @@
    "options": "Hostel Fees Item"
   },
   {
+   "fetch_from": "allotment_number.student_name",
+   "fieldname": "student_name",
+   "fieldtype": "Data",
+   "label": "Student Name"
+  },
+  {
+   "fieldname": "section_break_3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "allotment_number.hostel_id",
+   "fieldname": "hostel",
+   "fieldtype": "Data",
+   "label": "Hostel"
+  },
+  {
+   "fetch_from": "allotment_number.room_number",
+   "fieldname": "room_number",
+   "fieldtype": "Data",
+   "label": "Room Number"
+  },
+  {
+   "fetch_from": "allotment_number.room_type",
+   "fieldname": "room_type",
+   "fieldtype": "Data",
+   "label": "Room Type"
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fee_status",
+   "fieldtype": "Select",
+   "label": "Fee Status",
+   "options": "\nPaid\nUnpaid"
+  },
+  {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
@@ -31,12 +85,32 @@
    "options": "Hostel Fees",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "program",
+   "fieldtype": "Data",
+   "label": "Program"
+  },
+  {
+   "fieldname": "semester",
+   "fieldtype": "Data",
+   "label": "Semester"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "allotment_number.student",
+   "fieldname": "student_id",
+   "fieldtype": "Data",
+   "label": "Student ID"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-11-03 10:40:33.721972",
+ "modified": "2021-11-09 12:06:34.017982",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Fees",
