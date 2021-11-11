@@ -11,7 +11,7 @@ class HostelMasters(Document):
 	@frappe.whitelist()
 	def validate(doc):
 		hostel_name=doc.hostel_name
-		start_date=doc.start_date
+		start_date=datetime.datetime.strptime(doc.start_date,'%Y-%m-%d').date()
 		end_date=datetime.datetime.strptime(doc.end_date,'%Y-%m-%d').date()
 
 		Hostel=frappe.db.sql("""select * from `tabHostel Masters` HM WHERE (HM.hostel_name= "%s") 
