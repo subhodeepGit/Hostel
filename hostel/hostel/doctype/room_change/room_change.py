@@ -74,7 +74,7 @@ def ra_query(doctype, txt, searchfield, start, page_len, filters):
 			hostel=[]
 			for t in range(len(Emp_al)):
 				hostel.append(Emp_al[0][t])
-			hostel=tuple(hostel)	
+			hostel=str(tuple(hostel))	
 			info="""and hostel_id in """+hostel
 	return frappe.db.sql("""
 		SELECT `name`,`student`,`student_name`,`hostel_id` FROM `tabRoom Allotment` WHERE (`start_date` <= now() AND `end_date` >= now()) 
