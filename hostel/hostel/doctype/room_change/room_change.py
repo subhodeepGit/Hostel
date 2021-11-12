@@ -62,7 +62,7 @@ class RoomChange(Document):
 @frappe.validate_and_sanitize_search_inputs
 def ra_query(doctype, txt, searchfield, start, page_len, filters):
 	User=frappe.session.user
-	if frappe.session.user!="Administrator":
+	if frappe.session.user == "Administrator":
 		info=""
 	else:
 		Emp_al=frappe.db.sql("""
