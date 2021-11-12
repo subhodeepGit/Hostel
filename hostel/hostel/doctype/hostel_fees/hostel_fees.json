@@ -9,9 +9,6 @@
   "allotment_number",
   "student_name",
   "student_id",
-  "column_break_3",
-  "program",
-  "semester",
   "section_break_3",
   "hostel",
   "room_number",
@@ -68,10 +65,6 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "column_break_3",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "fee_status",
    "fieldtype": "Select",
    "label": "Fee Status",
@@ -87,16 +80,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "program",
-   "fieldtype": "Data",
-   "label": "Program"
-  },
-  {
-   "fieldname": "semester",
-   "fieldtype": "Data",
-   "label": "Semester"
-  },
-  {
    "fieldname": "column_break_10",
    "fieldtype": "Column Break"
   },
@@ -110,7 +93,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-11-09 12:06:34.017982",
+ "modified": "2021-11-12 11:06:13.078536",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Fees",
