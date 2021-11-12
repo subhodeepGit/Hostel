@@ -4,13 +4,19 @@
 from math import inf
 import frappe
 from frappe.model.document import Document
+import datetime
+
 
 class HostelMasters(Document):
 	@frappe.whitelist()
 	def validate(doc):
 		hostel_name=doc.hostel_name
-		start_date=doc.start_date
-		end_date=doc.end_date
+		try:
+			start_date=datetime.datetime.strptime(str(doc.start_date),'%Y-%m-%d').date()
+			end_date=datetime.datetime.strptime(str(doc.end_date),'%Y-%m-%d').date()
+		except ValueError:
+			start_date=datetime.datetime.strptime(str(doc.start_date),'%Y-%m-%d %H:%M:%S').date()
+			end_date=datetime.datetime.strptime(str(doc.end_date),'%Y-%m-%d %H:%M:%S').date()	
 
 		Hostel=frappe.db.sql("""select * from `tabHostel Masters` HM WHERE (HM.hostel_name= "%s") 
 		and (HM.start_date<=now() and HM.end_date >=now() )"""%(hostel_name))
