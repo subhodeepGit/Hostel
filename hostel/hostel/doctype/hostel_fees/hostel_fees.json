@@ -1,27 +1,90 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2021-11-03 09:48:16.258624",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
+  "student_info_section",
   "allotment_number",
+  "student_name",
+  "student_id",
+  "section_break_3",
+  "hostel",
+  "room_number",
+  "room_type",
+  "section_break_7",
   "fee_structure",
+  "fee_status",
   "amended_from"
  ],
  "fields": [
   {
    "fieldname": "allotment_number",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Allotment Number",
-   "options": "Room Allotment"
+   "options": "Room Allotment",
+   "reqd": 1
   },
   {
    "fieldname": "fee_structure",
    "fieldtype": "Table",
    "label": "Fee Structure",
-   "options": "Hostel Fees Item"
+   "options": "Hostel Fees Item",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "allotment_number.student_name",
+   "fieldname": "student_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Student Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_3",
+   "fieldtype": "Section Break",
+   "label": "Hostel Info"
+  },
+  {
+   "fetch_from": "allotment_number.hostel_id",
+   "fieldname": "hostel",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Hostel",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "allotment_number.room_number",
+   "fieldname": "room_number",
+   "fieldtype": "Data",
+   "label": "Room Number",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "allotment_number.room_type",
+   "fieldname": "room_type",
+   "fieldtype": "Data",
+   "label": "Room Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break",
+   "label": "Hostel Fees"
+  },
+  {
+   "fieldname": "fee_status",
+   "fieldtype": "Select",
+   "label": "Fee Status",
+   "options": "Paid\nUnpaid",
+   "reqd": 1
   },
   {
    "fieldname": "amended_from",
@@ -31,15 +94,35 @@
    "options": "Hostel Fees",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fetch_from": "allotment_number.student",
+   "fieldname": "student_id",
+   "fieldtype": "Data",
+   "label": "Student ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "naming",
+   "options": "HST-FEES-.YYYY.-"
+  },
+  {
+   "fieldname": "student_info_section",
+   "fieldtype": "Section Break",
+   "label": "Student Info"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-11-03 10:40:33.721972",
+ "modified": "2021-11-12 15:22:20.220542",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Fees",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

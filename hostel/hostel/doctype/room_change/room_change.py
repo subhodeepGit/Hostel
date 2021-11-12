@@ -61,9 +61,24 @@ class RoomChange(Document):
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
 def ra_query(doctype, txt, searchfield, start, page_len, filters):
+	User=frappe.session.user
+	if frappe.session.user == "Administrator":
+		info=""
+	else:
+		Emp_al=frappe.db.sql("""
+				SELECT `hostel_masters` from `tabEmployee Hostel Allotment` WHERE employees="%s" and
+				(`start_date`<=now() and `end_date`>=now())"""%(User))
+		if len(Emp_al)==1:
+			info="""and hostel_id="%s" """%(Emp_al[0][0])
+		else:
+			hostel=[]
+			for t in range(len(Emp_al)):
+				hostel.append(Emp_al[0][t])
+			hostel=str(tuple(hostel))	
+			info="""and hostel_id in """+hostel
 	return frappe.db.sql("""
 		SELECT `name`,`student`,`student_name`,`hostel_id` FROM `tabRoom Allotment` WHERE (`start_date` <= now() AND `end_date` >= now()) 
 		and (`allotment_type`!="Hostel suspension" and `allotment_type`!="Suspension" and `allotment_type`!="Debar" and 
-		`allotment_type`!="University Suspension" and `allotment_type`!="School Suspension")
-	"""
+		`allotment_type`!="University Suspension" and `allotment_type`!="School Suspension") 
+	"""+info
 	)	

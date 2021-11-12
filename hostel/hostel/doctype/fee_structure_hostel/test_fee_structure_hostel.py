@@ -4,5 +4,5 @@
 # import frappe
 import unittest
 
-class TestAllotmentTypeFlag(unittest.TestCase):
+class TestFeeStructureHostel(unittest.TestCase):
 	pass
