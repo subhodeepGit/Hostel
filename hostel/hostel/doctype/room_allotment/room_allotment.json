@@ -129,6 +129,7 @@
    "fetch_from": "room_id.room_number",
    "fieldname": "room_number",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Room Number",
    "read_only": 1
   },
@@ -208,7 +209,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-03 09:49:04.258013",
+ "modified": "2021-11-12 16:24:01.331469",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Allotment",
