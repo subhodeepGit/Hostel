@@ -4,5 +4,5 @@
 # import frappe
 import unittest
 
-class TestHostelStudentAttendanceTool(unittest.TestCase):
+class TestHostelAttendanceTool(unittest.TestCase):
 	pass
