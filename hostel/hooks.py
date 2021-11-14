@@ -17,6 +17,7 @@ app_license = "MIT"
 # app_include_js = "/assets/hostel/js/hostel.js"
 
 # include js, css files in header of web template
+app_include_js = "/assets/js/aka.min.js"
 # web_include_css = "/assets/hostel/css/hostel.css"
 # web_include_js = "/assets/hostel/js/hostel.js"
 
