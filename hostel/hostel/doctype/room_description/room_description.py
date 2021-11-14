@@ -10,8 +10,12 @@ class RoomDescription(Document):
 	@frappe.whitelist()
 	def validate(doc):
 		room_description=doc.room_description
-		start_date=datetime.datetime.strptime(doc.start_date,'%Y-%m-%d').date()
-		end_date=datetime.datetime.strptime(doc.end_date,'%Y-%m-%d').date()
+		try:
+			start_date=datetime.datetime.strptime(str(doc.start_date),'%Y-%m-%d').date()
+			end_date=datetime.datetime.strptime(str(doc.end_date),'%Y-%m-%d').date()
+		except ValueError:
+			start_date=datetime.datetime.strptime(str(doc.start_date),'%Y-%m-%d %H:%M:%S').date()
+			end_date=datetime.datetime.strptime(str(doc.end_date),'%Y-%m-%d %H:%M:%S').date()
 		
 		if start_date<=end_date:
 			Room_des_info=frappe.db.sql("""select * from `tabRoom Description` RD where 
