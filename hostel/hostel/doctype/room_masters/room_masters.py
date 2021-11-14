@@ -65,7 +65,7 @@ class RoomMasters(Document):
                 elif hostel_id!=hostel_df['hostel_id'][0] or hostel_df['room_number'][0]!=room_number:
                     info=''' RM WHERE RM.hostel_id="%s" and RM.room_number="%s" and RM.validity="Approved" '''%(hostel_id,room_number) 
                     Type="General"
-                    Ck_df=Room_master_sql(info,Type) # cheacking for same room no and hostel is present 
+                    Ck_df=Room_master_sql(info,Type) # checking for same room no and hostel is present 
                     if len(Ck_df)==0:
                         if hostel_df['validity'][0]==validity:
                             if hostel_df['actual_room_type'][0]==actual_room_type:
