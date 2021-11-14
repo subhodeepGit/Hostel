@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2021-10-20 12:52:33.938337",
@@ -51,7 +52,13 @@
   "covid_19",
   "section_break_9",
   "medical_history_document",
-  "medical_history_description"
+  "medical_history_description",
+  "covid_19_vaccination_section",
+  "vaccinated",
+  "first_dose",
+  "attach_1st_dose_certificate",
+  "second_dose",
+  "attach_2nd_dose_certificate"
  ],
  "fields": [
   {
@@ -198,7 +205,7 @@
    "default": "0",
    "fieldname": "myocardiac_infarction",
    "fieldtype": "Check",
-   "label": "Myocardiac infarction (Heart Attack)"
+   "label": "Myocardiac Infarction (Heart Attack)"
   },
   {
    "default": "0",
@@ -325,11 +332,48 @@
   {
    "fieldname": "column_break_32",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "covid_19_vaccination_section",
+   "fieldtype": "Section Break",
+   "label": "Covid 19 Vaccination"
+  },
+  {
+   "fieldname": "vaccinated",
+   "fieldtype": "Select",
+   "label": "Vaccinated?",
+   "options": "\nYes\nNo"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.vaccinated == \"Yes\" ",
+   "fieldname": "first_dose",
+   "fieldtype": "Check",
+   "label": "First Dose"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.vaccinated == \"Yes\" ",
+   "fieldname": "second_dose",
+   "fieldtype": "Check",
+   "label": "Second Dose"
+  },
+  {
+   "depends_on": "eval: doc.first_dose == 1",
+   "fieldname": "attach_1st_dose_certificate",
+   "fieldtype": "Attach",
+   "label": "Attach 1st Dose Certificate"
+  },
+  {
+   "depends_on": "eval: doc.second_dose == 1",
+   "fieldname": "attach_2nd_dose_certificate",
+   "fieldtype": "Attach",
+   "label": "Attach 2nd Dose Certificate"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-20 16:36:46.705619",
+ "modified": "2021-11-14 18:38:51.821009",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Student Medical History",
