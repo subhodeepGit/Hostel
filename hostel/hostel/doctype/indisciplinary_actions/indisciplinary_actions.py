@@ -8,7 +8,6 @@ from frappe.model.document import Document
 import pandas as pd
 
 class IndisciplinaryActions(Document):
-	
 	@frappe.whitelist()
 	def on_update(doc):
 		#doc status-0
@@ -56,6 +55,8 @@ class IndisciplinaryActions(Document):
 				for t in range(len(info)):
 					frappe.db.sql("""UPDATE `tabRoom Allotment` SET `allotment_type`="%s",`end_date`="%s" WHERE `name`="%s" """%\
 										(type_of_suspension,issue_of_debar_letter,info[t][0]))
+					room_id=info[t][16]
+					frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`+1 WHERE `name`="%s" """%(room_id))					
 				pass
 			else:
 				frappe.throw("Kindly provide 'Date of Letter Issue' and 'Debar Letter'")
@@ -104,6 +105,29 @@ class IndisciplinaryActions(Document):
 		else:
 			frappe.throw("No field selected")
 
+
+	@frappe.whitelist()
+	def on_cancel(doc):
+		type_of_decision=doc.type_of_decision
+		if type_of_decision=="Suspension Letter":
+			indisciplinary_complaint_registration_id=doc.indisciplinary_complaint_registration_id
+			info=frappe.db.sql("""SELECT `allotment_number` from `tabIndisciplinary Complaint Registration Student` WHERE `parent`="%s" """%\
+													(indisciplinary_complaint_registration_id))						
+			for t in range(len(info)):
+				frappe.db.sql("""UPDATE `tabRoom Allotment` SET `allotment_type`="%s" WHERE `name`="%s" """%("Allotted",info[t][0]))							
+			pass
+		elif type_of_decision=="Debar Letter":
+			indisciplinary_complaint_registration_id=doc.indisciplinary_complaint_registration_id
+			info=frappe.db.sql("""SELECT `allotment_number` from `tabIndisciplinary Complaint Registration Student` WHERE `parent`="%s" """%\
+												(indisciplinary_complaint_registration_id))													
+			for t in range(len(info)):
+				frappe.db.sql("""UPDATE `tabRoom Allotment` SET `allotment_type`="%s",`end_date`="%s" WHERE `name`="%s" """%\
+										("Allotted","9999-12-01",info[t][0]))
+				room_id=info[t][16]
+				frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`-1 WHERE `name`="%s" """%(room_id))							
+			pass
+		else:
+			pass	
 
 	
 

@@ -15,7 +15,7 @@ class StudentLeaveProcess(Document):
 		# Leave_process_info=frappe.get_doc("Studnet Leave Process",filters={"allotment_number": "RA-2021-00001"})
 		# Leave_process_info[0].name
 		St_leave_info=frappe.db.sql(""" SELECT `name`,`allotment_number`,`student`,`student_name`,`hostel`,`room_number`,`room_type`,`start_date`, 
-										`end_date`,`status`,`workflow_state` from `tabStudnet Leave Process` WHERE `allotment_number`="%s" """%(Al_no))							
+										`end_date`,`status`,`workflow_state` from `tabStudent Leave Process` WHERE `allotment_number`="%s" """%(Al_no))							
 		St_leave_df=pd.DataFrame({
 			'Leave_doc_no':[],'allotment_number':[],'student':[],'student_name':[],'hostel':[],'room_number':[],'room_type':[],'start_date':[],
 			'end_date':[],'status':[],'workflow_state':[]
