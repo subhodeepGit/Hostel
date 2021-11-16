@@ -17,6 +17,22 @@ frappe.ui.form.on("Indisciplinary Actions", "indisciplinary_complaint_registrati
 			cur_frm.refresh_field("student_fetch");
 		});
 	});
+	// Checking duplicate 
+	frappe.ui.form.on("DC Members", "emp_id", function(frm, cdt, cdn){
+		var emp_id = frm.doc.dc_member;
+		var arr =[];
+		for(var i in emp_id){
+			arr.push(emp_id[i].emp_id);
+			
+		}
+		for (var j=0;j<arr.length-1;j++){
+			for(var k=j+1;k<arr.length;k++){
+				if(arr[j] == arr[k]){                          
+					frappe.msgprint("Duplicate entry "+arr[k])
+				}
+			}
+		}
+	})
 });
 frappe.ui.form.on('Indisciplinary Actions', {
 	setup: function (frm) {
@@ -27,20 +43,5 @@ frappe.ui.form.on('Indisciplinary Actions', {
 		});
 	}
 })
-// Checking duplicate 
-frappe.ui.form.on("DC Members", "emp_id", function(frm, cdt, cdn){
-    var emp_id = frm.doc.dc_member;
-    var arr =[];
-    for(var i in emp_id){
-        arr.push(emp_id[i].emp_id);
-        
-    }
-    for (var j=0;j<arr.length-1;j++){
-        for(var k=j+1;k<arr.length;k++){
-            if(arr[j] == arr[k]){                          
-                frappe.msgprint("Duplicate entry "+arr[k])
-            }
-        }
-    }
-})
+
 

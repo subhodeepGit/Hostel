@@ -49,13 +49,13 @@ class IndisciplinaryActions(Document):
 			attachment_of_debar_letter=doc.attachment_of_debar_letter
 			if issue_of_debar_letter!=None and attachment_of_debar_letter: 
 				indisciplinary_complaint_registration_id=doc.indisciplinary_complaint_registration_id
-				info=frappe.db.sql("""SELECT `allotment_number` from `tabIndisciplinary Complaint Registration Student` WHERE `parent`="%s" """%\
-												(indisciplinary_complaint_registration_id))	
+				info=frappe.db.sql("""SELECT IND.allotment_number, RA.room_id from `tabIndisciplinary Complaint Registration Student` as IND JOIN `tabRoom Allotment` RA on IND.allotment_number=RA.name WHERE IND.parent="%s" """%\
+										(indisciplinary_complaint_registration_id))								
 				type_of_suspension="Debar"													
 				for t in range(len(info)):
 					frappe.db.sql("""UPDATE `tabRoom Allotment` SET `allotment_type`="%s",`end_date`="%s" WHERE `name`="%s" """%\
 										(type_of_suspension,issue_of_debar_letter,info[t][0]))
-					room_id=info[t][16]
+					room_id=info[t][1]
 					frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`+1 WHERE `name`="%s" """%(room_id))					
 				pass
 			else:
@@ -118,12 +118,12 @@ class IndisciplinaryActions(Document):
 			pass
 		elif type_of_decision=="Debar Letter":
 			indisciplinary_complaint_registration_id=doc.indisciplinary_complaint_registration_id
-			info=frappe.db.sql("""SELECT `allotment_number` from `tabIndisciplinary Complaint Registration Student` WHERE `parent`="%s" """%\
+			info=frappe.db.sql("""SELECT IND.allotment_number, RA.room_id from `tabIndisciplinary Complaint Registration Student` as IND JOIN `tabRoom Allotment` RA on IND.allotment_number=RA.name WHERE IND.parent="%s" """%\
 												(indisciplinary_complaint_registration_id))													
 			for t in range(len(info)):
 				frappe.db.sql("""UPDATE `tabRoom Allotment` SET `allotment_type`="%s",`end_date`="%s" WHERE `name`="%s" """%\
 										("Allotted","9999-12-01",info[t][0]))
-				room_id=info[t][16]
+				room_id=info[t][1]
 				frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`-1 WHERE `name`="%s" """%(room_id))							
 			pass
 		else:
