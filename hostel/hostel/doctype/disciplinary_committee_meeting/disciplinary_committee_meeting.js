@@ -3,6 +3,7 @@
 
 frappe.ui.form.on("Disciplinary Committee Meeting", "indisciplinary_complaint_registration_id", function(frm){
 	frappe.model.with_doc("Indisciplinary Complaint Registration", frm.doc.indisciplinary_complaint_registration_id, function(){
+
 		var tabletransfer = frappe.model.get_doc("Indisciplinary Complaint Registration", frm.doc.indisciplinary_complaint_registration_id);
 		cur_frm.doc.student_fetch = "";
 		cur_frm.refresh_field("student_fetch");
