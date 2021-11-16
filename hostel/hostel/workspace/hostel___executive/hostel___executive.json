@@ -1,126 +1,14 @@
 {
  "charts": [],
- "content": "[{\"type\":\"header\",\"data\":{\"text\":\"Hostel Management System\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\",\"level\":2,\"col\":12}},{\"type\":\"header\",\"data\":{\"text\":\"Your Shortcuts\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\",\"level\":4,\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hostel Info\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Room Info\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Room Allotment\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Room De-Allotment\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Room Change\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hostel Leave\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hostel Clearance\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Student Medical History\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Indisciplinary Complaint Registration\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hostel Attendance\",\"col\":4}},{\"type\":\"header\",\"data\":{\"text\":\"Reports &amp; Masters\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\",\"level\":4,\"col\":12}},{\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Allotment &amp; De-Allotment\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Student Essentials\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Disciplinary Committee Processes\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Hostel Clearance\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Hostel Fees\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Inward Suspension Letters\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Attendance\",\"col\":4}}]",
- "creation": "2021-11-09 16:26:00.123090",
+ "content": "[{\"type\":\"header\",\"data\":{\"text\":\"Hostel - Executive\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\",\"level\":2,\"col\":12}},{\"type\":\"header\",\"data\":{\"text\":\"Your Shortcuts\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\",\"level\":4,\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hostel Info\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Room Info\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Room Allotment\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Room De-Allotment\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Room Change\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hostel Clearance\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hostel Leave\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Indisciplinary Complaint Registration\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hostel Attendance\",\"col\":4}},{\"type\":\"header\",\"data\":{\"text\":\"Reports &amp; Masters\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\",\"level\":4,\"col\":12}},{\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Allotment &amp; De-Allotment\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Student Essentials\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Disciplinary Committee Processes\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Hostel Clearance\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Hostel Fees\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Inward Suspension Letters\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Attendance\",\"col\":4}}]",
+ "creation": "2021-11-16 12:23:02.334322",
  "docstatus": 0,
  "doctype": "Workspace",
  "hide_custom": 0,
- "icon": "oranisation",
+ "icon": "review",
  "idx": 0,
- "label": "Hostel",
+ "label": "Hostel - Executive",
  "links": [
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Hostel Clearance",
-   "link_count": 1,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Hostel Clearance",
-   "link_count": 0,
-   "link_to": "Hostel Clearance",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Student Essentials",
-   "link_count": 3,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Student Medical History",
-   "link_count": 0,
-   "link_to": "Student Medical History",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Student Leave Process",
-   "link_count": 0,
-   "link_to": "Student Leave Process",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Material Distribution",
-   "link_count": 0,
-   "link_to": "Material Distribution",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Hostel Fees",
-   "link_count": 2,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Hostel Fee Structure",
-   "link_count": 0,
-   "link_to": "Fee Structure Hostel",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Hostel Fees",
-   "link_count": 0,
-   "link_to": "Hostel Fees",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Inward Suspension Letters",
-   "link_count": 2,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Inward Suspension Letter",
-   "link_count": 0,
-   "link_to": "Inward Suspension Letter",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Withdrawal of Inward Suspension Letter",
-   "link_count": 0,
-   "link_to": "Withdrawal of Inward Suspension Letter",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
   {
    "hidden": 0,
    "is_query_report": 0,
@@ -192,6 +80,44 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Student Essentials",
+   "link_count": 3,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Student Medical History",
+   "link_count": 0,
+   "link_to": "Student Medical History",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Student Leave Process",
+   "link_count": 0,
+   "link_to": "Student Leave Process",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Material Distribution",
+   "link_count": 0,
+   "link_to": "Material Distribution",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Disciplinary Committee Processes",
    "link_count": 5,
    "onboard": 0,
@@ -250,6 +176,80 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Hostel Clearance",
+   "link_count": 1,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Hostel Clearance",
+   "link_count": 0,
+   "link_to": "Hostel Clearance",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Hostel Fees",
+   "link_count": 2,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Hostel Fee Structure",
+   "link_count": 0,
+   "link_to": "Fee Structure",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Hostel Fees",
+   "link_count": 0,
+   "link_to": "Hostel Fees",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Inward Suspension Letters",
+   "link_count": 2,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Inward Suspension Letter",
+   "link_count": 0,
+   "link_to": "Inward Suspension Letter",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Withdrawal of Inward Suspension Letter",
+   "link_count": 0,
+   "link_to": "Withdrawal of Inward Suspension Letter",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Attendance",
    "link_count": 2,
    "onboard": 0,
@@ -258,7 +258,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Attendance",
+   "label": "Hostel Attendance",
    "link_count": 0,
    "link_to": "Hostel Attendance",
    "link_type": "DocType",
@@ -268,7 +268,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Attendance Tool",
+   "label": "Hostel Attendance Tool",
    "link_count": 0,
    "link_to": "Hostel Attendance Tool",
    "link_type": "DocType",
@@ -344,22 +344,15 @@
    "type": "Link"
   }
  ],
- "modified": "2021-11-16 12:37:40.503586",
+ "modified": "2021-11-16 13:04:33.316585",
  "modified_by": "Administrator",
  "module": "Hostel",
- "name": "Hostel",
+ "name": "Hostel - Executive",
  "owner": "Administrator",
  "public": 1,
  "roles": [],
  "sequence_id": 0,
  "shortcuts": [
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Hostel Attendance",
-   "link_to": "Hostel Attendance",
-   "type": "DocType"
-  },
   {
    "color": "Grey",
    "doc_view": "List",
@@ -372,6 +365,27 @@
    "doc_view": "List",
    "label": "Hostel Info",
    "link_to": "Hostel Masters",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Room Info",
+   "link_to": "Room Masters",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Room Allotment",
+   "link_to": "Room Allotment",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Room Change",
+   "link_to": "Room Change",
    "type": "DocType"
   },
   {
@@ -391,20 +405,6 @@
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Room Info",
-   "link_to": "Room Masters",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Student Medical History",
-   "link_to": "Student Medical History",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
    "label": "Indisciplinary Complaint Registration",
    "link_to": "Indisciplinary Complaint Registration",
    "type": "DocType"
@@ -412,17 +412,10 @@
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Room Allotment",
-   "link_to": "Room Allotment",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Room Change",
-   "link_to": "Room Change",
+   "label": "Hostel Attendance",
+   "link_to": "Hostel Attendance",
    "type": "DocType"
   }
  ],
- "title": "Hostel"
+ "title": "Hostel - Executive"
 }
