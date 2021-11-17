@@ -30,44 +30,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Student Essentials",
-   "link_count": 3,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Student Medical History",
-   "link_count": 0,
-   "link_to": "Student Medical History",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Student Leave Process",
-   "link_count": 0,
-   "link_to": "Student Leave Process",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Material Distribution",
-   "link_count": 0,
-   "link_to": "Material Distribution",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Hostel Fees",
    "link_count": 2,
    "onboard": 0,
@@ -342,9 +304,57 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Student Essentials",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Student Hostel Admission",
+   "link_count": 0,
+   "link_to": "Student Hostel Admission",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Student Medical History",
+   "link_count": 0,
+   "link_to": "Student Medical History",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Student Leave Process",
+   "link_count": 0,
+   "link_to": "Student Leave Process",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Material Distribution",
+   "link_count": 0,
+   "link_to": "Material Distribution",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2021-11-16 12:37:40.503586",
+ "modified": "2021-11-17 13:24:08.289036",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel",
