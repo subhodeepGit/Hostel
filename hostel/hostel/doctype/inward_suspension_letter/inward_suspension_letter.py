@@ -41,10 +41,10 @@ class InwardSuspensionLetter(Document):
         if len(in_doc_info)!=0:
             icr = frappe.get_doc("Inward Suspension Letter",icr_id)
             stu_df = pd.DataFrame({
-                'Al_no':[]
+                'Al_no':[],"Room_id":[]
             })
             for al in icr.student:
-                s = pd.Series([al.allotment_number],index = ['Al_no'])
+                s = pd.Series([al.allotment_number,al.room_id],index = ['Al_no',"Room_id"])
                 stu_df = stu_df.append(s,ignore_index = True)
             if len(stu_df)!=0:    
                 duplicate = stu_df[stu_df.duplicated()].reset_index()
@@ -53,7 +53,7 @@ class InwardSuspensionLetter(Document):
                         if suspension_type=="University Debar":
                             for t in range(len(stu_df)):
                                 frappe.db.sql("""UPDATE `tabRoom Allotment` SET `allotment_type`="%s",`end_date`="%s" WHERE `name`="%s" """%(suspension_type,date.today(),stu_df['Al_no'][t]))
-                                room_info=frappe.db.sql("""SELECT `room_id` FROM `tabRoom Allotment` where `name` ="RA-2021-00004" """)
+                                room_info=frappe.db.sql("""SELECT `name` FROM `tabRoom Masters` where `name` ="%s" """%(stu_df['Room_id'][t]))
                                 frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`-1 WHERE `name`="%s" """%(room_info[0][0]))
                             pass
                         else:

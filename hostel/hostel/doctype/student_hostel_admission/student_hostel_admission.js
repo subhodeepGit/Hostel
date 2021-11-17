@@ -10,5 +10,15 @@ frappe.ui.form.on('Student Hostel Admission', {
 				]
 			}
 		});
+		frm.set_query("hostel", function() {
+			return {
+				query: "hostel.hostel.doctype.student_hostel_admission.student_hostel_admission.hostel_query"
+			};
+		});
+		frm.set_query("room_type", function() {
+			return {
+				query: "hostel.hostel.doctype.student_hostel_admission.student_hostel_admission.room_query"
+			};
+		});
 	}
 })

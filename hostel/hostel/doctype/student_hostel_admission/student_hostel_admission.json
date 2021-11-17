@@ -50,6 +50,8 @@
    "fetch_from": "student.first_name",
    "fieldname": "first_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
    "label": "First Name",
    "read_only": 1
   },
@@ -173,7 +175,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-11-17 12:55:28.618059",
+ "modified": "2021-11-17 15:35:46.305070",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Student Hostel Admission",
