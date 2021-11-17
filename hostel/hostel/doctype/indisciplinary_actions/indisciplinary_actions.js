@@ -1,6 +1,17 @@
 // Copyright (c) 2021, SOUL and contributors
 // For license information, please see license.txt
 
+frappe.ui.form.on('Indisciplinary Actions', {
+	setup: function (frm) {
+		frm.set_query("indisciplinary_complaint_registration_id", function() {
+			return {
+				query: "hostel.hostel.doctype.indisciplinary_actions.indisciplinary_actions.status_query"
+			};
+		});
+	}
+})
+
+
 frappe.ui.form.on("Indisciplinary Actions", "indisciplinary_complaint_registration_id", function(frm){
 	frappe.model.with_doc("Indisciplinary Complaint Registration", frm.doc.indisciplinary_complaint_registration_id, function(){
 		var tabletransfer = frappe.model.get_doc("Indisciplinary Complaint Registration", frm.doc.indisciplinary_complaint_registration_id);
@@ -37,14 +48,5 @@ frappe.ui.form.on("Indisciplinary Actions", "indisciplinary_complaint_registrati
 	})
 
 
-frappe.ui.form.on('Indisciplinary Actions', {
-	setup: function (frm) {
-		frm.set_query("indisciplinary_complaint_registration_id", function() {
-			return {
-				query: "hostel.hostel.doctype.indisciplinary_actions.indisciplinary_actions.status_query"
-			};
-		});
-	}
-})
 
 
