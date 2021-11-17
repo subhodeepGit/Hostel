@@ -58,6 +58,8 @@
   {
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_preview": 1,
    "label": "Status",
    "options": "Open\nClose"
   },
@@ -107,7 +109,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-15 16:41:21.053504",
+ "modified": "2021-11-17 15:06:13.977846",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Indisciplinary Complaint Registration",

@@ -17,6 +17,8 @@ frappe.ui.form.on("Indisciplinary Actions", "indisciplinary_complaint_registrati
 			cur_frm.refresh_field("student_fetch");
 		});
 	});
+});
+
 	// Checking duplicate 
 	frappe.ui.form.on("DC Members", "emp_id", function(frm, cdt, cdn){
 		var emp_id = frm.doc.dc_member;
@@ -33,7 +35,8 @@ frappe.ui.form.on("Indisciplinary Actions", "indisciplinary_complaint_registrati
 			}
 		}
 	})
-});
+
+
 frappe.ui.form.on('Indisciplinary Actions', {
 	setup: function (frm) {
 		frm.set_query("indisciplinary_complaint_registration_id", function() {
