@@ -18,6 +18,11 @@ frappe.ui.form.on('Room Allotment', {
 				query: "hostel.hostel.doctype.room_allotment.room_allotment.test_query"
 			};
 		});
+		frm.set_query("student", function() {
+			return {
+				query: "hostel.hostel.doctype.room_allotment.room_allotment.hostel_req_query"
+			};
+		});
 	}
 })
 

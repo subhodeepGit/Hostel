@@ -114,4 +114,13 @@ def vacancy_quety_vali(flag,info):
 								index=["Al_no","room_id"])
 			df1=df1.append(s,ignore_index=True)	
 		return df1	
-	
+
+
+
+
+@frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def hostel_req_query(doctype, txt, searchfield, start, page_len, filters):
+	return frappe.db.sql("""SELECT S.name,SA.name,SA.hostel_required,S.title
+							from `tabStudent Applicant` as SA
+							JOIN `tabStudent` S on S.student_applicant=SA.name""")
