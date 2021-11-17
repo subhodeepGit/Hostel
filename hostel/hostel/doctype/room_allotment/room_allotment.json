@@ -170,7 +170,8 @@
    "fieldname": "guardians",
    "fieldtype": "Table",
    "label": "Guardians",
-   "options": "Student Guardian"
+   "options": "Student Guardian",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_7",
@@ -210,7 +211,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-15 11:39:23.023887",
+ "modified": "2021-11-17 14:53:14.265851",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Allotment",

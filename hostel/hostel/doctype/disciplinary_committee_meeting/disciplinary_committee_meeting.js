@@ -18,6 +18,24 @@ frappe.ui.form.on("Disciplinary Committee Meeting", "indisciplinary_complaint_re
 			cur_frm.refresh_field("student_fetch");
 		});
 	});
+	// frappe.model.with_doc("Indisciplinary Actions", frm.doc.indisciplinary_action, function(){
+	// 	var tabletransfer = frappe.model.get_doc("Indisciplinary Actions", frm.doc.indisciplinary_action);
+	// 	//cur_frm.doc.indisciplinary_action = "";
+	// 	cur_frm.doc.dc_members = "";
+	// 	cur_frm.refresh_field("dc_members");
+	// 	$.each(tabletransfer.dc_member, function(index, row){
+	// 		var d = frappe.model.add_child(cur_frm.doc, "DC Members", "dc_members");
+	// 		d.emp_id = row.emp_id;
+	// 		d.employee_name = row.employee_name;
+	// 		d.designation = row.designation;
+	// 		d.contact_number = row.contact_number;
+	// 		cur_frm.refresh_field("dc_members");
+	// 	});
+	// });
+});
+
+
+frappe.ui.form.on("Disciplinary Committee Meeting", "indisciplinary_complaint_registration_id", function(frm){
 	frappe.model.with_doc("Indisciplinary Actions", frm.doc.indisciplinary_action, function(){
 		var tabletransfer = frappe.model.get_doc("Indisciplinary Actions", frm.doc.indisciplinary_action);
 		//cur_frm.doc.indisciplinary_action = "";
@@ -33,6 +51,7 @@ frappe.ui.form.on("Disciplinary Committee Meeting", "indisciplinary_complaint_re
 		});
 	});
 });
+
 
 frappe.ui.form.on('Disciplinary Committee Meeting', {
 	setup: function (frm) {
