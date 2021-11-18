@@ -21,7 +21,7 @@ class RoomAllotment(Document):
 		else:
 			ck_data=df1[(df1['start_date']<=datetime.date.today())&(df1['end_date']>=datetime.date.today())].reset_index()
 			if len(ck_data)!=0:
-				frappe.throw("Student is already allotted in Hostel %s Room no %s"%(ck_data['hostel_id'][0],ck_data['room_id'][0]))
+				frappe.throw("%s is already allotted in %s, Room No. %s (%s)"%(ck_data['student_name'][0],ck_data['hostel_id'][0],ck_data['Room_No'][0],ck_data['room_id'][0]))
 			else:
 				room_id=doc.room_id
 				room_info_vac=vacancy_quety_vali("Genaral",room_id)
@@ -90,18 +90,18 @@ def vacancy_quety_vali(flag,info):
 			'owner':[],'docstatus':[],'parent':[],'parentfield':[],
 			'parenttype':[],'idx':[],'naming_series':[],'student':[],
 			'student_name':[],'hostel_id':[],'start_date':[],'allotment_type':[],
-			'end_date':[],'room_id':[],'room_type':[],'employee':[],'employee_name':[]
+			'end_date':[],'room_id':[],'room_type':[],'employee':[],'employee_name':[],'Room_No':[]
 		})
 		for t in range(len(Stu_info)):
 			s=pd.Series([Stu_info[t][0],Stu_info[t][1],Stu_info[t][2],Stu_info[t][3],Stu_info[t][4],Stu_info[t][5],
 						Stu_info[t][6],Stu_info[t][7],Stu_info[t][8],Stu_info[t][9],Stu_info[t][10],Stu_info[t][11],
-						Stu_info[t][12],Stu_info[t][13],Stu_info[t][16],Stu_info[t][18],Stu_info[t][17],Stu_info[t][19],
-						Stu_info[t][21],Stu_info[t][23],Stu_info[t][25]],
+						Stu_info[t][13],Stu_info[t][15],Stu_info[t][16],Stu_info[t][18],Stu_info[t][17],Stu_info[t][19],
+						Stu_info[t][21],Stu_info[t][23],Stu_info[t][25],Stu_info[t][20]],
 								index=['Al_no','creation','modified','modified_by',
 										'owner','docstatus','parent','parentfield',
 										'parenttype','idx','naming_series','student',
 										'student_name','hostel_id','start_date','allotment_type',
-										'end_date','room_id','room_type','employee','employee_name'])
+										'end_date','room_id','room_type','employee','employee_name','Room_No'])
 			df1=df1.append(s,ignore_index=True)	
 		return df1
 	elif flag=="Alloted_student":
@@ -114,4 +114,13 @@ def vacancy_quety_vali(flag,info):
 								index=["Al_no","room_id"])
 			df1=df1.append(s,ignore_index=True)	
 		return df1	
-	
+
+
+
+
+@frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def hostel_req_query(doctype, txt, searchfield, start, page_len, filters):
+	return frappe.db.sql("""SELECT S.name,SA.name,SA.hostel_required,S.title
+							from `tabStudent Applicant` as SA
+							JOIN `tabStudent` S on S.student_applicant=SA.name""")

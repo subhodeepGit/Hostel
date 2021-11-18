@@ -113,7 +113,7 @@
    "default": "0",
    "fieldname": "cot",
    "fieldtype": "Check",
-   "label": "Cot"
+   "label": "Bed / Cot"
   },
   {
    "default": "0",
@@ -184,7 +184,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-10-28 18:34:38.728141",
+ "modified": "2021-11-14 18:40:42.048835",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Material Distribution",
