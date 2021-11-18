@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"type\":\"header\",\"data\":{\"text\":\"Hostel - Warden\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\",\"level\":2,\"col\":12}},{\"type\":\"header\",\"data\":{\"text\":\"Your Shortcuts\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\",\"level\":4,\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hostel Info\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Room Info\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Room Allotment\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Room De-Allotment\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Room Change\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hostel Clearance\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hostel Leave\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Indisciplinary Complaint Registration\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hostel Attendance\",\"col\":4}},{\"type\":\"header\",\"data\":{\"text\":\"Reports &amp; Masters\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\",\"level\":4,\"col\":12}},{\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Allotment &amp; De-Allotment\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Student Essentials\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Disciplinary Committee Processes\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Hostel Clearance\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Hostel Fees\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Attendance\",\"col\":4}}]",
+ "content": "[{\"type\":\"header\",\"data\":{\"text\":\"Hostel - Warden\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\",\"level\":2,\"col\":12}},{\"type\":\"header\",\"data\":{\"text\":\"Your Shortcuts\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\",\"level\":4,\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hostel Info\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Room Info\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Room Allotment\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Room De-Allotment\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Room Change\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hostel Clearance\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hostel Leave\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Indisciplinary Complaint Registration\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hostel Attendance\",\"col\":4}},{\"type\":\"header\",\"data\":{\"text\":\"Reports &amp; Masters\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\\n\\t\\t\\t\\n\\t\\t\",\"level\":4,\"col\":12}},{\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Allotment &amp; De-Allotment\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Student Admission &amp; Essentials\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Disciplinary Committee Processes\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Hostel Clearance\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Hostel Fees\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Attendance\",\"col\":4}}]",
  "creation": "2021-11-16 11:15:55.440696",
  "docstatus": 0,
  "doctype": "Workspace",
@@ -270,7 +270,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Student Essentials",
+   "label": "Student Admission &amp; Essentials",
    "link_count": 4,
    "onboard": 0,
    "type": "Card Break"
@@ -316,7 +316,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-11-17 13:25:22.059742",
+ "modified": "2021-11-18 10:35:04.042481",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel - Warden",
