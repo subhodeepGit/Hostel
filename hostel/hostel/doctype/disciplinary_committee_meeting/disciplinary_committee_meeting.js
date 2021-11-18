@@ -8,6 +8,7 @@ frappe.ui.form.on("Disciplinary Committee Meeting", "indisciplinary_complaint_re
 		cur_frm.doc.student_fetch = "";
 		cur_frm.refresh_field("student_fetch");
 		$.each(tabletransfer.student, function(index, row){
+			//alert(JSON.stringify(tabletransfer.student));
 			var d = frappe.model.add_child(cur_frm.doc, "Indisciplinary Complaint Registration Student", "student_fetch");
 			d.allotment_number = row.allotment_number;
 			d.student = row.student;
