@@ -11,17 +11,15 @@ import datetime
 
 class RoomAllotment(Document):
 	@frappe.whitelist()
-	def validate(doc):
+	def before_insert(doc):
 		student=doc.student
 		df1=vacancy_quety_vali("Student_info",student)					
 		if len(df1)==0:
-			room_id=doc.room_id
-			frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`-1 WHERE `name`="%s" """%(room_id))
 			pass
 		else:
 			ck_data=df1[(df1['start_date']<=datetime.date.today())&(df1['end_date']>=datetime.date.today())].reset_index()
 			if len(ck_data)!=0:
-				frappe.throw("%s is already allotted in %s, Room No. %s (%s)"%(ck_data['student_name'][0],ck_data['hostel_id'][0],ck_data['Room_No'][0],ck_data['room_id'][0]))
+				frappe.throw("%s is already allotted in %s, Room No. %s (%s)"%(ck_data['student_name'][0],ck_data['hostel_id'][0],ck_data['Room_No'][0],ck_data['room_id'][0]))	
 			else:
 				room_id=doc.room_id
 				room_info_vac=vacancy_quety_vali("Genaral",room_id)
@@ -31,8 +29,6 @@ class RoomAllotment(Document):
 							ck_data=df1[(df1['allotment_type']=="Debar") | (df1['allotment_type']=="University Debar") | (df1['allotment_type']=="Passout")
 										| (df1['allotment_type']=="Cancellation of Admission") | (df1['allotment_type']=="Death") ].reset_index()
 							if len(ck_data)==0:
-								room_id=doc.room_id
-								frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`-1 WHERE `name`="%s" """%(room_id))
 								pass
 							else:
 								frappe.throw("Student can't be allotted")
@@ -46,7 +42,37 @@ class RoomAllotment(Document):
 					else:
 						frappe.throw("Room is not allottable for the student")
 				else:
-					frappe.throw("Room is not valid")
+					frappe.throw("Room is not valid")	
+				
+	@frappe.whitelist()
+	def on_submit(doc):
+		room_id=doc.room_id
+		room_info_vac=vacancy_quety_vali("Genaral",room_id)
+		if room_info_vac["validity"][0]=="Approved":
+			if room_info_vac["Room_al_status"][0]=="Allotted":
+				if room_info_vac["Vacancy"][0]>0:
+					room_id=doc.room_id
+					frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`-1 WHERE `name`="%s" """%(room_id))
+					pass
+				else:
+					Al_stu=vacancy_quety_vali("Alloted_student",room_id)
+					a=""
+					for t in range(len(Al_stu)):
+						b="%s "%(Al_stu["Al_no"][t])
+						a=a+b
+					frappe.throw("Already Room is full with Allotment No. "+a)
+			else:
+				frappe.throw("Room is not allottable to the student")
+		else:
+			frappe.throw("Room is not valid")
+
+	@frappe.whitelist()
+	def on_cancel(doc):
+		room_id=doc.room_id
+		frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`+1 WHERE `name`="%s" """%(room_id))
+
+		pass	
+
 
 
 @frappe.whitelist()
@@ -71,7 +97,7 @@ def vacancy_quety_vali(flag,info):
 								(HR.actual_capacity-(SELECT count(RA.room_id)
 								from `tabRoom Allotment` RA
 								WHERE RA.room_id=HR.name
-								And (RA.start_date<=now() and RA.end_date>=now()) 
+								And (RA.start_date<=now() and RA.end_date>=now()) and RA.docstatus!=2
 								))AS Vacancy 
 								from `tabRoom Masters` as HR
 								where HR.name="%s" """%(info))
@@ -79,12 +105,12 @@ def vacancy_quety_vali(flag,info):
 			"Room_id":[],"room_number":[],"present_capacity":[],"hostel_id":[],"validity":[],"room_description":[],"Room_al_status":[],"Vacancy":[] 
 			})
 		for t in range(len(vac_info)):
-			s=pd.Series([vac_info[t][0],vac_info[t][1],vac_info[t][2],vac_info[t][3],vac_info[t][4],vac_info[t][5],vac_info[t][6]],
+			s=pd.Series([vac_info[t][0],vac_info[t][1],vac_info[t][2],vac_info[t][3],vac_info[t][4],vac_info[t][5],vac_info[t][6],vac_info[t][7]],
 								index=["Room_id","room_number","present_capacity","hostel_id","validity","room_description","Room_al_status","Vacancy"])
 			df1=df1.append(s,ignore_index=True)			
 		return df1
 	elif flag=="Student_info":	
-		Stu_info=frappe.db.sql(""" select * from `tabRoom Allotment` as RA where RA.student="%s" """%(info))
+		Stu_info=frappe.db.sql(""" select * from `tabRoom Allotment` as RA where RA.student="%s" and RA.docstatus!=2 """%(info))
 		df1=pd.DataFrame({
 			'Al_no':[],'creation':[],'modified':[],'modified_by':[],
 			'owner':[],'docstatus':[],'parent':[],'parentfield':[],
