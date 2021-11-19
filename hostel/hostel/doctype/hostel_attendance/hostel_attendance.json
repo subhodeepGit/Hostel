@@ -6,6 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "stu_column",
   "attendance_details",
   "naming_series",
   "room_allotment_no",
@@ -28,6 +29,7 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Series",
    "no_copy": 1,
    "options": "HOS-ATT-.YYYY.-",
@@ -110,12 +112,17 @@
    "hidden": 1,
    "label": "Room Id",
    "read_only": 1
+  },
+  {
+   "fieldname": "stu_column",
+   "fieldtype": "Heading",
+   "label": "Student Hostel Attendance Information"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-11-12 16:29:57.189096",
+ "modified": "2021-11-19 17:41:56.448960",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Attendance",

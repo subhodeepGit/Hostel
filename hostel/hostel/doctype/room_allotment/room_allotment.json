@@ -33,7 +33,8 @@
   "designation",
   "column_break_18",
   "employee_name",
-  "contact_number"
+  "contact_number",
+  "amended_from"
  ],
  "fields": [
   {
@@ -170,8 +171,7 @@
    "fieldname": "guardians",
    "fieldtype": "Table",
    "label": "Guardians",
-   "options": "Student Guardian",
-   "read_only": 1
+   "options": "Student Guardian"
   },
   {
    "fieldname": "section_break_7",
@@ -207,11 +207,21 @@
    "fieldname": "guardians_infroamtion_section",
    "fieldtype": "Section Break",
    "label": "Guardian Information"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Room Allotment",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2021-11-17 14:53:14.265851",
+ "modified": "2021-11-19 17:00:30.167381",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Allotment",

@@ -79,6 +79,6 @@ def ra_query(doctype, txt, searchfield, start, page_len, filters):
 	return frappe.db.sql("""
 		SELECT `name`,`student`,`student_name`,`hostel_id` FROM `tabRoom Allotment` WHERE (`start_date` <= now() AND `end_date` >= now()) 
 		and (`allotment_type`!="Hostel suspension" and `allotment_type`!="Suspension" and `allotment_type`!="Debar" and 
-		`allotment_type`!="University Suspension" and `allotment_type`!="School Suspension") 
+		`allotment_type`!="University Suspension" and `allotment_type`!="School Suspension") and `docstatus`=1 
 	"""+info
 	)	
