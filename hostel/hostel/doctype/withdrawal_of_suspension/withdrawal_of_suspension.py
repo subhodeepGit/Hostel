@@ -5,7 +5,7 @@ import frappe
 from frappe.model.document import Document
 
 class WithdrawalofSuspension(Document):
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def validate(doc):
 		ID_ac_id=doc.indisciplinary_action_id
 		info=frappe.db.sql("""SELECT * FROM `tabWithdrawal of Suspension` WHERE `indisciplinary_action_id`="%s" 

@@ -5,7 +5,7 @@ import frappe
 from frappe.model.document import Document
 
 class RoomType(Document):
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def validate(doc):
 		start_date=doc.start_date
 		end_date=doc.end_date

@@ -7,7 +7,7 @@ import pandas as pd
 
 class DeallotmentProcess(Document):
 	#frappe.db.sql(""" UPDATE `tabEmployee Hostel Allotment`  SET  start_date= '2000-09-01' where name='RAN-2021-00001';""")	
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def validate(doc):
 		Al_no=doc.allotment_number
 		workflow_state=doc.workflow_state

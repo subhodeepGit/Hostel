@@ -6,7 +6,7 @@ from frappe.model.document import Document
 import pandas as pd
 
 class RoomChange(Document):
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def validate(doc):
 		Al_no=doc.allotment_number
 		preferred_hostel=doc.preferred_hostel

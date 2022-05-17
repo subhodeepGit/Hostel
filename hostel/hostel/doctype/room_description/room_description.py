@@ -7,7 +7,7 @@ from frappe.translate import import_translations
 import datetime
 
 class RoomDescription(Document):
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def validate(doc):
 		room_description=doc.room_description
 		try:

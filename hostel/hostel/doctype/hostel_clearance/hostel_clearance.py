@@ -8,7 +8,7 @@ import pandas as pd
 from datetime import datetime
 
 class HostelClearance(Document):
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def before_save(doc):
 		#doc status-0
 		allotment_number=doc.allotment_number
@@ -32,7 +32,7 @@ class HostelClearance(Document):
 
 
 			
-	@frappe.whitelist()	
+	# @frappe.whitelist()	
 	def on_submit(doc):
 		#doc status-1
 		Hol_cle_doc_no=doc.name
@@ -72,7 +72,7 @@ class HostelClearance(Document):
 
 
 
-	@frappe.whitelist()		
+	# @frappe.whitelist()		
 	def on_cancel(doc):
 		#doc status-2
 		allotment_number=doc.allotment_number

@@ -7,7 +7,7 @@ import pandas as pd
 from datetime import date 
 
 class InwardSuspensionLetter(Document):
-    @frappe.whitelist()
+    # @frappe.whitelist()
     def on_update(self):
         icr_id = self.name
         suspension_type=self.suspension_type
@@ -33,7 +33,7 @@ class InwardSuspensionLetter(Document):
             else:
                 frappe.throw("No Studnet Entered")        
 
-    @frappe.whitelist()
+    # @frappe.whitelist()
     def on_submit(self):
         icr_id = self.name
         suspension_type=self.suspension_type

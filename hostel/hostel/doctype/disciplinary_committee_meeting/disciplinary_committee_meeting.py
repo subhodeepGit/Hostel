@@ -5,7 +5,7 @@ import frappe
 from frappe.model.document import Document
 
 class DisciplinaryCommitteeMeeting(Document):
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def validate(doc):
 		Dc_id=doc.indisciplinary_action
 		info_dc=frappe.db.sql("""SELECT * FROM `tabDisciplinary Committee Meeting` WHERE `indisciplinary_action`="%s" 

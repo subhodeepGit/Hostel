@@ -12,7 +12,7 @@ import pandas as pd
 
 
 class HostelAttendance(Document):
-    @frappe.whitelist()
+    # @frappe.whitelist()
     def before_save(doc):
         Al_no=doc.room_allotment_no
         attendance_date=str(doc.attendance_date)
@@ -33,7 +33,7 @@ class HostelAttendance(Document):
         else:
             frappe.throw("Attendance is already registered for the %s doc No- %s"%(Date_att,AT_info["AT_doc_no"][0]))
 
-    @frappe.whitelist()
+    # @frappe.whitelist()
     def on_submit(doc):
         Al_no=doc.room_allotment_no
         attendance_date=str(doc.attendance_date)

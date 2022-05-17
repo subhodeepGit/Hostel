@@ -7,7 +7,7 @@ from frappe.translate import import_translations
 import pandas as pd
 
 class WithdrawalofInwardSuspensionLetter(Document):
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def before_insert(doc):
 		inward_suspension_letter_id=doc.inward_suspension_letter_id
 		info=frappe.db.sql("""SELECT * FROM `tabWithdrawal of Inward Suspension Letter` where `inward_suspension_letter_id`="%s" """%(inward_suspension_letter_id))
@@ -16,7 +16,7 @@ class WithdrawalofInwardSuspensionLetter(Document):
 		else:
 			frappe.throw("Alredy Document is Closed")
 
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def on_submit(doc):
 		icr_id = doc.name
 		icr = frappe.get_doc("Withdrawal of Inward Suspension Letter",icr_id)

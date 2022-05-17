@@ -7,7 +7,7 @@ import pandas as pd
 
 
 class RoomMasters(Document):
-    @frappe.whitelist()
+    # @frappe.whitelist()
     def validate(doc):
         hostel_id=doc.hostel_id
         room_number=doc.room_number

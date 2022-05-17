@@ -5,7 +5,7 @@ import frappe
 from frappe.model.document import Document
 
 class HostelSuspensionRoomChange(Document):
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def before_insert(doc):
 		allotment_number=doc.allotment_number
 		indisciplinary_actions_id=doc.indisciplinary_actions_id
@@ -33,7 +33,7 @@ class HostelSuspensionRoomChange(Document):
 
 
 
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def on_submit(doc):
 		allotment_number=doc.allotment_number
 		indisciplinary_actions_id=doc.indisciplinary_actions_id
@@ -69,7 +69,7 @@ class HostelSuspensionRoomChange(Document):
 		else:
 			frappe.throw("Already student Suspension record updated in Doc no '%s' "%(info_Room_Change[0][0]))
 	
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def on_cancel(doc):
 		allotment_number=doc.allotment_number
 		#past record
