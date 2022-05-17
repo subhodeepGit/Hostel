@@ -5,7 +5,7 @@ import frappe
 from frappe.model.document import Document
 
 class MaterialDistribution(Document):
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def validate(doc):
 		allotment_number=doc.allotment_number
 		info=frappe.db.sql("""SELECT `name`,`allotment_number`,`docstatus` FROM `tabMaterial Distribution` WHERE `allotment_number`="%s" and `docstatus`!=2"""%\

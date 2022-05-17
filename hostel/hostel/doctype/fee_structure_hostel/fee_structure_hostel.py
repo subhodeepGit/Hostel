@@ -11,12 +11,18 @@ from frappe.model.mapper import get_mapped_doc
 class FeeStructureHostel(Document):
 	def validate(self):
 		self.calculate_total()
+		self.calculate_amount()
 
 	def calculate_total(self):
 		"""Calculates total amount."""
 		self.total_amount = 0
 		for d in self.components:
 			self.total_amount += d.amount
+			
+	def calculate_amount(self):
+		for events in self.get("components"):
+			events.grand_fee_amount=events.amount
+			events.outstanding_fees=events.amount
 
 
 @frappe.whitelist()

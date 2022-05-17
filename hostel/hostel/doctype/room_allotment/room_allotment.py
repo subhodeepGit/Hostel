@@ -10,7 +10,7 @@ import datetime
 
 
 class RoomAllotment(Document):
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def before_insert(doc):
 		student=doc.student
 		df1=vacancy_quety_vali("Student_info",student)					
@@ -44,7 +44,7 @@ class RoomAllotment(Document):
 				else:
 					frappe.throw("Room is not valid")	
 				
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def on_submit(doc):
 		room_id=doc.room_id
 		room_info_vac=vacancy_quety_vali("Genaral",room_id)
@@ -66,7 +66,7 @@ class RoomAllotment(Document):
 		else:
 			frappe.throw("Room is not valid")
 
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def on_cancel(doc):
 		room_id=doc.room_id
 		frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`+1 WHERE `name`="%s" """%(room_id))

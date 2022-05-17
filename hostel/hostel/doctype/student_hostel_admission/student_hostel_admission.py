@@ -6,7 +6,7 @@ from frappe.model.document import Document
 
 class StudentHostelAdmission(Document):
 	
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def before_save(doc):
 		student = doc.student
 		a=frappe.db.sql("""SELECT SA.Name 
@@ -18,7 +18,7 @@ class StudentHostelAdmission(Document):
 		else:
 			frappe.throw("Student Applicant not maintained")
 
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def on_submit(doc):
 			student = doc.student
 			frappe.db.sql(""" UPDATE `tabStudent Applicant` as SA 
@@ -27,7 +27,7 @@ class StudentHostelAdmission(Document):
 								WHERE S.name="%s" """%(student))
 			pass
 
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def on_cancel(doc):
 			student = doc.student
 			frappe.db.sql(""" UPDATE `tabStudent Applicant` as SA 

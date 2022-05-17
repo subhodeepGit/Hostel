@@ -8,7 +8,7 @@ from frappe.model.document import Document
 import pandas as pd
 
 class IndisciplinaryActions(Document):
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def on_update(doc):
 		#doc status-0
 		type_of_decision=doc.type_of_decision
@@ -106,7 +106,7 @@ class IndisciplinaryActions(Document):
 			frappe.throw("No field selected")
 
 
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def on_cancel(doc):
 		type_of_decision=doc.type_of_decision
 		if type_of_decision=="Suspension Letter":

@@ -8,7 +8,7 @@ import datetime
 
 
 class HostelMasters(Document):
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def validate(doc):
 		hostel_name=doc.hostel_name
 		try:

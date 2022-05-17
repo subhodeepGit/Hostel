@@ -5,7 +5,7 @@ import frappe
 from frappe.model.document import Document
 
 class DeathDeallotment(Document):
-	@frappe.whitelist()	
+	# @frappe.whitelist()	
 	def on_submit(doc):
 		end_date=doc.date_of_demise
 		type_of_clearance="Death"

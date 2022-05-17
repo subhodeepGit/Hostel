@@ -5,7 +5,7 @@ import frappe
 from frappe.model.document import Document
 
 class EmployeeHostelAllotment(Document):
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def validate(doc):
 		Emp=doc.employees
 		Emp_hostel_al=doc.hostel_masters

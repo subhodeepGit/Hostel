@@ -7,7 +7,7 @@ from frappe.model.document import Document
 import pandas as pd
 
 class IndisciplinaryComplaintRegistration(Document):
-    @frappe.whitelist()
+    # @frappe.whitelist()
     def on_update(self):
         icr_id = self.name
         in_doc_info=frappe.db.sql("""select * from `tabIndisciplinary Complaint Registration` where  name="%s" """%(icr_id))

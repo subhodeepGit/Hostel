@@ -5,7 +5,7 @@ import frappe
 from frappe.model.document import Document
 
 class InterorIntraHostelChange(Document):
-	@frappe.whitelist()
+	# @frappe.whitelist()
 	def validate(doc):
 		if doc.allotment_no != doc.second_allotment_no:
 			if doc.room_type == doc.second_room_type:

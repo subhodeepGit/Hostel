@@ -1,73 +1,81 @@
-// Copyright (c) 2021, SOUL and contributors
-// For license information, please see license.txt
-
-frappe.provide("erpnext.accounts.dimensions");
-
 frappe.ui.form.on('Fee Structure Hostel', {
-	setup: function(frm) {
-		frm.add_fetch('company', 'default_receivable_account', 'receivable_account');
-		frm.add_fetch('company', 'default_income_account', 'income_account');
+	program(frm) {
+        frm.clear_table("course_wise_fees");
+        if (frm.doc.program){
+                frappe.call({
+                    method: "ed_tec.ed_tec.doctype.fee_structure.get_courses",
+                    args: {
+                        program: frm.doc.program,
+                    },
+                    callback: function(r) { 
+                        (r.message).forEach(element => {
+                            var c = frm.add_child("course_wise_fees")
+                            c.course=element.course
+                        });
+                        frm.refresh_field("course_wise_fees")
+                    } 
+                    
+                });    
+        }
+	},
+    setup(frm){
 		frm.add_fetch('company', 'cost_center', 'cost_center');
-	},
+        frm.set_query("program",function(){
+            return{
+                filters:{
+                    "programs":frm.doc.programs
+                }
+            }
+        });
+		frm.set_query("academic_term",function(){
+            return{
+                filters:{
+                    "academic_year":frm.doc.academic_year
+                }
+            }
+        });
+    },
+});
 
-	company: function(frm) {
-		erpnext.accounts.dimensions.update_dimension(frm, frm.doctype);
-	},
 
+frappe.ui.form.on("Fee Component", "fees_category", function(frm, cdt, cdn) {
+    var d = locals[cdt][cdn];
+    if (d.fees_category){
+        var total_amount=0;
+        (cur_frm.doc.course_wise_fees).forEach(e=>{
+            total_amount+=(e.amount ? e.amount:0)
+        })
+        d.amount=total_amount;
+        refresh_field("amount", d.name, d.parentfield);
+    }
+});
+
+
+// filter income account receivable account
+frappe.ui.form.on('Fee Structure Hostel', {
 	onload: function(frm) {
-		frm.set_query('academic_term', function() {
-			return {
-				'filters': {
-					'academic_year': frm.doc.academic_year
-				}
-			};
-		});
-
-		frm.set_query('receivable_account', function(doc) {
+		frm.set_query("receivable_account","components", function(_doc, cdt, cdn) {
+			var d = locals[cdt][cdn];
 			return {
 				filters: {
-					'account_type': 'Receivable',
-					'is_group': 0,
-					'company': doc.company
+					'company': d.company,
+					'account_type': d.account_type = 'Receivable',
+					'is_group': d.is_group = 0
 				}
 			};
 		});
-		frm.set_query('income_account', function(doc) {
+		frm.set_query("income_account","components", function(_doc, cdt, cdn) {
+			var d = locals[cdt][cdn];
 			return {
 				filters: {
-					'account_type': 'Income Account',
-					'is_group': 0,
-					'company': doc.company
+					'company': d.company,
+					'account_type': d.account_type = 'Income Account',
+					'is_group': d.is_group = 0
 				}
 			};
 		});
-
 		erpnext.accounts.dimensions.setup_dimension_filters(frm, frm.doctype);
-	},
-
-	refresh: function(frm) {
-		if (frm.doc.docstatus === 1) {
-			frm.add_custom_button(__('Create Fee Schedule'), function() {
-				frm.events.make_fee_schedule(frm);
-			}).addClass('btn-primary');
-		}
-	},
-
-	make_fee_schedule: function(frm) {
-		frappe.model.open_mapped_doc({
-			method: 'erpnext.education.doctype.fee_structure.fee_structure.make_fee_schedule',
-			frm: frm
-		});
 	}
-});
+	
 
-frappe.ui.form.on('Fee Component', {
-	amount: function(frm) {
-		var total_amount = 0;
-		for (var i=0;i<frm.doc.components.length;i++) {
-			total_amount += frm.doc.components[i].amount;
-		}
-		frm.set_value('total_amount', total_amount);
-	}
 });
-
