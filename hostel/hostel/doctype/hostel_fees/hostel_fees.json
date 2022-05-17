@@ -12,6 +12,8 @@
   "allotment_number",
   "student_name",
   "student_id",
+  "roll_no",
+  "registration_number",
   "section_break_3",
   "hostel",
   "room_number",
@@ -113,16 +115,29 @@
    "fieldname": "student_info_section",
    "fieldtype": "Section Break",
    "label": "Student Info"
+  },
+  {
+   "fetch_from": "allotment_number.roll_no",
+   "fieldname": "roll_no",
+   "fieldtype": "Data",
+   "label": "Roll No",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "allotment_number.registration_number",
+   "fieldname": "registration_number",
+   "fieldtype": "Data",
+   "label": "Registration Number",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-11-12 15:22:20.220542",
+ "modified": "2022-05-16 15:46:52.380415",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Fees",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

@@ -11,6 +11,8 @@
   "allotment_number",
   "student",
   "student_name",
+  "roll_no",
+  "registration_number",
   "hostel",
   "room_number",
   "room_no",
@@ -144,15 +146,28 @@
    "fieldtype": "Data",
    "label": "Preferred Room Number",
    "read_only": 1
+  },
+  {
+   "fetch_from": "allotment_number.roll_no",
+   "fieldname": "roll_no",
+   "fieldtype": "Data",
+   "label": "Roll No",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "allotment_number.registration_number",
+   "fieldname": "registration_number",
+   "fieldtype": "Data",
+   "label": "Registration Number",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-02 11:19:12.585164",
+ "modified": "2022-05-16 16:56:45.425708",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Change",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

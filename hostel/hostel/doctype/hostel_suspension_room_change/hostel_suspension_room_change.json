@@ -11,6 +11,8 @@
   "allotment_number",
   "student",
   "student_name",
+  "roll_no",
+  "registration_number",
   "hostel",
   "room_no",
   "room_number",
@@ -181,16 +183,28 @@
    "fieldtype": "Data",
    "label": "Allotment Type",
    "read_only": 1
+  },
+  {
+   "fetch_from": "allotment_number.roll_no",
+   "fieldname": "roll_no",
+   "fieldtype": "Data",
+   "label": "Roll No",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "allotment_number.registration_number",
+   "fieldname": "registration_number",
+   "fieldtype": "Data",
+   "label": "Registration Number"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-11-03 12:40:33.282395",
+ "modified": "2022-05-16 16:51:04.762765",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Suspension Room Change",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

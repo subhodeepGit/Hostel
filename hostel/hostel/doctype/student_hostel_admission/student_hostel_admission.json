@@ -13,6 +13,8 @@
   "first_name",
   "column_break_5",
   "last_name",
+  "roll_no",
+  "registration_number",
   "email_address",
   "hostel_info_section",
   "hostel",
@@ -170,16 +172,29 @@
    "options": "Student Hostel Admission",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fetch_from": "student.roll_no",
+   "fieldname": "roll_no",
+   "fieldtype": "Data",
+   "label": "Roll No",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "student.permanant_registration_number",
+   "fieldname": "registration_number",
+   "fieldtype": "Data",
+   "label": "Registration Number",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-11-17 15:35:46.305070",
+ "modified": "2022-05-16 15:22:46.123308",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Student Hostel Admission",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

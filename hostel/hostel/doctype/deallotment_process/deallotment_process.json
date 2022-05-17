@@ -12,6 +12,8 @@
   "room_masters",
   "student",
   "student_name",
+  "roll_no",
+  "registration_number",
   "hostel",
   "room_number",
   "room_no",
@@ -127,15 +129,28 @@
    "in_standard_filter": 1,
    "label": "Room Type",
    "read_only": 1
+  },
+  {
+   "fetch_from": "allotment_number.roll_no",
+   "fieldname": "roll_no",
+   "fieldtype": "Data",
+   "label": "Roll No",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "allotment_number.registration_number",
+   "fieldname": "registration_number",
+   "fieldtype": "Data",
+   "label": "Registration Number",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-18 15:54:46.198779",
+ "modified": "2022-05-16 17:04:25.211831",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Deallotment Process",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

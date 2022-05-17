@@ -13,6 +13,8 @@
   "date_of_birth",
   "column_break_3",
   "student_name",
+  "roll_no",
+  "registration_number",
   "blood_group",
   "section_break_7",
   "section_break_4",
@@ -202,16 +204,29 @@
   {
    "fieldname": "column_break_11",
    "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "student.roll_no",
+   "fieldname": "roll_no",
+   "fieldtype": "Data",
+   "label": "Roll No",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "student.registration_number",
+   "fieldname": "registration_number",
+   "fieldtype": "Data",
+   "label": "Registration Number",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-11-02 18:13:20.630237",
+ "modified": "2022-05-16 16:54:18.038768",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Death Deallotment",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

@@ -11,6 +11,8 @@
   "allotment_number",
   "student",
   "student_name",
+  "roll_no",
+  "registration_number",
   "column_break_5",
   "hostel",
   "room_number",
@@ -135,16 +137,29 @@
    "fieldtype": "Data",
    "label": "Room No.",
    "read_only": 1
+  },
+  {
+   "fetch_from": "allotment_number.roll_no",
+   "fieldname": "roll_no",
+   "fieldtype": "Data",
+   "label": "Roll No",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "allotment_number.permanant_registration_number",
+   "fieldname": "registration_number",
+   "fieldtype": "Data",
+   "label": "Registration Number",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-11-02 12:26:23.502807",
+ "modified": "2022-05-16 15:06:18.665687",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Clearance",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
