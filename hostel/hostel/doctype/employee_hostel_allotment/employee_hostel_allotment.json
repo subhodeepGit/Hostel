@@ -80,11 +80,10 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-02 11:24:17.275761",
+ "modified": "2022-05-18 17:22:33.223214",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Employee Hostel Allotment",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

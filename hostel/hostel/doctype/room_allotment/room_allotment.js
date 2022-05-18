@@ -15,7 +15,7 @@ frappe.ui.form.on('Room Allotment', {
 		});
 		frm.set_query("hostel_id", function() {
 			return {
-				query: "hostel.hostel.doctype.room_allotment.room_allotment.test_query"
+				query: "hostel.hostel.doctype.room_allotment.room_allotment.test_query",
 			};
 		});
 		frm.set_query("student", function() {

@@ -16,8 +16,8 @@ class EmployeeHostelAllotment(Document):
 			if len(emp_info)==0:
 				pass
 			else:
-				frappe.throw("Emp is already allotted doc no %s"%(emp_info[0][0]))	
+				frappe.throw("Employee is already allotted doc no %s"%(emp_info[0][0]))	
 				return
 		else:
-			frappe.throw("Hostel is clossed. Please contact to the Admin.")										
+			frappe.throw("Hostel is closed. Please contact to the Admin.")										
 
