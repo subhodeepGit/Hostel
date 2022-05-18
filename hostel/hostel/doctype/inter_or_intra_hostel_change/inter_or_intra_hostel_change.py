@@ -18,7 +18,7 @@ class InterorIntraHostelChange(Document):
 				else:
 					frappe.throw("Both the students belong to the same room!!")
 			else:
-				frappe.throw("Room Type of the students has be same!!")
+				frappe.throw("Room Type of the students has to be same!!")
 		else:
 			frappe.throw("Same student can't inter/intra change hostels!!!")
 

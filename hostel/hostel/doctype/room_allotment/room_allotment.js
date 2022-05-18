@@ -47,17 +47,17 @@ frappe.ui.form.on('Room Allotment', {
 // 	}
 // })
 
-frappe.ui.form.on("Room Allotment", "student", function(frm){
-	frappe.model.with_doc("Student", frm.doc.student, function(){
-		var tabletransfer = frappe.model.get_doc("Student", frm.doc.student);
-		cur_frm.doc.guardians = "";
-		cur_frm.refresh_field("guardians");
-		$.each(tabletransfer.guardians, function(index, row){
-			var d = frappe.model.add_child(cur_frm.doc, "Student Guardian", "guardians");
-			d.guardian = row.guardian;
-			d.guardian_name = row.guardian_name;
-			d.relation = row.relation;
-			cur_frm.refresh_field("guardians");
-		});
-	});
-});
+// frappe.ui.form.on("Room Allotment", "student", function(frm){
+// 	frappe.model.with_doc("Student", frm.doc.student, function(){
+// 		var tabletransfer = frappe.model.get_doc("Student", frm.doc.student);
+// 		cur_frm.doc.guardians = "";
+// 		cur_frm.refresh_field("guardians");
+// 		$.each(tabletransfer.guardians, function(index, row){
+// 			var d = frappe.model.add_child(cur_frm.doc, "Student Guardian", "guardians");
+// 			d.guardian = row.guardian;
+// 			d.guardian_name = row.guardian_name;
+// 			d.relation = row.relation;
+// 			cur_frm.refresh_field("guardians");
+// 		});
+// 	});
+// });
