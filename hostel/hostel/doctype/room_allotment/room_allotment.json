@@ -331,7 +331,8 @@
    "fetch_from": "student.local_guardian_address",
    "fieldname": "local_guardian_address",
    "fieldtype": "Data",
-   "label": "Local Guardian's Address"
+   "label": "Local Guardian's Address",
+   "read_only": 1
   },
   {
    "fetch_from": "student.relation_with_student",
@@ -344,7 +345,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-18 12:04:00.858615",
+ "modified": "2022-05-19 17:05:45.573179",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Allotment",
