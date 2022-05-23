@@ -18,7 +18,6 @@ class StudentHostelAdmission(Document):
 
 	def on_submit(doc):
 		student = doc.student
-		doc.status_allotment = "Not Reported"
 		frappe.db.sql(""" UPDATE `tabStudent Applicant` as SA 
 							JOIN `tabStudent` S on S.student_applicant=SA.name
 							SET SA.hostel_required = 1

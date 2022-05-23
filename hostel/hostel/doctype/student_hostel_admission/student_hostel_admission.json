@@ -20,7 +20,6 @@
   "current_education_fetch",
   "hostel_info_section",
   "hostel",
-  "status_allotment",
   "hostel_phone_number_1",
   "column_break_11",
   "hostel_phone_number_2",
@@ -201,18 +200,12 @@
    "label": "Current Education",
    "options": "Current Educational Details",
    "read_only": 1
-  },
-  {
-   "fieldname": "status_allotment",
-   "fieldtype": "Data",
-   "label": "Status Allotment",
-   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-23 16:14:02.018808",
+ "modified": "2022-05-23 16:28:10.621790",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Student Hostel Admission",
