@@ -5,6 +5,8 @@ import frappe
 from frappe.model.document import Document
 
 class StudentHostelAdmission(Document):
+	def validate(doc):
+		doc.allotment_status = "Not Reported"
 	def before_save(doc):
 		student = doc.student
 		a=frappe.db.sql("""SELECT SA.Name 

@@ -3,12 +3,13 @@
 
 frappe.ui.form.on('Student Hostel Admission', {
 	setup: function (frm) {
-		frm.set_query("fee_structure", "fee_structure", function () {
+		frm.set_query("hostel_fee_structure",function () {
 			return {
 				filters: [
 					["Fee Structure Hostel", "room_type", "=", frm.doc.room_type]
 				]
 			}
+
 		});
 		frm.set_query("hostel", function() {
 			return {
@@ -37,4 +38,26 @@ frappe.ui.form.on("Student Hostel Admission", "student", function(frm){
 			cur_frm.refresh_field("current_education_fetch");
 		});
 	});
+
 });
+frappe.ui.form.on("Student Hostel Admission", "hostel_fee_structure", function(frm) {
+	frappe.model.with_doc("Fee Structure Hostel", frm.doc.hostel_fee_structure, function() {
+	var tabletransfer= frappe.model.get_doc("Fee Structure Hostel", frm.doc.hostel_fee_structure)
+	$.each(tabletransfer.components, function(index, row){
+	var d = frappe.model.add_child(cur_frm.doc, "Fee Component", "hostel_fee_components");
+	d.fees_category = row.fees_category;
+	d.description = row.description;
+	d.amount = row.amount;
+	d.waiver_type = row.waiver_type;
+	d.percentage = row.percentage;
+	d.waiver_amount = row.waiver_amount;
+	d.total_waiver_amount = row.total_waiver_amount;
+	d.receivable_account = row.receivable_account;
+	d.income_account = row.income_account;
+	d.company= row.company;
+	d.grand_fee_amount = row.grand_fee_amount;
+	d.outstanding_fees = row.outstanding_fees;
+	cur_frm.refresh_field("hostel_fee_components");
+	})
+	});
+	});

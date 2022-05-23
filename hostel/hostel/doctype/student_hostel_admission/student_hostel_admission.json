@@ -20,6 +20,7 @@
   "current_education_fetch",
   "hostel_info_section",
   "hostel",
+  "allotment_status",
   "hostel_phone_number_1",
   "column_break_11",
   "hostel_phone_number_2",
@@ -31,7 +32,8 @@
   "type_of_room",
   "feature",
   "hostel_fee_structure_section",
-  "fee_structure",
+  "hostel_fee_structure",
+  "hostel_fee_components",
   "amended_from"
  ],
  "fields": [
@@ -161,12 +163,6 @@
    "label": "Hostel Fee Structure"
   },
   {
-   "fieldname": "fee_structure",
-   "fieldtype": "Table",
-   "label": "Fee Structure",
-   "options": "Hostel Fees Item"
-  },
-  {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
@@ -200,12 +196,30 @@
    "label": "Current Education",
    "options": "Current Educational Details",
    "read_only": 1
+  },
+  {
+   "fieldname": "hostel_fee_structure",
+   "fieldtype": "Link",
+   "label": "Hostel Fee Structure",
+   "options": "Fee Structure Hostel",
+   "reqd": 1
+  },
+  {
+   "fieldname": "allotment_status",
+   "fieldtype": "Data",
+   "label": "Allotment Status"
+  },
+  {
+   "fieldname": "hostel_fee_components",
+   "fieldtype": "Table",
+   "label": "Hostel Fee Components",
+   "options": "Fee Component"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-23 16:28:10.621790",
+ "modified": "2022-05-23 17:09:35.340428",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Student Hostel Admission",
