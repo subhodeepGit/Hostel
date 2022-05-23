@@ -9,9 +9,7 @@ class MaterialDistribution(Document):
 	def validate(doc):
 		allotment_number=doc.allotment_number
 		info=frappe.db.sql("""SELECT `name`,`allotment_number`,`docstatus` FROM `tabMaterial Distribution` WHERE `allotment_number`="%s" and `docstatus`!=2"""%\
-							(allotment_number))
-		print("\n\n\n")
-		print(info[0][2])					
+							(allotment_number))				
 		if len(info)==0:
 			pass
 		elif len(info)==1 and info[0][2]==0:

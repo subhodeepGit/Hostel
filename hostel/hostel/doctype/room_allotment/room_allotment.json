@@ -29,7 +29,21 @@
   "room_type",
   "addon_facilites",
   "guardians_infroamtion_section",
-  "guardians",
+  "fathers_name",
+  "fathers_contact_number",
+  "fathers_occupation",
+  "annual_income",
+  "column_break_26",
+  "mothers_name",
+  "mothers_contact_number",
+  "mothers_occupation",
+  "mothers_annual_income",
+  "column_break_31",
+  "local_guardians_name",
+  "local_guardian_contact_no",
+  "local_guardian_occupation",
+  "local_guardian_address",
+  "relation_with_student",
   "section_break_13",
   "employee",
   "designation",
@@ -170,12 +184,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "guardians",
-   "fieldtype": "Table",
-   "label": "Guardians",
-   "options": "Student Guardian"
-  },
-  {
    "fieldname": "section_break_7",
    "fieldtype": "Section Break"
   },
@@ -232,12 +240,112 @@
    "fieldtype": "Data",
    "label": "Registration Number",
    "read_only": 1
+  },
+  {
+   "fetch_from": "student.fathers_name",
+   "fieldname": "fathers_name",
+   "fieldtype": "Data",
+   "label": "Father's Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "student.fathers_contact_number",
+   "fieldname": "fathers_contact_number",
+   "fieldtype": "Data",
+   "label": "Father's Contact Number",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "student.fathers_occupation",
+   "fieldname": "fathers_occupation",
+   "fieldtype": "Data",
+   "label": "Father's Occupation",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "student.annual_income",
+   "fieldname": "annual_income",
+   "fieldtype": "Data",
+   "label": "Father's Annual Income",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_26",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "student.mothers_name",
+   "fieldname": "mothers_name",
+   "fieldtype": "Data",
+   "label": "Mother's Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "student.mothers_contact_number",
+   "fieldname": "mothers_contact_number",
+   "fieldtype": "Data",
+   "label": "Mother's Contact Number",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "student.mothers_occupation",
+   "fieldname": "mothers_occupation",
+   "fieldtype": "Data",
+   "label": "Mother's Occupation",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "student.mothers_annual_income",
+   "fieldname": "mothers_annual_income",
+   "fieldtype": "Data",
+   "label": "Mother's Annual Income",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_31",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "student.local_guardians_name",
+   "fieldname": "local_guardians_name",
+   "fieldtype": "Data",
+   "label": "Local Guardian's Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "student.local_guardian_contact_no",
+   "fieldname": "local_guardian_contact_no",
+   "fieldtype": "Data",
+   "label": "Local Guardian's Contact No.",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "student.local_guardian_occupation",
+   "fieldname": "local_guardian_occupation",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Local Guardian's Occupation",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "student.local_guardian_address",
+   "fieldname": "local_guardian_address",
+   "fieldtype": "Data",
+   "label": "Local Guardian's Address",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "student.relation_with_student",
+   "fieldname": "relation_with_student",
+   "fieldtype": "Data",
+   "label": "Relation with Student",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-16 14:57:21.870660",
+ "modified": "2022-05-19 17:05:45.573179",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Allotment",

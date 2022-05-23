@@ -40,6 +40,8 @@ class StudentHostelAdmission(Document):
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
 def hostel_query(doctype, txt, searchfield, start, page_len, filters):
+	print("\n\n\n\n")
+	print("HI")
 	return frappe.db.sql("""SELECT `name`,`hostel_type` from `tabHostel Masters` WHERE `start_date`<=now() and `end_date`>=now()""")
 
 

@@ -29,17 +29,17 @@
    "fieldname": "employees",
    "fieldtype": "Link",
    "label": "Employee ID",
-   "options": "User"
+   "options": "Employee"
   },
   {
-   "fetch_from": "employees.full_name",
+   "fetch_from": "employees.employee_name",
    "fieldname": "employee",
    "fieldtype": "Data",
    "label": "Employee Name",
    "read_only": 1
   },
   {
-   "fetch_from": "employees.username",
+   "fetch_from": "employees.user_id",
    "fieldname": "user_name",
    "fieldtype": "Data",
    "label": "User Name",
@@ -80,11 +80,10 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-02 11:24:17.275761",
+ "modified": "2022-05-19 14:58:34.664360",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Employee Hostel Allotment",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
