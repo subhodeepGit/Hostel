@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2021-11-03 09:48:16.258624",
@@ -8,51 +9,70 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
-  "student_info_section",
-  "allotment_number",
+  "student",
   "student_name",
-  "student_id",
   "roll_no",
   "registration_number",
-  "section_break_3",
+  "valid_from",
+  "valid_to",
+  "column_break_8",
+  "company",
+  "posting_date",
+  "posting_time",
+  "due_date",
+  "hostel_info_section",
+  "hostel_admission",
+  "allotment_number",
   "hostel",
+  "column_break_16",
   "room_number",
   "room_type",
-  "section_break_7",
-  "fee_structure",
-  "fee_status",
-  "amended_from"
+  "amended_from",
+  "student_details",
+  "program_enrollment",
+  "programs",
+  "program",
+  "student_batch",
+  "student_email",
+  "column_break_26",
+  "student_category",
+  "academic_term",
+  "academic_year",
+  "section_break_30",
+  "currency",
+  "hostel_fee_structure",
+  "components",
+  "section_break_34",
+  "column_break_35",
+  "grand_total",
+  "grand_total_in_words",
+  "outstanding_amount",
+  "fees_waiver",
+  "waiver_type",
+  "percentage",
+  "amount",
+  "waiver_amount",
+  "edit_printing_settings",
+  "letter_head",
+  "column_break_46",
+  "select_print_heading",
+  "accounting_dimensions_section",
+  "cost_center"
  ],
  "fields": [
   {
    "fieldname": "allotment_number",
    "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "Allotment Number",
-   "options": "Room Allotment",
-   "reqd": 1
+   "options": "Room Allotment"
   },
   {
-   "fieldname": "fee_structure",
-   "fieldtype": "Table",
-   "label": "Fee Structure",
-   "options": "Hostel Fees Item",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "allotment_number.student_name",
+   "fetch_from": "student.title",
    "fieldname": "student_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
+   "in_global_search": 1,
    "label": "Student Name",
    "read_only": 1
-  },
-  {
-   "fieldname": "section_break_3",
-   "fieldtype": "Section Break",
-   "label": "Hostel Info"
   },
   {
    "fetch_from": "allotment_number.hostel_id",
@@ -77,16 +97,87 @@
    "read_only": 1
   },
   {
-   "fieldname": "section_break_7",
-   "fieldtype": "Section Break",
-   "label": "Hostel Fees"
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "naming",
+   "options": "HST-FEES-.YYYY.-"
   },
   {
-   "fieldname": "fee_status",
-   "fieldtype": "Select",
-   "label": "Fee Status",
-   "options": "Paid\nUnpaid",
+   "fetch_from": "student.roll_no",
+   "fieldname": "roll_no",
+   "fieldtype": "Data",
+   "label": "Roll No",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "student.permanant_registration_number",
+   "fieldname": "registration_number",
+   "fieldtype": "Data",
+   "label": "Registration Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Student",
+   "options": "Student",
    "reqd": 1
+  },
+  {
+   "fieldname": "valid_from",
+   "fieldtype": "Date",
+   "label": "Valid From"
+  },
+  {
+   "fieldname": "valid_to",
+   "fieldtype": "Date",
+   "label": "Valid To"
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Institution",
+   "options": "Company",
+   "remember_last_selected_value": 1,
+   "reqd": 1
+  },
+  {
+   "bold": 1,
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "posting_time",
+   "fieldtype": "Time",
+   "label": "Posting Time"
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Due Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "hostel_info_section",
+   "fieldtype": "Section Break",
+   "label": "Hostel Info"
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "amended_from",
@@ -98,43 +189,219 @@
    "read_only": 1
   },
   {
-   "fetch_from": "allotment_number.student",
-   "fieldname": "student_id",
-   "fieldtype": "Data",
-   "label": "Student ID",
-   "read_only": 1
-  },
-  {
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "hidden": 1,
-   "label": "naming",
-   "options": "HST-FEES-.YYYY.-"
-  },
-  {
-   "fieldname": "student_info_section",
+   "collapsible": 1,
+   "fieldname": "student_details",
    "fieldtype": "Section Break",
-   "label": "Student Info"
+   "label": "Student Details"
   },
   {
-   "fetch_from": "allotment_number.roll_no",
-   "fieldname": "roll_no",
-   "fieldtype": "Data",
-   "label": "Roll No",
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "label": "Program Enrollment",
+   "options": "Program Enrollment",
    "read_only": 1
   },
   {
-   "fetch_from": "allotment_number.registration_number",
-   "fieldname": "registration_number",
-   "fieldtype": "Data",
-   "label": "Registration Number",
+   "fetch_from": "program_enrollment.programs",
+   "fieldname": "programs",
+   "fieldtype": "Link",
+   "label": "Programs",
+   "options": "Programs",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "program_enrollment.program",
+   "fieldname": "program",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Program",
+   "options": "Program",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "program_enrollment.student_batch_name",
+   "fieldname": "student_batch",
+   "fieldtype": "Link",
+   "label": "Student Batch",
+   "options": "Student Batch Name",
+   "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fetch_from": "student.student_email_id",
+   "fieldname": "student_email",
+   "fieldtype": "Data",
+   "label": "Student Email",
+   "options": "Email",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_26",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "program_enrollment.student_category",
+   "fieldname": "student_category",
+   "fieldtype": "Link",
+   "label": "Student Category",
+   "options": "Student Category",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "program_enrollment.academic_term",
+   "fieldname": "academic_term",
+   "fieldtype": "Link",
+   "label": "Academic Term",
+   "options": "Academic Term",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "program_enrollment.academic_year",
+   "fieldname": "academic_year",
+   "fieldtype": "Link",
+   "label": "Academic Year",
+   "options": "Academic Year",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_30",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Currency",
+   "options": "Currency",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "components",
+   "fieldtype": "Table",
+   "label": "Components",
+   "options": "Fee Component",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_34",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_35",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "grand_total",
+   "fieldtype": "Currency",
+   "label": "Grand Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grand_total_in_words",
+   "fieldtype": "Data",
+   "label": "In Words",
+   "length": 240,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "outstanding_amount",
+   "fieldtype": "Currency",
+   "label": "Outstanding Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fees_waiver",
+   "fieldtype": "Section Break",
+   "label": "Fees Waiver"
+  },
+  {
+   "fieldname": "waiver_type",
+   "fieldtype": "Select",
+   "label": "Waiver Type",
+   "options": "\nAmount\nPercentage"
+  },
+  {
+   "depends_on": "eval:doc.waiver_type=='Percentage'",
+   "fieldname": "percentage",
+   "fieldtype": "Data",
+   "label": "Percentage"
+  },
+  {
+   "depends_on": "eval:doc.waiver_type=='Amount'",
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount"
+  },
+  {
+   "fieldname": "waiver_amount",
+   "fieldtype": "Currency",
+   "label": "Waiver Amount"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "edit_printing_settings",
+   "fieldtype": "Section Break",
+   "label": "Printing Settings",
+   "print_hide": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "letter_head",
+   "fieldtype": "Link",
+   "label": "Letter Head",
+   "options": "Letter Head",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "column_break_46",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "select_print_heading",
+   "fieldtype": "Link",
+   "label": "Print Heading",
+   "options": "Print Heading",
+   "print_hide": 1,
+   "report_hide": 1
+  },
+  {
+   "fieldname": "accounting_dimensions_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting Dimensions"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "hostel_fee_structure",
+   "fieldtype": "Link",
+   "label": "Hostel Fee Structure",
+   "options": "Fee Structure Hostel",
+   "reqd": 1
+  },
+  {
+   "fieldname": "hostel_admission",
+   "fieldtype": "Link",
+   "label": "Hostel Admission",
+   "options": "Student Hostel Admission"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-16 15:46:52.380415",
+ "modified": "2022-05-23 13:20:35.891179",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Fees",
@@ -155,7 +422,5 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "track_changes": 1,
- "track_seen": 1,
- "track_views": 1
+ "track_changes": 1
 }

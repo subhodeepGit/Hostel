@@ -1,14 +1,216 @@
 // Copyright (c) 2021, SOUL and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on('Hostel Fees', {
-	setup: function (frm) {
-		frm.set_query("fee_structure", "fee_structure", function () {
-			return {
-				filters: [
-					["Fee Structure Hostel", "room_type", "=", frm.doc.room_type]
-				]
-			}
+frappe.provide("erpnext.accounts.dimensions");
+
+frappe.ui.form.on("Hostel Fees", {
+	setup: function(frm) {
+		frm.add_fetch("hostel_fee_structure", "receivable_account", "receivable_account");
+		frm.add_fetch("hostel_fee_structure", "income_account", "income_account");
+		frm.add_fetch("hostel_fee_structure", "cost_center", "cost_center");
+	},
+
+	company: function(frm) {
+		erpnext.accounts.dimensions.update_dimension(frm, frm.doctype);
+	},
+
+	onload: function(frm) {
+		frm.set_query("academic_term", function() {
+			return{
+				"filters": {
+					"academic_year": (frm.doc.academic_year)
+				}
+			};
 		});
+		frm.set_query("hostel_fee_structure", function() {
+			return{
+				"filters":{
+					"academic_year": (frm.doc.academic_year)
+				}
+			};
+		});
+        frm.set_query("receivable_account","components", function(_doc, cdt, cdn) {
+			var d = locals[cdt][cdn];
+			return {
+				filters: {
+					'company': d.company,
+					'account_type': d.account_type = 'Receivable',
+					'is_group': d.is_group = 0
+				}
+			};
+		});
+        frm.set_query("income_account","components", function(_doc, cdt, cdn) {
+			var d = locals[cdt][cdn];
+			return {
+				filters: {
+					'company': d.company,
+					'account_type': d.account_type = 'Income Account',
+					'is_group': d.is_group = 0
+				}
+			};
+		});
+		if (!frm.doc.posting_date) {
+			frm.doc.posting_date = frappe.datetime.get_today();
+		}
+
+		erpnext.accounts.dimensions.setup_dimension_filters(frm, frm.doctype);
+	},
+
+	refresh: function(frm) {
+		if(frm.doc.docstatus == 0 && frm.doc.set_posting_time) {
+			frm.set_df_property('posting_date', 'read_only', 0);
+			frm.set_df_property('posting_time', 'read_only', 0);
+		} else {
+			frm.set_df_property('posting_date', 'read_only', 1);
+			frm.set_df_property('posting_time', 'read_only', 1);
+		}
+	},
+
+	student: function(frm) {
+		if (frm.doc.student) {
+			frappe.call({
+				method:"erpnext.education.api.get_current_enrollment",
+				args: {
+					"student": frm.doc.student,
+					"academic_year": frm.doc.academic_year
+				},
+				callback: function(r) {
+					if(r){
+						$.each(r.message, function(i, d) {
+							frm.set_value(i,d);
+						});
+					}
+				}
+			});
+		}
+	},
+
+	set_posting_time: function(frm) {
+		frm.refresh();
+	},
+
+	academic_term: function() {
+		frappe.ui.form.trigger("Fees", "program");
+	},
+
+	hostel_fee_structure: function(frm) {
+		frm.set_value("components" ,"");
+		if (frm.doc.hostel_fee_structure) {
+			frappe.call({
+				method: "hostel.hostel.doctype.hostel_fees.hostel_fees.get_fee_components",                
+				args: {
+					"hostel_fee_structure": frm.doc.hostel_fee_structure
+				},
+				callback: function(r) {
+					if (r.message) {
+						$.each(r.message, function(i, d) {
+							var row = frappe.model.add_child(frm.doc, "Fee Component", "components");
+							row.fees_category = d.fees_category;
+							row.receivable_account=d.receivable_account;
+							row.income_account = d.income_account;
+							row.description = d.description;
+							row.amount = d.amount;
+							row.receivable_account=d.receivable_account;
+                            row.grand_fee_amount=d.grand_fee_amount;
+                            row.outstanding_fees=d.outstanding_fees;
+						});
+					}
+					refresh_field("components");
+					frm.trigger("calculate_total_amount");
+				}
+			});
+		}
+	},
+
+	calculate_total_amount: function(frm) {
+		var grand_total = 0;
+		for(var i=0;i<frm.doc.components.length;i++) {
+			grand_total += frm.doc.components[i].amount;
+		}
+		frm.set_value("grand_total", grand_total);
+	},
+    student(frm){
+        if (frm.doc.student){
+            frm.trigger("set_program_enrollment");
+            frm.set_query("programs", function() {
+                return {
+                    query: 'ed_tec.ed_tec.doctype.fees.get_progarms',
+                    filters: {
+                        "student":frm.doc.student
+                    }
+                };
+            });
+            frm.set_query("program", function() {
+                return {
+                    query: 'ed_tec.ed_tec.doctype.fees.get_sem',
+                    filters: {
+                        "student":frm.doc.student
+                    }
+                };
+            });
+            frm.set_query("academic_term", function() {
+                return {
+                    query: 'ed_tec.ed_tec.doctype.fees.get_term',
+                    filters: {
+                        "student":frm.doc.student
+                    }
+                };
+            });
+            frm.set_query("academic_year", function() {
+                return {
+                    query: 'ed_tec.ed_tec.doctype.fees.get_year',
+                    filters: {
+                        "student":frm.doc.student
+                    }
+                };
+            });
+            frm.set_query("student_category", function() {
+                return {
+                    query: 'ed_tec.ed_tec.doctype.fees.get_student_category',
+                    filters: {
+                        "student":frm.doc.student
+                    }
+                };
+            });
+            frm.set_query("student_batch", function() {
+                return {
+                    query: 'ed_tec.ed_tec.doctype.fees.get_batch',
+                    filters: {
+                        "student":frm.doc.student
+                    }
+                };
+            });
+            // frm.set_query("hostel_fee_structure", function() {
+            //     return {
+            //         query: 'hostel.hostel.doctype.hostel_fees.hostel_fees.get_fee_structures',                   
+            //         filters: {
+            //             "student":frm.doc.student
+            //         }
+            //     };
+            // });
+            
+        }
+    },
+    set_program_enrollment(frm) {
+        frappe.call({
+            method: "ed_tec.ed_tec.doctype.program_enrollment.get_program_enrollment",
+            args: {
+                student: frm.doc.student,
+            },
+            callback: function(r) { 
+                if (r.message){
+                    frm.set_value("program_enrollment",r.message['name'])
+                }
+            } 
+            
+        }); 
+    },
+});
+
+
+frappe.ui.form.on("Fee Component", {
+	amount: function(frm) {
+		frm.trigger("calculate_total_amount");
 	}
-})
+});
+

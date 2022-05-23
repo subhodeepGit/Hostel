@@ -34,6 +34,13 @@ frappe.ui.form.on('Fee Structure Hostel', {
                 }
             }
         });
+        frm.set_query("fee_type",function(){
+            return{
+                filters:{
+                    "is_hostel":1
+                }
+            }
+        });
     },
 });
 
