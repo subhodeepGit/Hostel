@@ -1,0 +1,93 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-05-18 13:02:06.820410",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "room_allotment_id",
+  "student",
+  "student_name",
+  "room_number",
+  "room_type",
+  "column_break_4",
+  "hostel_id",
+  "start_date",
+  "end_date"
+ ],
+ "fields": [
+  {
+   "fetch_from": "room_allotment_id.student",
+   "fieldname": "student",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Student",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "room_allotment_id.room_number",
+   "fieldname": "room_number",
+   "fieldtype": "Data",
+   "label": "Room Number",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "room_allotment_id.room_type",
+   "fieldname": "room_type",
+   "fieldtype": "Data",
+   "label": "Room Type",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "room_allotment_id.hostel_id",
+   "fieldname": "hostel_id",
+   "fieldtype": "Data",
+   "label": "Hostel",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "room_allotment_id.start_date",
+   "fieldname": "start_date",
+   "fieldtype": "Data",
+   "label": "Start Date",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "room_allotment_id.end_date",
+   "fieldname": "end_date",
+   "fieldtype": "Data",
+   "label": "End Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "room_allotment_id",
+   "fieldtype": "Link",
+   "label": "Room Allotment Id",
+   "options": "Room Allotment",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "room_allotment_id.student_name",
+   "fieldname": "student_name",
+   "fieldtype": "Data",
+   "label": "Student Name",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-05-23 11:46:59.159172",
+ "modified_by": "Administrator",
+ "module": "Hostel",
+ "name": "Hostel Fee Schedule Student",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
