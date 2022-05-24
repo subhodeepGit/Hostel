@@ -171,8 +171,7 @@
   {
    "fieldname": "student_room_alloted",
    "fieldtype": "Table",
-   "options": "Hostel Fee Schedule Student",
-   "reqd": 1
+   "options": "Hostel Fee Schedule Student"
   },
   {
    "fieldname": "section_break_14",
@@ -316,7 +315,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-23 11:45:51.201244",
+ "modified": "2022-05-24 16:01:40.084136",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Fee Schedule",
