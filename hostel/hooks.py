@@ -102,6 +102,7 @@ app_include_js = "/assets/js/aka.min.js"
 doc_events = {
 	"Payment Entry": {
         "on_submit": "hostel.hostel.validations.payment_entry.on_submit",
+		"on_cancel": "hostel.hostel.validations.payment_entry.on_cancel",
 	}
 }
 
