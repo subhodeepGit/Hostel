@@ -12,6 +12,7 @@ class FeeStructureHostel(Document):
 	def validate(self):
 		self.calculate_total()
 		self.calculate_amount()
+		self.validate_duplicate_programs()
 
 	def calculate_total(self):
 		"""Calculates total amount."""
@@ -23,7 +24,18 @@ class FeeStructureHostel(Document):
 		for events in self.get("components"):
 			events.grand_fee_amount=events.amount
 			events.outstanding_fees=events.amount
-
+	def validate_duplicate_programs(self):
+			duplicateForm=frappe.get_all("Fee Structure Hostel", filters={
+				"programs":self.programs,
+				"program": self.program,
+				"fee_type":self.fee_type,
+				"room_type": self.room_type,
+				"academic_year":self.academic_year,
+				"academic_term": self.academic_term,
+				# "name":("!=",self.name)
+			})
+			if duplicateForm:
+				frappe.throw(("Same Fee Structure is already exist in Created."))
 
 @frappe.whitelist()
 def make_fee_schedule(source_name, target_doc=None):

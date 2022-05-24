@@ -68,8 +68,7 @@
    "fieldname": "room_allotment_id",
    "fieldtype": "Link",
    "label": "Room Allotment Id",
-   "options": "Room Allotment",
-   "read_only": 1
+   "options": "Room Allotment"
   },
   {
    "fetch_from": "room_allotment_id.student_name",
@@ -82,7 +81,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-05-23 11:46:59.159172",
+ "modified": "2022-05-24 16:18:34.467440",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Fee Schedule Student",
