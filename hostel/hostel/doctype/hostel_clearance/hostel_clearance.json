@@ -146,7 +146,7 @@
    "read_only": 1
   },
   {
-   "fetch_from": "allotment_number.permanant_registration_number",
+   "fetch_from": "allotment_number.registration_number",
    "fieldname": "registration_number",
    "fieldtype": "Data",
    "label": "Registration Number",
@@ -156,7 +156,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-16 15:06:18.665687",
+ "modified": "2022-05-24 17:57:40.797185",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Clearance",
