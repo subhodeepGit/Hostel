@@ -47,17 +47,14 @@
   "grand_total",
   "grand_total_in_words",
   "outstanding_amount",
-  "fees_waiver",
-  "waiver_type",
-  "percentage",
-  "amount",
-  "waiver_amount",
   "edit_printing_settings",
   "letter_head",
-  "column_break_46",
+  "column_break_42",
   "select_print_heading",
   "accounting_dimensions_section",
-  "cost_center"
+  "cost_center",
+  "column_break_46",
+  "fees_id"
  ],
  "fields": [
   {
@@ -317,34 +314,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "fees_waiver",
-   "fieldtype": "Section Break",
-   "label": "Fees Waiver"
-  },
-  {
-   "fieldname": "waiver_type",
-   "fieldtype": "Select",
-   "label": "Waiver Type",
-   "options": "\nAmount\nPercentage"
-  },
-  {
-   "depends_on": "eval:doc.waiver_type=='Percentage'",
-   "fieldname": "percentage",
-   "fieldtype": "Data",
-   "label": "Percentage"
-  },
-  {
-   "depends_on": "eval:doc.waiver_type=='Amount'",
-   "fieldname": "amount",
-   "fieldtype": "Currency",
-   "label": "Amount"
-  },
-  {
-   "fieldname": "waiver_amount",
-   "fieldtype": "Currency",
-   "label": "Waiver Amount"
-  },
-  {
    "collapsible": 1,
    "fieldname": "edit_printing_settings",
    "fieldtype": "Section Break",
@@ -396,12 +365,23 @@
    "fieldtype": "Link",
    "label": "Hostel Admission",
    "options": "Student Hostel Admission"
+  },
+  {
+   "fieldname": "column_break_42",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fees_id",
+   "fieldtype": "Link",
+   "label": "Fees",
+   "options": "Fees",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-23 13:20:35.891179",
+ "modified": "2022-05-24 13:00:07.388223",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Fees",

@@ -99,13 +99,11 @@ app_include_js = "/assets/js/aka.min.js"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-#	}
-# }
+doc_events = {
+	"Payment Entry": {
+		"validate": "hostel.hostel.validations.payment_entry.validate",
+	}
+}
 
 # Scheduled Tasks
 # ---------------
