@@ -1,4 +1,4 @@
-frappe.listview_settings['Fees'] = {
+frappe.listview_settings['Hostel Fees'] = {
 	add_fields: ["grand_total", "outstanding_amount", "due_date"],
 	get_indicator: function(doc) {
 		if(flt(doc.outstanding_amount)==0) {
