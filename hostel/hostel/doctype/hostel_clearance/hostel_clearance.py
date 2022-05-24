@@ -51,7 +51,9 @@ class HostelClearance(Document):
 					frappe.db.sql(""" UPDATE `tabRoom Allotment` SET `end_date`="%s",`allotment_type`="%s" WHERE `name`="%s" """%\
 								(end_date,type_of_clearance,allotment_number))
 					room_id=doc.room_number			
-					frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`+1 WHERE `name`="%s" """%(room_id))			
+					frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`+1 WHERE `name`="%s" """%(room_id))
+					status=frappe.get_all("Room Allotment",{"name":doc.student},['hostel_registration_no'])
+					frappe.db.set_value("Student Hostel Admission",status[0]['hostel_registration_no'], "allotment_status", "Deallotted") 				
 					pass
 				else:
 					frappe.throw("Kindly check the End Date")
@@ -64,7 +66,9 @@ class HostelClearance(Document):
 				frappe.db.sql(""" UPDATE `tabRoom Allotment` SET `end_date`="%s",`allotment_type`="%s" WHERE `name`="%s" """%\
 								(end_date,type_of_clearance,allotment_number))
 				room_id=doc.room_number			
-				frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`+1 WHERE `name`="%s" """%(room_id))					
+				frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`+1 WHERE `name`="%s" """%(room_id))
+				status=frappe.get_all("Room Allotment",{"name":doc.allotment_number},['hostel_registration_no'])
+				frappe.db.set_value("Student Hostel Admission",status[0]['hostel_registration_no'], "allotment_status", "Deallotted") 						
 				pass
 			else:
 				frappe.throw("Kindly check the End Date")
@@ -79,7 +83,9 @@ class HostelClearance(Document):
 		frappe.db.sql(""" UPDATE `tabRoom Allotment` SET `end_date`="9999-12-01",`allotment_type`="Allotted" WHERE `name`="%s" """%\
 								(allotment_number))
 		room_id=doc.room_number			
-		frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`-1 WHERE `name`="%s" """%(room_id))						
+		frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`-1 WHERE `name`="%s" """%(room_id))
+		status=frappe.get_all("Room Allotment",{"name":doc.allotment_number},['hostel_registration_no'])
+		frappe.db.set_value("Student Hostel Admission",status[0]['hostel_registration_no'], "allotment_status", "Deallotted") 							
 		pass
 
 

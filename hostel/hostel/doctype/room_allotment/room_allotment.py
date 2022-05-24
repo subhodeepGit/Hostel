@@ -52,7 +52,8 @@ class RoomAllotment(Document):
 			if room_info_vac["Room_al_status"][0]=="Allotted":
 				if room_info_vac["Vacancy"][0]>0:
 					room_id=doc.room_id
-					frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`-1 WHERE `name`="%s" """%(room_id))
+					frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`-1 WHERE `name`="%s" """%(room_id)) 
+					frappe.db.set_value("Student Hostel Admission",doc.hostel_registration_no, "allotment_status", "Allotted") 
 					pass
 				else:
 					Al_stu=vacancy_quety_vali("Alloted_student",room_id)
@@ -66,13 +67,13 @@ class RoomAllotment(Document):
 		else:
 			frappe.throw("Room is not valid")
 
+
 	# @frappe.whitelist()
 	def on_cancel(doc):
 		room_id=doc.room_id
 		frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`+1 WHERE `name`="%s" """%(room_id))
-
-		pass	
-
+		frappe.db.set_value("Student Hostel Admission",doc.hostel_registration_no, "allotment_status", "Cancelled") 
+	
 
 
 @frappe.whitelist()
@@ -151,3 +152,13 @@ def hostel_req_query(doctype, txt, searchfield, start, page_len, filters):
 							from `tabStudent Applicant` as SA
 							JOIN `tabStudent` S on S.student_applicant=SA.name 
 							where SA.hostel_required=1""")
+
+@frappe.whitelist()
+# @frappe.validate_and_sanitize_search_inputs
+def allotment(student):
+	data=frappe.get_all("Student Hostel Admission",fields=[["student","=",student],["allotment_status","!=","Allotted"],
+					["allotment_status","!=","De-Allotted"],["docstatus","=",1]])
+	if len(data)>0:
+		return data[0]
+			
+

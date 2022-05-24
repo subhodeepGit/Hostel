@@ -17,6 +17,7 @@
   "roll_no",
   "registration_number",
   "blood_group",
+  "hostel_registration_no",
   "section_break_7",
   "section_break_4",
   "hostel_id",
@@ -340,12 +341,18 @@
    "fieldtype": "Data",
    "label": "Relation with Student",
    "read_only": 1
+  },
+  {
+   "fieldname": "hostel_registration_no",
+   "fieldtype": "Data",
+   "label": "Hostel Registration No.",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-19 17:05:45.573179",
+ "modified": "2022-05-24 13:03:09.400575",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Allotment",

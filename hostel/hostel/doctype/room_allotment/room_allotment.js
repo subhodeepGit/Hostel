@@ -23,7 +23,24 @@ frappe.ui.form.on('Room Allotment', {
 				query: "hostel.hostel.doctype.room_allotment.room_allotment.hostel_req_query"
 			};
 		});
-	}
+			
+		
+	},
+	student(frm) {
+        frappe.call({
+            method: "hostel.hostel.doctype.room_allotment.room_allotment.allotment",
+            args: {
+                student: frm.doc.student,
+            },
+            callback: function(r) { 
+                if (r.message){
+                    frm.set_value("hostel_registration_no",r.message['name'])
+                }
+            } 
+            
+        });    
+        
+	},
 })
 
 
