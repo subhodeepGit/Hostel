@@ -5,8 +5,7 @@ import frappe
 from frappe.model.document import Document
 
 class StudentHostelAdmission(Document):
-	def validate(doc):
-		doc.allotment_status = "Not Reported"
+	
 	def before_save(doc):
 		student = doc.student
 		a=frappe.db.sql("""SELECT SA.Name 
@@ -17,6 +16,12 @@ class StudentHostelAdmission(Document):
 			pass
 		else:
 			frappe.throw("Student Applicant not maintained")
+	def validate(doc):
+		doc.allotment_status = "Not Reported"
+
+		
+	def after_insert(doc):
+		frappe.db.set_value("Student Hostel Admission",doc.name, "allotment_status", "Not Reported") 
 
 	def on_submit(doc):
 		student = doc.student
