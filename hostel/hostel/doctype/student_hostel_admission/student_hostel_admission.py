@@ -5,6 +5,7 @@ import frappe
 from frappe.model.document import Document
 
 class StudentHostelAdmission(Document):
+	
 	def before_save(doc):
 		student = doc.student
 		a=frappe.db.sql("""SELECT SA.Name 
@@ -17,8 +18,11 @@ class StudentHostelAdmission(Document):
 			frappe.throw("Student Applicant not maintained")
 	def validate(doc):
 		doc.allotment_status = "Not Reported"
+		data=frappe.get_all("Student Hostel Admission",fields=[["student","=",doc.student],["allotment_status","!=","Allotted"],
+					["allotment_status","!=","De-Allotted"],["docstatus","=",1]])		
+		if len(data)!=0:
+			frappe.throw("Student record already present")
 
-		
 	def after_insert(doc):
 		frappe.db.set_value("Student Hostel Admission",doc.name, "allotment_status", "Not Reported") 
 
@@ -36,6 +40,7 @@ class StudentHostelAdmission(Document):
 							SET SA.hostel_required = 0
 							WHERE S.name="%s" """%(student))
 		frappe.msgprint("Your Application is cancelled")
+		frappe.db.set_value("Student Hostel Admission",doc.name, "allotment_status", "Cancelled") 
 
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs

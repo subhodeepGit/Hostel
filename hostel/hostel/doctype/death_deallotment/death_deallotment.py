@@ -14,7 +14,9 @@ class DeathDeallotment(Document):
 		frappe.db.sql(""" UPDATE `tabRoom Allotment` SET `end_date`="%s",`allotment_type`="%s" WHERE `name`="%s" """%\
 					(end_date,type_of_clearance,allotment_number))
 				
-		frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`+1 WHERE `name`="%s" """%(room_id))			
+		frappe.db.sql("""UPDATE `tabRoom Masters` SET `vacancy`=`vacancy`+1 WHERE `name`="%s" """%(room_id))
+		status=frappe.get_all("Room Allotment",{"name":doc.student},['hostel_registration_no'])
+		frappe.db.set_value("Student Hostel Admission",status[0]['hostel_registration_no'], "allotment_status", "Death-Deallotted") 			
 		pass
 
 
@@ -25,3 +27,4 @@ def ra_query(doctype, txt, searchfield, start, page_len, filters):
 		SELECT `name`,`student`,`student_name`,`hostel_id` FROM `tabRoom Allotment` WHERE (`start_date` <= now() AND `end_date` >= now()) 
 	"""
 	)	
+	
