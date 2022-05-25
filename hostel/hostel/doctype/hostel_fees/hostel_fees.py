@@ -8,6 +8,8 @@ from erpnext.accounts.general_ledger import make_reverse_gl_entries
 
 class HostelFees(Document):
 	def validate(self):
+		student=self.student
+		hostel_admission_id = self.hostel_admission
 		self.calculate_total()
 
 	def set_indicator(self):
@@ -76,31 +78,15 @@ def get_fee_components(hostel_fee_structure):
 #     for ce in frappe.get_all("Fees",{"program_enrollment":doc.name}):
 #         make_reverse_gl_entries(voucher_type="Fees", voucher_no=ce.name)
 
-# def create_fees(self):
-# 	fees = frappe.new_doc("Fees")
-# 	fees.student = self.student
-# 	fees.valid_from = self.valid_from
-# 	fees.valid_to = self.valid_to
-# 	fees.due_date = self.due_date
-# 	fees.program_enrollment = self.program_enrollment
-# 	fees.programs = self.programs
-# 	fees.program = self.program
-# 	fees.student_batch = self.student_batch
-# 	fees.academic_year = self.academic_year
-# 	fees.academic_term = self.academic_term
-# 	# fees.fee_structure = self.hostel_fee_structure
-# 	ref_details = frappe.get_all("Fee Component",{"parent":self.hostel_fee_structure},['fees_category','amount','receivable_account','income_account','company','grand_fee_amount','outstanding_fees'])
-# 	for i in ref_details:
-# 		fees.append("components",{
-# 			'fees_category' : i['fees_category'],
-# 			'amount' : i['amount'],
-# 			'receivable_account' : i['receivable_account'],
-# 			'income_account' : i['income_account'],
-# 			'company' : i['company'],
-# 			'grand_fee_amount' : i['grand_fee_amount'],
-# 			'outstanding_fees' : i['outstanding_fees'],
-# 		})
-# 	fees.save()
-# 	fees.submit()	
-# 	self.fees_id = fees.name
 
+@frappe.whitelist()
+def hostel_admission(student):
+	data=frappe.get_all("Student Hostel Admission",fields=[["student","=",student],["allotment_status","=","Allotted"],["docstatus","=",1]])
+	if len(data)>0:
+		return data[0]
+
+@frappe.whitelist()
+def room_allotment(hostel_admission_id):
+	data=frappe.get_all("Room Allotment",fields=[["hostel_registration_no","=",hostel_admission_id],["docstatus","=",1]])
+	if len(data)>0:
+		return data[0]

@@ -64,6 +64,21 @@ frappe.ui.form.on("Hostel Fees", {
 			frm.set_df_property('posting_date', 'read_only', 1);
 			frm.set_df_property('posting_time', 'read_only', 1);
 		}
+		if(frm.doc.docstatus > 0) {
+			frm.add_custom_button(__('Accounting Ledger'), function() {
+				frappe.route_options = {
+					voucher_no: frm.doc.fees_id,
+					from_date: frm.doc.posting_date,
+					to_date: moment(frm.doc.modified).format('YYYY-MM-DD'),
+					company: frm.doc.company,
+					group_by: '',
+					show_cancelled_entries: frm.doc.docstatus === 2
+				};
+				frappe.set_route("query-report", "General Ledger");
+			}, __("View"));
+		}
+
+
 	},
 
 	student: function(frm) {
@@ -180,6 +195,33 @@ frappe.ui.form.on("Hostel Fees", {
                     }
                 };
             });
+			frappe.call({
+				method: "hostel.hostel.doctype.hostel_fees.hostel_fees.hostel_admission",
+
+				args: {
+					student: frm.doc.student,
+				},
+				callback: function(r) { 
+					if (r.message){
+						frm.set_value("hostel_admission",r.message['name'])
+						frappe.call({
+							method: "hostel.hostel.doctype.hostel_fees.hostel_fees.room_allotment",
+							args:{
+								hostel_admission_id: frm.doc.hostel_admission,
+							},
+							callback: function(r) { 
+								if (r.message){
+									frm.set_value("allotment_number",r.message['name'])
+								}
+							} 
+							
+						}); 
+					}
+				} 
+				
+			}); 
+  
+				
             // frm.set_query("hostel_fee_structure", function() {
             //     return {
             //         query: 'hostel.hostel.doctype.hostel_fees.hostel_fees.get_fee_structures',                   
