@@ -40,7 +40,7 @@
   "receivable_account",
   "income_account",
   "column_break_31",
-  "institution",
+  "company",
   "amended_from",
   "accounting_dimensions_section",
   "cost_center",
@@ -260,12 +260,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "institution",
-   "fieldtype": "Link",
-   "label": "Institution",
-   "options": "Company"
-  },
-  {
    "fieldname": "accounting_dimensions_section",
    "fieldtype": "Section Break",
    "label": "Accounting Dimensions"
@@ -310,12 +304,18 @@
    "hidden": 1,
    "label": "Total Student",
    "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Institution",
+   "options": "Company"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-24 16:01:40.084136",
+ "modified": "2022-05-25 10:30:57.139262",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Fee Schedule",
