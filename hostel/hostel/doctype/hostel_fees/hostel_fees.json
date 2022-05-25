@@ -53,8 +53,9 @@
   "select_print_heading",
   "accounting_dimensions_section",
   "cost_center",
+  "fees_id",
   "column_break_46",
-  "fees_id"
+  "hostel_fee_schedule"
  ],
  "fields": [
   {
@@ -376,12 +377,18 @@
    "label": "Fees",
    "options": "Fees",
    "read_only": 1
+  },
+  {
+   "fieldname": "hostel_fee_schedule",
+   "fieldtype": "Link",
+   "label": "Hostel Fee Schedule",
+   "options": "Hostel Fee Schedule"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-24 13:00:07.388223",
+ "modified": "2022-05-25 10:46:16.752919",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Fees",
