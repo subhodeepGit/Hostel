@@ -1,11 +1,11 @@
 # Copyright (c) 2021, SOUL and contributors
 # For license information, please see license.txt
 
+from typing_extensions import Self
 import frappe
 from frappe.utils import money_in_words
 from frappe.model.document import Document
 from erpnext.accounts.general_ledger import make_reverse_gl_entries
-
 class HostelFees(Document):
 	def validate(self):
 		student=self.student
@@ -23,6 +23,9 @@ class HostelFees(Document):
 
 	def on_submit(self):
 		self.create_fees()
+
+	def on_cancel(self):
+		self.cancel_fees()
 		
 	def calculate_total(self):
 		"""Calculates total amount."""
@@ -31,8 +34,6 @@ class HostelFees(Document):
 			self.grand_total += d.amount
 		self.outstanding_amount = self.grand_total
 		self.grand_total_in_words = money_in_words(self.grand_total)
-
-
 
 	def create_fees(self):
 		fees = frappe.new_doc("Fees")
@@ -61,7 +62,12 @@ class HostelFees(Document):
 		fees.save()
 		fees.submit()	
 		self.fees_id = fees.name
-		frappe.db.set_value("Hostel Fees",self.name,"fees_id",fees.name)	
+		frappe.db.set_value("Hostel Fees",self.name,"fees_id",fees.name)
+
+	def cancel_fees(self):
+		cancel_doc = frappe.get_doc("Fees",self.fees_id)
+		cancel_doc.cancel()
+
 
 @frappe.whitelist()
 def get_fee_components(hostel_fee_structure):
@@ -72,12 +78,6 @@ def get_fee_components(hostel_fee_structure):
 	if hostel_fee_structure:
 		fs = frappe.get_all("Fee Component", fields=["fees_category", "description", "amount", "receivable_account", "income_account", "waiver_type", "waiver_amount", "grand_fee_amount", "outstanding_fees"] , filters={"parent": hostel_fee_structure}, order_by= "idx")
 		return fs
-
-
-# def cancel_fees(doc):
-#     for ce in frappe.get_all("Fees",{"program_enrollment":doc.name}):
-#         make_reverse_gl_entries(voucher_type="Fees", voucher_no=ce.name)
-
 
 @frappe.whitelist()
 def hostel_admission(student):
