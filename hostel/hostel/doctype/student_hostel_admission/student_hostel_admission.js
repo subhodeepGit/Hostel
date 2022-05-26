@@ -21,6 +21,21 @@ frappe.ui.form.on('Student Hostel Admission', {
 				query: "hostel.hostel.doctype.student_hostel_admission.student_hostel_admission.room_query"
 			};
 		});
+	},
+	refresh: function(frm) {
+		if(frm.doc.docstatus > 0) {
+			frm.add_custom_button(__('Accounting Ledger'), function() {
+				frappe.route_options = {
+					voucher_no: frm.doc.hostel_fees,
+					from_date: frm.doc.posting_date,
+					to_date: moment(frm.doc.modified).format('YYYY-MM-DD'),
+					company: frm.doc.company,
+					group_by: '',
+					show_cancelled_entries: frm.doc.docstatus === 2
+				};
+				frappe.set_route("query-report", "General Ledger");
+			}, __("View"));
+		}
 	}
 })
 
