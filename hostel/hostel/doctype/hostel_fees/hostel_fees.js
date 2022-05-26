@@ -77,8 +77,6 @@ frappe.ui.form.on("Hostel Fees", {
 				frappe.set_route("query-report", "General Ledger");
 			}, __("View"));
 		}
-
-
 	},
 
 	student: function(frm) {
@@ -97,55 +95,7 @@ frappe.ui.form.on("Hostel Fees", {
 					}
 				}
 			});
-		}
-	},
-
-	set_posting_time: function(frm) {
-		frm.refresh();
-	},
-
-	academic_term: function() {
-		frappe.ui.form.trigger("Fees", "program");
-	},
-
-	hostel_fee_structure: function(frm) {
-		frm.set_value("components" ,"");
-		if (frm.doc.hostel_fee_structure) {
-			frappe.call({
-				method: "hostel.hostel.doctype.hostel_fees.hostel_fees.get_fee_components",                
-				args: {
-					"hostel_fee_structure": frm.doc.hostel_fee_structure
-				},
-				callback: function(r) {
-					if (r.message) {
-						$.each(r.message, function(i, d) {
-							var row = frappe.model.add_child(frm.doc, "Fee Component", "components");
-							row.fees_category = d.fees_category;
-							row.receivable_account=d.receivable_account;
-							row.income_account = d.income_account;
-							row.description = d.description;
-							row.amount = d.amount;
-							row.receivable_account=d.receivable_account;
-                            row.grand_fee_amount=d.grand_fee_amount;
-                            row.outstanding_fees=d.outstanding_fees;
-						});
-					}
-					refresh_field("components");
-					frm.trigger("calculate_total_amount");
-				}
-			});
-		}
-	},
-
-	calculate_total_amount: function(frm) {
-		var grand_total = 0;
-		for(var i=0;i<frm.doc.components.length;i++) {
-			grand_total += frm.doc.components[i].amount;
-		}
-		frm.set_value("grand_total", grand_total);
-	},
-    student(frm){
-        if (frm.doc.student){
+			frm.trigger("set_hostel_id");
             frm.trigger("set_program_enrollment");
             frm.set_query("programs", function() {
                 return {
@@ -194,45 +144,81 @@ frappe.ui.form.on("Hostel Fees", {
                         "student":frm.doc.student
                     }
                 };
-            });
-			frappe.call({
-				method: "hostel.hostel.doctype.hostel_fees.hostel_fees.hostel_admission",
+            }); 
+		}
+	},
 
+	set_posting_time: function(frm) {
+		frm.refresh();
+	},
+
+	academic_term: function() {
+		frappe.ui.form.trigger("Fees", "program");
+	},
+
+	hostel_fee_structure: function(frm) {
+		frm.set_value("components" ,"");
+		if (frm.doc.hostel_fee_structure) {
+			frappe.call({
+				method: "hostel.hostel.doctype.hostel_fees.hostel_fees.get_fee_components",                
 				args: {
-					student: frm.doc.student,
+					"hostel_fee_structure": frm.doc.hostel_fee_structure
 				},
-				callback: function(r) { 
-					if (r.message){
-						frm.set_value("hostel_admission",r.message['name'])
-						frappe.call({
-							method: "hostel.hostel.doctype.hostel_fees.hostel_fees.room_allotment",
-							args:{
-								hostel_admission_id: frm.doc.hostel_admission,
-							},
-							callback: function(r) { 
-								if (r.message){
-									frm.set_value("allotment_number",r.message['name'])
-								}
-							} 
-							
-						}); 
+				callback: function(r) {
+					if (r.message) {
+						$.each(r.message, function(i, d) {
+							var row = frappe.model.add_child(frm.doc, "Fee Component", "components");
+							row.fees_category = d.fees_category;
+							row.receivable_account=d.receivable_account;
+							row.income_account = d.income_account;
+							row.description = d.description;
+							row.amount = d.amount;
+							row.receivable_account=d.receivable_account;
+                            row.grand_fee_amount=d.grand_fee_amount;
+                            row.outstanding_fees=d.outstanding_fees;
+						});
 					}
-				} 
-				
-			}); 
-  
-				
-            // frm.set_query("hostel_fee_structure", function() {
-            //     return {
-            //         query: 'hostel.hostel.doctype.hostel_fees.hostel_fees.get_fee_structures',                   
-            //         filters: {
-            //             "student":frm.doc.student
-            //         }
-            //     };
-            // });
-            
-        }
-    },
+					refresh_field("components");
+					frm.trigger("calculate_total_amount");
+				}
+			});
+		}
+	},
+
+	calculate_total_amount: function(frm) {
+		var grand_total = 0;
+		for(var i=0;i<frm.doc.components.length;i++) {
+			grand_total += frm.doc.components[i].amount;
+		}
+		frm.set_value("grand_total", grand_total);
+	},
+    
+	set_hostel_id(frm){
+		frappe.call({
+			method: "hostel.hostel.doctype.hostel_fees.hostel_fees.hostel_admission",
+			args: {
+				student: frm.doc.student,
+			},
+			callback: function(r) { 
+				if (r.message){
+					frm.set_value("hostel_admission",r.message['name'])
+					frappe.call({
+						method: "hostel.hostel.doctype.hostel_fees.hostel_fees.room_allotment",
+						args:{
+							hostel_admission_id: frm.doc.hostel_admission,
+						},
+						callback: function(r) { 
+							if (r.message){
+								frm.set_value("allotment_number",r.message['name'])
+							}
+						} 
+						
+					}); 
+				}
+			} 
+		});  
+	},
+
     set_program_enrollment(frm) {
         frappe.call({
             method: "ed_tec.ed_tec.doctype.program_enrollment.get_program_enrollment",
@@ -249,10 +235,8 @@ frappe.ui.form.on("Hostel Fees", {
     },
 });
 
-
 frappe.ui.form.on("Fee Component", {
 	amount: function(frm) {
 		frm.trigger("calculate_total_amount");
 	}
 });
-
