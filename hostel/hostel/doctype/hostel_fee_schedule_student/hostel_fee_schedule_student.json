@@ -13,6 +13,7 @@
   "room_type",
   "column_break_4",
   "hostel_id",
+  "hostel_registration_no",
   "start_date",
   "end_date"
  ],
@@ -76,12 +77,18 @@
    "fieldtype": "Data",
    "label": "Student Name",
    "read_only": 1
+  },
+  {
+   "fieldname": "hostel_registration_no",
+   "fieldtype": "Data",
+   "label": "Hostel Registration No.",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-05-24 16:18:34.467440",
+ "modified": "2022-05-26 11:07:30.482501",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Fee Schedule Student",

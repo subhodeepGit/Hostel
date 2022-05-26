@@ -17,20 +17,64 @@ frappe.ui.form.on("Hostel Fee Schedule", {
         
             callback: function(r) {
                 (r.message).forEach(element => {
-                    // if(in_list(student_list, element.student)) {
                     var row = frm.add_child("student_room_alloted")
                     row.room_allotment_id=element.room_allotment
+                    row.hostel_registration_no=element.hostel_registration_no
                 });
                 frm.refresh_field("student_room_alloted")
                 frm.save();
-                // a=frm.doc.student_room_alloted.length;
-                // frm.set_value("total_student", a);
-                // frm.set_value("total_enrolled_student",(r.message).length)
             }
         });
-    },  
-    
- 
+        frappe.realtime.on('fee_schedule_progress', function(data) {
+			if (data.reload && data.reload === 1) {
+				frm.reload_doc();
+			}
+			if (data.progress) {
+				let progress_bar = $(cur_frm.dashboard.progress_area.body).find('.progress-bar');
+				if (progress_bar) {
+					$(progress_bar).removeClass('progress-bar-danger').addClass('progress-bar-success progress-bar-striped');
+					$(progress_bar).css('width', data.progress+'%');
+				}
+			}
+		});
+
+		erpnext.accounts.dimensions.setup_dimension_filters(frm, frm.doctype);
+	},
+// Dashboard and Custom Button
+    refresh: function(frm) {
+		if (!frm.doc.__islocal && frm.doc.__onload && frm.doc.__onload.dashboard_info &&
+			frm.doc.fee_creation_status === 'Successful') {
+			var info = frm.doc.__onload.dashboard_info;
+			frm.dashboard.add_indicator(__('Total Collected: {0}', [format_currency(info.total_paid,
+				info.currency)]), 'blue');
+			frm.dashboard.add_indicator(__('Total Outstanding: {0}', [format_currency(info.total_unpaid,
+				info.currency)]), info.total_unpaid ? 'orange' : 'green');
+		}
+		if (frm.doc.fee_creation_status === 'In Process') {
+			frm.dashboard.add_progress('Fee Creation Status', '0');
+		}
+		if (frm.doc.docstatus === 1 && !frm.doc.fee_creation_status || frm.doc.fee_creation_status === 'Failed') {
+			frm.add_custom_button(__('Create Fees'), function() {
+				frappe.call({
+					method: 'create_fees',
+					doc: frm.doc,
+					callback: function() {
+						frm.refresh();
+					}
+				});
+			}).addClass('btn-primary');;
+		}
+		if (frm.doc.fee_creation_status === 'Successful') {
+			frm.add_custom_button(__('View Fees Records'), function() {
+				frappe.route_options = {
+					fee_schedule: frm.doc.name
+				};
+				frappe.set_route('List', 'Hostel Fees');
+			});
+		}
+
+	},
+
 });
 // child table Fetch from "Fee Structure Hostel"
 frappe.ui.form.on("Hostel Fee Schedule", "fee_structure", function(frm){
