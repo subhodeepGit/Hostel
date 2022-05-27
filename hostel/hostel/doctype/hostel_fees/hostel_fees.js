@@ -23,9 +23,10 @@ frappe.ui.form.on("Hostel Fees", {
 			};
 		});
 		frm.set_query("hostel_fee_structure", function() {
-			return{
-				"filters":{
-					"academic_year": (frm.doc.academic_year)
+			return {
+				query: 'hostel.hostel.doctype.hostel_fees.hostel_fees.get_fee_structures',
+				filters: {
+					"student":frm.doc.student
 				}
 			};
 		});
