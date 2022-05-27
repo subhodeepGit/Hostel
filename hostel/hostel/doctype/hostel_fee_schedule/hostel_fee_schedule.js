@@ -114,9 +114,10 @@ frappe.ui.form.on("Hostel Fee Schedule", "fee_structure", function(frm){
 // "Hostel Fee Schedule Student" Child table length are calculated
 frappe.ui.form.on("Hostel Fee Schedule", {
     refresh:function(frm){
-    a=frm.doc.student_room_alloted.length;
-    frm.set_value("total_student", a);
-    refresh_field("total_student");
+        a=0;
+        a=frm.doc.student_room_alloted.length;
+        frm.set_value("total_student", a);
+        refresh_field("total_student");
     }
 });
 
