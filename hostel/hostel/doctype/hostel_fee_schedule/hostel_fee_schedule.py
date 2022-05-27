@@ -22,6 +22,7 @@ class HostelFeeSchedule(Document):
 				"""%(self.programs,self.program,self.academic_term,self.academic_year,self.room_type),as_dict = True)
 		length=len(a)  
 		self.grand_total=self.total_amount*length
+		self.grand_total_in_words = money_in_words(self.grand_total)
 
 		
 	def on_submit(self):
