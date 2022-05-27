@@ -90,3 +90,11 @@ def room_allotment(hostel_admission_id):
 	data=frappe.get_all("Room Allotment",fields=[["hostel_registration_no","=",hostel_admission_id],["docstatus","=",1]])
 	if len(data)>0:
 		return data[0]
+
+@frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def get_fee_structures(doctype, txt, searchfield, start, page_len, filters):
+    program=""
+    for d in frappe.get_all("Current Educational Details",{"parent":filters.get("student")},['semesters']):
+        program+=d.semesters
+    return frappe.db.sql("""select name,program,academic_year from `tabFee Structure Hostel` where program IN ('{0}') and (name like '%{1}%' or program like '%{1}%' or  academic_year like '%{1}%')""".format(program,txt))
