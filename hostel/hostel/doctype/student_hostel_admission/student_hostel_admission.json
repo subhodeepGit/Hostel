@@ -33,7 +33,10 @@
   "feature",
   "hostel_fee_structure_section",
   "hostel_fee_structure",
+  "due_date",
   "hostel_fee_components",
+  "hostel_fees",
+  "hostel_fees_id",
   "amended_from"
  ],
  "fields": [
@@ -215,12 +218,30 @@
    "fieldtype": "Table",
    "label": "Hostel Fee Components",
    "options": "Fee Component"
+  },
+  {
+   "fieldname": "hostel_fees",
+   "fieldtype": "Data",
+   "label": "Hostel Fees",
+   "read_only": 1
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "hostel_fees_id",
+   "fieldtype": "Data",
+   "label": "Hostel Fees Id",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-24 12:32:50.480500",
+ "modified": "2022-05-27 14:58:31.698641",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Student Hostel Admission",
