@@ -23,6 +23,35 @@ class StudentHostelAdmission(Document):
 							JOIN `tabStudent` S on S.student_applicant=SA.name
 							SET SA.hostel_required = 1
 							WHERE S.name="%s" """%(student))
+	def before_save(doc):
+		student = doc.student
+		a=frappe.db.sql("""SELECT SA.Name 
+						from `tabStudent Applicant` as SA 
+						JOIN `tabStudent` S on S.student_applicant=SA.name
+						WHERE S.name="%s" """%(student))
+		if len(a)!=0:				
+			pass
+		else:
+			frappe.throw("Student Applicant not maintained")
+
+
+	def after_insert(doc):
+		frappe.db.set_value("Student Hostel Admission",doc.name, "allotment_status", "Not Reported") 
+
+
+
+	def on_cancel(doc):
+		# fee_structure_id = fee_structure_validation(doc)
+		# cancel_fees(doc)
+		student = doc.student
+		frappe.db.sql(""" UPDATE `tabStudent Applicant` as SA 
+							JOIN `tabStudent` S on S.student_applicant=SA.name
+							SET SA.hostel_required = 0
+							WHERE S.name="%s" """%(student))
+		frappe.msgprint("Your Application is cancelled")
+		frappe.db.set_value("Student Hostel Admission",doc.name, "allotment_status", "Cancelled") 
+
+
 def fee_structure_validation(doc): 
 	existed_fs = frappe.db.get_list("Fee Structure Hostel", {'docstatus':1},["name","cost_center"])
 	if len(existed_fs) != 0:
@@ -65,38 +94,23 @@ def create_fees(doc,fee_structure_id,cost_center=None,on_submit=0):
 	fees.save()
 	fees.submit()
 	doc.hostel_fees=fees.fees_id
+	doc.hostel_fees_id=fees.name
 	frappe.db.set_value("Student Hostel Admission",doc.name,"hostel_fees",fees.fees_id)	
-# def cancel_fees(doc,fee_structure_id):
-#     for ce in frappe.get_all("Hostel Fees",{"Student Hostel Admission":doc.name,"hostel_fee_structure":fee_structure_id}):
-#         make_reverse_gl_entries(voucher_type="Hostel Fees", voucher_no=ce.name)
+	frappe.db.set_value("Student Hostel Admission",doc.name,"hostel_fees_id",fees.name)
 
-def before_save(doc):
-	student = doc.student
-	a=frappe.db.sql("""SELECT SA.Name 
-					from `tabStudent Applicant` as SA 
-					JOIN `tabStudent` S on S.student_applicant=SA.name
-					WHERE S.name="%s" """%(student))
-	if len(a)!=0:				
-		pass
-	else:
-		frappe.throw("Student Applicant not maintained")
+# def cancel_fees(doc):
+#     # for ce in frappe.get_all("Hostel Fees",{"Student Hostel Admission":doc.name,"hostel_fee_structure":fee_structure_id}):
+#     #     make_reverse_gl_entries(voucher_type="Hostel Fees", voucher_no=ce.name)
+# 	data=frappe.ge_all("Hostel Fees",{"name":doc.hostel_fees_id},["docstatus"])
+# 	if data[0]["docstatus"]==2 :
+# 		pass
+# 	else:
+# 		frappe.throw("Please cancel the Hostel Fees first")
+# 	# hostel_fee_object= frappe.get_doc("Hostel Fees",doc.hostel_fees_id)
+# 	# hostel_fee_object.cancel()
+# 	# hostel_fee_object.save(ignore_permissions=True)
+# 	# frappe.db.commit()
 
-
-def after_insert(doc):
-	frappe.db.set_value("Student Hostel Admission",doc.name, "allotment_status", "Not Reported") 
-
-
-
-def on_cancel(doc):
-	fee_structure_id = fee_structure_validation(doc)
-	# cancel_fees(doc,fee_structure_id)
-	student = doc.student
-	frappe.db.sql(""" UPDATE `tabStudent Applicant` as SA 
-						JOIN `tabStudent` S on S.student_applicant=SA.name
-						SET SA.hostel_required = 0
-						WHERE S.name="%s" """%(student))
-	frappe.msgprint("Your Application is cancelled")
-	frappe.db.set_value("Student Hostel Admission",doc.name, "allotment_status", "Cancelled") 
 
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
