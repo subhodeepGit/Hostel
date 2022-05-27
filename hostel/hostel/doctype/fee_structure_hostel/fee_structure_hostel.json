@@ -36,7 +36,7 @@
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Naming Series",
-   "options": "EDU-FST-.YYYY.-",
+   "options": "EDU-FSTH-.YYYY.-",
    "set_only_once": 1
   },
   {
@@ -178,7 +178,7 @@
  "icon": "fa fa-flag",
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-16 17:48:26.549888",
+ "modified": "2022-05-27 16:55:03.962191",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Fee Structure Hostel",

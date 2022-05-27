@@ -10,7 +10,7 @@ frappe.ui.form.on('Room Allotment', {
 					["Room Masters", "validity", "=", "Approved"],
 					["Room Masters", "status", "=", "Allotted"],
 					["Room Masters", "vacancy", ">", 0],
-					["Student Hostel Admission", "room_type", "=", frm.doc.room_type_reference]
+					["Room Masters", "actual_room_type", "=", frm.doc.room_type_reference]
 				]
 			}
 		});
