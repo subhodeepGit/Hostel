@@ -65,10 +65,10 @@ def create_fees(doc,fee_structure_id,cost_center=None,on_submit=0):
 	fees.save()
 	fees.submit()
 	doc.hostel_fees=fees.fees_id
-	frappe.db.set_value("Student Hostel Admission",doc.fees_id,"hostel_fees",fees.fees_id)	
-def cancel_fees(doc,fee_structure_id):
-    for ce in frappe.get_all("Fees",{"Student Hostel Admission":doc.name,"hostel_fee_structure":fee_structure_id}):
-        make_reverse_gl_entries(voucher_type="Hostel Fees", voucher_no=ce.name)
+	frappe.db.set_value("Student Hostel Admission",doc.name,"hostel_fees",fees.fees_id)	
+# def cancel_fees(doc,fee_structure_id):
+#     for ce in frappe.get_all("Hostel Fees",{"Student Hostel Admission":doc.name,"hostel_fee_structure":fee_structure_id}):
+#         make_reverse_gl_entries(voucher_type="Hostel Fees", voucher_no=ce.name)
 
 def before_save(doc):
 	student = doc.student
@@ -89,7 +89,7 @@ def after_insert(doc):
 
 def on_cancel(doc):
 	fee_structure_id = fee_structure_validation(doc)
-	cancel_fees(doc,fee_structure_id)
+	# cancel_fees(doc,fee_structure_id)
 	student = doc.student
 	frappe.db.sql(""" UPDATE `tabStudent Applicant` as SA 
 						JOIN `tabStudent` S on S.student_applicant=SA.name

@@ -222,8 +222,7 @@
    "fieldname": "hostel_fees",
    "fieldtype": "Link",
    "label": "Hostel Fees",
-   "options": "Hostel Fees",
-   "read_only": 1
+   "options": "Hostel Fees"
   },
   {
    "fieldname": "due_date",
@@ -235,7 +234,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-26 12:53:24.188066",
+ "modified": "2022-05-26 16:44:09.118081",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Student Hostel Admission",

@@ -40,7 +40,7 @@ frappe.ui.form.on("Hostel Fee Schedule", {
 
 		erpnext.accounts.dimensions.setup_dimension_filters(frm, frm.doctype);
 	},
-// Dashboard and Custom Button
+// Dashboard and Custom Button and Accounting Ledger
     refresh: function(frm) {
 		if (!frm.doc.__islocal && frm.doc.__onload && frm.doc.__onload.dashboard_info &&
 			frm.doc.fee_creation_status === 'Successful') {
@@ -72,9 +72,20 @@ frappe.ui.form.on("Hostel Fee Schedule", {
 				frappe.set_route('List', 'Hostel Fees');
 			});
 		}
-
-	},
-
+        if (frm.doc.fee_creation_status === 'Successful') {
+			frm.add_custom_button(__('Accounting Ledger'), function() {
+				frappe.route_options = {
+                    voucher_no: frm.doc.name,
+					from_date: frm.doc.posting_date,
+					to_date: moment(frm.doc.modified).format('YYYY-MM-DD'),
+					company: frm.doc.company,
+					group_by: '',
+					show_cancelled_entries: frm.doc.docstatus === 2
+				};
+				frappe.set_route("query-report", "Hostel fee schedule General ledger");
+			});
+		}
+    }
 });
 // child table Fetch from "Fee Structure Hostel"
 frappe.ui.form.on("Hostel Fee Schedule", "fee_structure", function(frm){
