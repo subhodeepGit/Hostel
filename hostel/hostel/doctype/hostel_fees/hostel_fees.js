@@ -215,8 +215,7 @@ frappe.ui.form.on("Hostel Fees", {
 								frm.set_value("room_number",r.message['room_number'])
 								frm.set_value("room_type",r.message['room_type'])
 							}
-						} 
-						
+						} 						
 					}); 
 				}
 			} 
