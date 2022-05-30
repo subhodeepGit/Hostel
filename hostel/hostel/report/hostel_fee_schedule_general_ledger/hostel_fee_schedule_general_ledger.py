@@ -254,12 +254,16 @@ def get_conditions(filters):
 	if filters.get("voucher_no"):
 		###############################
 		fee_structure_hostel=filters.get("voucher_no")
+		print("hello")
 		list_of_voucher_no=frappe.db.get_list("Hostel Fees", filters=[["hostel_fee_schedule","=",fee_structure_hostel]],fields=["Fees_id"])
 		voucher_no_list=[]
 		for t in list_of_voucher_no:
 			voucher_no_list.append(t["Fees_id"])
 		##################################################
-		conditions.append("voucher_no in %s"%str(tuple(voucher_no_list)))
+		if len(voucher_no_list)==1:
+			conditions.append(" voucher_no = '%s' "%str(voucher_no_list[0]))
+		elif len(voucher_no_list)>1:
+			conditions.append(" voucher_no in %s"%str(tuple(voucher_no_list)))
 
 	if filters.get("group_by") == "Group by Party" and not filters.get("party_type"):
 		conditions.append("party_type in ('Customer', 'Supplier')")
