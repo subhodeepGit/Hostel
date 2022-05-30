@@ -85,7 +85,7 @@
    "fieldtype": "Select",
    "label": "Naming Series",
    "no_copy": 1,
-   "options": "FEE-SCH-.YYYY.-"
+   "options": "FEE-HSC-.YYYY.-"
   },
   {
    "fieldname": "fee_creation_status",
@@ -315,7 +315,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-25 10:30:57.139262",
+ "modified": "2022-05-30 13:02:38.179698",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Fee Schedule",
