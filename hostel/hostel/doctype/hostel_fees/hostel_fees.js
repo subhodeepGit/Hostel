@@ -211,6 +211,9 @@ frappe.ui.form.on("Hostel Fees", {
 						callback: function(r) { 
 							if (r.message){
 								frm.set_value("allotment_number",r.message['name'])
+								frm.set_value("hostel",r.message['hostel_id'])
+								frm.set_value("room_number",r.message['room_number'])
+								frm.set_value("room_type",r.message['room_type'])
 							}
 						} 
 						

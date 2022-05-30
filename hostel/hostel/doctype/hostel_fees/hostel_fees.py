@@ -2,6 +2,7 @@
 # For license information, please see license.txt
 
 from typing_extensions import Self
+from warnings import filters
 import frappe
 from frappe.utils import money_in_words
 from frappe.model.document import Document
@@ -87,7 +88,7 @@ def hostel_admission(student):
 
 @frappe.whitelist()
 def room_allotment(hostel_admission_id):
-	data=frappe.get_all("Room Allotment",fields=[["hostel_registration_no","=",hostel_admission_id],["docstatus","=",1]])
+	data=frappe.get_all("Room Allotment",fields=["name","hostel_id","room_number","room_type"],filters=[["hostel_registration_no","=",hostel_admission_id],["docstatus","=",1]])
 	if len(data)>0:
 		return data[0]
 
