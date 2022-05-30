@@ -254,7 +254,7 @@ def get_conditions(filters):
 	if filters.get("voucher_no"):
 		###############################
 		fee_structure_hostel=filters.get("voucher_no")
-		list_of_voucher_no=frappe.db.get_list("Hostel Fees", filters=[["hostel_fee_schedule","=",fee_structure_hostel]],fields=["name","Fees_id"])
+		list_of_voucher_no=frappe.db.get_list("Hostel Fees", filters=[["hostel_fee_schedule","=",fee_structure_hostel]],fields=["Fees_id"])
 		voucher_no_list=[]
 		for t in list_of_voucher_no:
 			voucher_no_list.append(t["Fees_id"])
@@ -439,8 +439,8 @@ def get_accountwise_gle(filters, accounting_dimensions, gl_entries, gle_map):
 
 	for gle in gl_entries:
 		group_by_value = gle.get(group_by)
-########
-		if (gle.posting_date <= from_date or (cstr(gle.is_opening) == "Yes" and not show_opening_entries)):
+
+		if (gle.posting_date < from_date or (cstr(gle.is_opening) == "Yes" and not show_opening_entries)):
 			if not group_by_voucher_consolidated:
 				update_value_in_dict(gle_map[group_by_value].totals, 'opening', gle)
 				update_value_in_dict(gle_map[group_by_value].totals, 'closing', gle)
