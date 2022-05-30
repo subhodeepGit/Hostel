@@ -175,6 +175,12 @@ doc_events = {
 # 	}
 # ]
 
+# fixtures = [
+#     {"dt": "Workflow Action Master"},
+#     {"dt": "Workflow State"},
+#     {"dt": "Workflow"},
+# ]
+
 # Authentication and authorization
 # --------------------------------
 
