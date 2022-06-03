@@ -23,7 +23,14 @@
   "students_application",
   "address_proof",
   "end_date",
-  "application_status"
+  "application_status",
+  "section_break_18",
+  "hostel_fees",
+  "fees",
+  "column_break_21",
+  "hostel_fee_structure",
+  "section_break_23",
+  "components"
  ],
  "fields": [
   {
@@ -143,11 +150,49 @@
    "fieldtype": "Data",
    "label": "Registration Number",
    "read_only": 1
+  },
+  {
+   "fieldname": "section_break_18",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "hostel_fees",
+   "fieldtype": "Link",
+   "label": "Hostel Fees",
+   "options": "Hostel Fees",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fees",
+   "fieldtype": "Data",
+   "label": "Fees",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_21",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "hostel_fee_structure",
+   "fieldtype": "Link",
+   "label": "Hostel Fee Structure",
+   "options": "Fee Structure Hostel",
+   "read_only": 1
+  },
+  {
+   "fieldname": "components",
+   "fieldtype": "Table",
+   "label": "Components",
+   "options": "Deallotment Fee Waiver Components"
+  },
+  {
+   "fieldname": "section_break_23",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-05-16 17:04:25.211831",
+ "modified": "2022-06-03 16:39:52.313711",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Deallotment Process",
