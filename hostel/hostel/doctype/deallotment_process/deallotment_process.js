@@ -3,7 +3,6 @@
 
 frappe.ui.form.on('Deallotment Process', {
 	setup: function (frm) {
-		alert(frm.doc.workflow_state)
 		frm.set_query("allotment_number", function() {
 			return {
 				query: "hostel.hostel.doctype.room_change.room_change.ra_query"
@@ -11,11 +10,10 @@ frappe.ui.form.on('Deallotment Process', {
 		});
 	},
 
-	allotment_number: function(frm) {
+	refresh: function(frm){
 		if(frm.doc.workflow_state == 'Approved'){
 			frm.trigger("fee_components");
 		}
-		
 	},
 
 	fee_components(frm){

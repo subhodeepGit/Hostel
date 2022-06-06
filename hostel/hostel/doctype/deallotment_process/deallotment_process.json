@@ -47,7 +47,8 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Allotment Number",
-   "options": "Room Allotment"
+   "options": "Room Allotment",
+   "reqd": 1
   },
   {
    "fieldname": "room_masters",
@@ -186,13 +187,14 @@
    "options": "Deallotment Fee Waiver Components"
   },
   {
+   "depends_on": "eval:doc.hostel_fees != null",
    "fieldname": "section_break_23",
    "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-06-03 16:39:52.313711",
+ "modified": "2022-06-06 11:58:09.731125",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Deallotment Process",
