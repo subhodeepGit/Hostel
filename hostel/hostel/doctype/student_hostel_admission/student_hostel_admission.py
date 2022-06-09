@@ -80,7 +80,7 @@ def create_fees(doc,fee_structure_id,cost_center=None,on_submit=0):
 		fees.valid_to =t.term_date[0]['term_end_date']             
 	fees.hostel_fee_structure = fee_structure_id
 	fees.cost_center=cost_center
-	ref_details = frappe.get_all("Fee Component",{"parent":fee_structure_id},['fees_category','amount','receivable_account','income_account','company','grand_fee_amount','outstanding_fees'])
+	ref_details = frappe.get_all("Fee Component",{"parent":fee_structure_id},['fees_category','amount','receivable_account','income_account','company','grand_fee_amount','outstanding_fees'],order_by="idx asc")
 	for i in ref_details:
 		fees.append("components",{
 			'fees_category' : i['fees_category'],

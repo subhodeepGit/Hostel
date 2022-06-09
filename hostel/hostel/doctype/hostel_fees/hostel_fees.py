@@ -49,7 +49,7 @@ class HostelFees(Document):
 		fees.academic_year = self.academic_year
 		fees.academic_term = self.academic_term
 		# fees.fee_structure = self.hostel_fee_structure
-		ref_details = frappe.get_all("Fee Component",{"parent":self.hostel_fee_structure},['fees_category','amount','receivable_account','income_account','company','grand_fee_amount','outstanding_fees'])
+		ref_details = frappe.get_all("Fee Component",{"parent":self.hostel_fee_structure},['fees_category','amount','receivable_account','income_account','company','grand_fee_amount','outstanding_fees'],order_by="idx asc")
 		for i in ref_details:
 			fees.append("components",{
 				'fees_category' : i['fees_category'],
@@ -77,7 +77,7 @@ def get_fee_components(hostel_fee_structure):
 	:param fee_structure_hostel: Fee Structure Hostel.
 	"""
 	if hostel_fee_structure:
-		fs = frappe.get_all("Fee Component", fields=["fees_category", "description", "amount", "receivable_account", "income_account", "waiver_type", "waiver_amount", "grand_fee_amount", "outstanding_fees"] , filters={"parent": hostel_fee_structure}, order_by= "idx")
+		fs = frappe.get_all("Fee Component", fields=["fees_category", "description", "amount", "receivable_account", "income_account", "waiver_type", "waiver_amount", "grand_fee_amount", "outstanding_fees"] , filters={"parent": hostel_fee_structure}, order_by= "idx asc")
 		return fs
 
 @frappe.whitelist()
