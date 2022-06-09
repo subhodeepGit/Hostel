@@ -100,7 +100,7 @@ frappe.ui.form.on("Hostel Fees", {
             frm.trigger("set_program_enrollment");
             frm.set_query("programs", function() {
                 return {
-                    query: 'kp_edtec.ed_tec.doctype.fees.get_progarms',
+                    query: 'ed_tec.ed_tec.doctype.fees.get_progarms',
                     filters: {
                         "student":frm.doc.student
                     }
@@ -108,7 +108,7 @@ frappe.ui.form.on("Hostel Fees", {
             });
             frm.set_query("program", function() {
                 return {
-                    query: 'kp_edtec.ed_tec.doctype.fees.get_sem',
+                    query: 'ed_tec.ed_tec.doctype.fees.get_sem',
                     filters: {
                         "student":frm.doc.student
                     }
@@ -116,7 +116,7 @@ frappe.ui.form.on("Hostel Fees", {
             });
             frm.set_query("academic_term", function() {
                 return {
-                    query: 'kp_edtec.ed_tec.doctype.fees.get_term',
+                    query: 'ed_tec.ed_tec.doctype.fees.get_term',
                     filters: {
                         "student":frm.doc.student
                     }
@@ -124,7 +124,7 @@ frappe.ui.form.on("Hostel Fees", {
             });
             frm.set_query("academic_year", function() {
                 return {
-                    query: 'kp_edtec.ed_tec.doctype.fees.get_year',
+                    query: 'ed_tec.ed_tec.doctype.fees.get_year',
                     filters: {
                         "student":frm.doc.student
                     }
@@ -132,7 +132,7 @@ frappe.ui.form.on("Hostel Fees", {
             });
             frm.set_query("student_category", function() {
                 return {
-                    query: 'kp_edtec.ed_tec.doctype.fees.get_student_category',
+                    query: 'ed_tec.ed_tec.doctype.fees.get_student_category',
                     filters: {
                         "student":frm.doc.student
                     }
@@ -140,7 +140,7 @@ frappe.ui.form.on("Hostel Fees", {
             });
             frm.set_query("student_batch", function() {
                 return {
-                    query: 'kp_edtec.ed_tec.doctype.fees.get_batch',
+                    query: 'ed_tec.ed_tec.doctype.fees.get_batch',
                     filters: {
                         "student":frm.doc.student
                     }
@@ -224,7 +224,7 @@ frappe.ui.form.on("Hostel Fees", {
 
     set_program_enrollment(frm) {
         frappe.call({
-            method: "kp_edtec.ed_tec.doctype.program_enrollment.get_program_enrollment",
+            method: "ed_tec.ed_tec.doctype.program_enrollment.get_program_enrollment",
             args: {
                 student: frm.doc.student,
             },
