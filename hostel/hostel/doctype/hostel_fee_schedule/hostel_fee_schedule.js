@@ -53,7 +53,10 @@ frappe.ui.form.on("Hostel Fee Schedule", {
 		if (frm.doc.fee_creation_status === 'In Process') {
 			frm.dashboard.add_progress('Fee Creation Status', '0');
 		}
-		if (frm.doc.docstatus === 1 && !frm.doc.fee_creation_status || frm.doc.fee_creation_status === 'Failed') {
+		if( frappe.user.has_role(["Accounts User","Student"]) && !frappe.user.has_role(["Education Administrator"])){
+			frm.remove_custom_button(__("Create Fees"));
+		}
+		else if (frm.doc.docstatus === 1 && !frm.doc.fee_creation_status || frm.doc.fee_creation_status === 'Failed') {
 			frm.add_custom_button(__('Create Fees'), function() {
 				frappe.call({
 					method: 'create_fees',
@@ -63,6 +66,8 @@ frappe.ui.form.on("Hostel Fee Schedule", {
 					}
 				});
 			}).addClass('btn-primary');;
+		}
+		else {
 		}
 		if (frm.doc.fee_creation_status === 'Successful') {
 			frm.add_custom_button(__('View Fees Records'), function() {
@@ -120,4 +125,15 @@ frappe.ui.form.on("Hostel Fee Schedule", "fee_structure", function(frm){
 //         refresh_field("total_student");
 //     }
 // });
+
+// frappe.ui.form.on('Hostel Fee Schedule', {
+//     onsubmit:function(frm) {
+// 		if(frappe.user.has_role(["Accounts User"]) && !frappe.user.has_role(["Education Administrator"])){
+//   			frm.remove_custom_button('Create Fees');
+//         }
+// 	}
+// }
+
+
+// );
 
