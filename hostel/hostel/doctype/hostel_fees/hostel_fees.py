@@ -1,8 +1,8 @@
 # Copyright (c) 2021, SOUL and contributors
 # For license information, please see license.txt
 
-from typing_extensions import Self
-from warnings import filters
+# from typing_extensions import Self
+# from warnings import filters
 import frappe
 from frappe.utils import money_in_words
 from frappe.model.document import Document
