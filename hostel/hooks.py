@@ -200,6 +200,6 @@ doc_events = {
 #     {"dt": "Module Profile"},
 # ]
 after_migrate = [
-        'hostel.patches.migrate_patch.add_roles',
+        # 'hostel.patches.migrate_patch.add_roles',
         'hostel.patches.migrate_patch.set_custom_role_permission',
 ]
