@@ -55,8 +55,8 @@ class HostelFeeSchedule(Document):
 
 		total_records = sum([int(d.idx) for d in self.student_room_alloted])
 		if total_records > 100:
-			frappe.msgprint(_('''Fee records will be created in the background.
-				In case of any error the error message will be updated in the Schedule.'''))
+			frappe.msgprint('''Fee records will be created in the background.
+				In case of any error the error message will be updated in the Schedule.''')
 			enqueue(generate_fee, queue='default', timeout=6000, event='generate_fee',
 				hostel_fee_schedule=self.name)
 		else:
