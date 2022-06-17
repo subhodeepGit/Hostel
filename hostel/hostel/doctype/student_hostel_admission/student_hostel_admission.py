@@ -18,21 +18,21 @@ class StudentHostelAdmission(Document):
 		fee_structure_id= fee_structure_validation(doc)
 		create_fees(doc,fee_structure_id[0],fee_structure_id[1],on_submit=0)
 		# fee_structure_id,
-		student = doc.student
-		frappe.db.sql(""" UPDATE `tabStudent Applicant` as SA 
-							JOIN `tabStudent` S on S.student_applicant=SA.name
-							SET SA.hostel_required = 1
-							WHERE S.name="%s" """%(student))
-	def before_save(doc):
-		student = doc.student
-		a=frappe.db.sql("""SELECT SA.Name 
-						from `tabStudent Applicant` as SA 
-						JOIN `tabStudent` S on S.student_applicant=SA.name
-						WHERE S.name="%s" """%(student))
-		if len(a)!=0:				
-			pass
-		else:
-			frappe.throw("Student Applicant not maintained")
+		# student = doc.student
+		# frappe.db.sql(""" UPDATE `tabStudent Applicant` as SA 
+		# 					JOIN `tabStudent` S on S.student_applicant=SA.name
+		# 					SET SA.hostel_required = 1
+		# 					WHERE S.name="%s" """%(student))
+	# def before_save(doc):
+	# 	student = doc.student
+	# 	a=frappe.db.sql("""SELECT SA.Name 
+	# 					from `tabStudent Applicant` as SA 
+	# 					JOIN `tabStudent` S on S.student_applicant=SA.name
+	# 					WHERE S.name="%s" """%(student))
+	# 	if len(a)!=0:				
+	# 		pass
+	# 	else:
+	# 		frappe.throw("Student Applicant not maintained")
 
 
 	def after_insert(doc):
