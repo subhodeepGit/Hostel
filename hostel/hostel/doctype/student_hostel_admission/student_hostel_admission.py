@@ -15,8 +15,9 @@ class StudentHostelAdmission(Document):
 
 
 	def on_submit(doc):
-		fee_structure_id= fee_structure_validation(doc)
-		create_fees(doc,fee_structure_id[0],fee_structure_id[1],on_submit=0)
+		if doc.hostel_fee_applicable=="YES":
+			fee_structure_id= fee_structure_validation(doc)
+			create_fees(doc,fee_structure_id[0],fee_structure_id[1],on_submit=0)
 		# fee_structure_id,
 		# student = doc.student
 		# frappe.db.sql(""" UPDATE `tabStudent Applicant` as SA 
