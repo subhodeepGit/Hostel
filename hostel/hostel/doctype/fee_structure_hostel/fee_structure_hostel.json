@@ -177,8 +177,19 @@
  ],
  "icon": "fa fa-flag",
  "is_submittable": 1,
- "links": [],
- "modified": "2022-05-27 16:55:03.962191",
+ "links": [
+  {
+   "group": "Fee",
+   "link_doctype": "Hostel Fees",
+   "link_fieldname": "hostel_fee_structure"
+  },
+  {
+   "group": "Fee",
+   "link_doctype": "Hostel Fee Schedule",
+   "link_fieldname": "fee_structure"
+  }
+ ],
+ "modified": "2022-06-20 13:02:52.557351",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Fee Structure Hostel",
