@@ -23,7 +23,7 @@ frappe.ui.form.on('Student Hostel Admission', {
 		});
 	},
 	refresh: function(frm) {
-		if(frm.doc.docstatus > 0) {
+		if(frm.doc.docstatus > 0 && frm.doc.hostel_fee_applicable=="YES") {
 			frm.add_custom_button(__('Accounting Ledger'), function() {
 				frappe.route_options = {
 					voucher_no: frm.doc.hostel_fees,
