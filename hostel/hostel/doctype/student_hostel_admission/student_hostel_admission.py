@@ -23,7 +23,7 @@ class StudentHostelAdmission(Document):
 		# frappe.db.sql(""" UPDATE `tabStudent Applicant` as SA 
 		# 					JOIN `tabStudent` S on S.student_applicant=SA.name
 		# 					SET SA.hostel_required = 1
-		# 					WHERE S.name="%s" """%(student))
+		# 					WHERE S.name="%s" """%(student)) ##### Student Applicant
 	# def before_save(doc):
 	# 	student = doc.student
 	# 	a=frappe.db.sql("""SELECT SA.Name 
@@ -33,7 +33,7 @@ class StudentHostelAdmission(Document):
 	# 	if len(a)!=0:				
 	# 		pass
 	# 	else:
-	# 		frappe.throw("Student Applicant not maintained")
+	# 		frappe.throw("Student Applicant not maintained")##### Student Applicant
 
 
 	def after_insert(doc):
