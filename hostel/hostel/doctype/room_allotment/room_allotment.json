@@ -373,22 +373,47 @@
    "link_fieldname": "student"
   },
   {
-   "group": "Room Change",
-   "link_doctype": "Room Change",
-   "link_fieldname": "allotment_number"
-  },
-  {
    "group": "Deallotment",
    "link_doctype": "Long Leave",
    "link_fieldname": "allotment_number"
   },
   {
    "group": "Room Change",
+   "link_doctype": "Room Change",
+   "link_fieldname": "allotment_number"
+  },
+  {
+   "group": "Room Change",
    "link_doctype": "Inter or Intra Hostel Change",
    "link_fieldname": "allotment_no"
+  },
+  {
+   "group": "Miscellaneous",
+   "link_doctype": "Student Medical History",
+   "link_fieldname": "allotment_number"
+  },
+  {
+   "group": "Miscellaneous",
+   "link_doctype": "Student Leave Process",
+   "link_fieldname": "allotment_number"
+  },
+  {
+   "group": "Miscellaneous",
+   "link_doctype": "Material Distribution",
+   "link_fieldname": "allotment_number"
+  },
+  {
+   "group": "Clearance",
+   "link_doctype": "Hostel Clearance",
+   "link_fieldname": "allotment_number"
+  },
+  {
+   "group": "Attendance",
+   "link_doctype": "Hostel Attendance",
+   "link_fieldname": "room_allotment_no"
   }
  ],
- "modified": "2022-06-21 11:43:08.464394",
+ "modified": "2022-06-21 13:19:21.909218",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Allotment",
