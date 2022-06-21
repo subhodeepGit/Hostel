@@ -361,8 +361,34 @@
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2022-05-27 15:23:59.290139",
+ "links": [
+  {
+   "group": "Deallotment",
+   "link_doctype": "Deallotment Process",
+   "link_fieldname": "allotment_number"
+  },
+  {
+   "group": "Deallotment",
+   "link_doctype": "Death Deallotment",
+   "link_fieldname": "student"
+  },
+  {
+   "group": "Room Change",
+   "link_doctype": "Room Change",
+   "link_fieldname": "allotment_number"
+  },
+  {
+   "group": "Deallotment",
+   "link_doctype": "Long Leave",
+   "link_fieldname": "allotment_number"
+  },
+  {
+   "group": "Room Change",
+   "link_doctype": "Inter or Intra Hostel Change",
+   "link_fieldname": "allotment_no"
+  }
+ ],
+ "modified": "2022-06-21 11:43:08.464394",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Allotment",
