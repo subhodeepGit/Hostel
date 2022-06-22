@@ -59,6 +59,7 @@ frappe.ui.form.on("Student Hostel Admission", "student", function (frm) {
 }
 
 });
+
 frappe.ui.form.on("Student Hostel Admission", "hostel_fee_structure", function (frm) {
 	if (frm.doc.student == undefined || frm.doc.student == "" || frm.doc.student == null){
 

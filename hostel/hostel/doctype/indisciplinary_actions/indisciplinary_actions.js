@@ -12,6 +12,7 @@ frappe.ui.form.on('Indisciplinary Actions', {
 })
 
 
+
 frappe.ui.form.on("Indisciplinary Actions", "indisciplinary_complaint_registration_id", function (frm) {
 	if (frm.doc.indisciplinary_complaint_registration_id == undefined || frm.doc.indisciplinary_complaint_registration_id == "" || frm.doc.indisciplinary_complaint_registration_id == null) {
 

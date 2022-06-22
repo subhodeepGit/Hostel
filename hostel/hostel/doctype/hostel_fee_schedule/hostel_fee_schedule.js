@@ -120,6 +120,7 @@ frappe.ui.form.on("Hostel Fee Schedule", "fee_structure", function (frm) {
 	}
 
 });
+
 // "Hostel Fee Schedule Student" Child table length are calculated
 // frappe.ui.form.on("Hostel Fee Schedule", {
 //     refresh:function(frm){
