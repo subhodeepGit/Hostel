@@ -130,15 +130,103 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Hostel Clearance",
+   "label": "Student Admission &amp; Essentials",
    "onboard": 0,
    "type": "Card Break"
   },
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Hostel Clearance",
-   "link_to": "Hostel Clearance",
+   "label": "Student Hostel Admission",
+   "link_to": "Student Hostel Admission",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Student Medical History",
+   "link_to": "Student Medical History",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Student Leave Process",
+   "link_to": "Student Leave Process",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Material Distribution",
+   "link_to": "Material Distribution",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Allotment &amp; De-Allotment",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Room Allotment",
+   "link_to": "Room Allotment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Room De-Allotment",
+   "link_to": "Deallotment Process",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Room Change / Room Type Change",
+   "link_to": "Room Change",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Death De-Allotment",
+   "link_to": "Death Deallotment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Long Leave",
+   "link_to": "Long Leave",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Inter or Intra Hostel Change",
+   "link_to": "Inter or Intra Hostel Change",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -230,109 +318,21 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Allotment &amp; De-Allotment",
+   "label": "Hostel Clearance",
    "onboard": 0,
    "type": "Card Break"
   },
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Room Allotment",
-   "link_to": "Room Allotment",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Room De-Allotment",
-   "link_to": "Deallotment Process",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Room Change / Room Type Change",
-   "link_to": "Room Change",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Death De-Allotment",
-   "link_to": "Death Deallotment",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Long Leave",
-   "link_to": "Long Leave",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Inter or Intra Hostel Change",
-   "link_to": "Inter or Intra Hostel Change",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Student Admission &amp; Essentials",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Student Hostel Admission",
-   "link_to": "Student Hostel Admission",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Student Medical History",
-   "link_to": "Student Medical History",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Student Leave Process",
-   "link_to": "Student Leave Process",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Material Distribution",
-   "link_to": "Material Distribution",
+   "label": "Hostel Clearance",
+   "link_to": "Hostel Clearance",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
   }
  ],
- "modified": "2022-06-15 16:05:34.926322",
+ "modified": "2022-06-28 11:26:08.259523",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel - Executive",
