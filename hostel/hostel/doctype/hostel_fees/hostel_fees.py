@@ -48,6 +48,7 @@ class HostelFees(Document):
 		fees.student_batch = self.student_batch
 		fees.academic_year = self.academic_year
 		fees.academic_term = self.academic_term
+		fees.hostel_fee_structure = self.hostel_fee_structure
 		# fees.fee_structure = self.hostel_fee_structure
 		ref_details = frappe.get_all("Fee Component",{"parent":self.hostel_fee_structure},['fees_category','amount','receivable_account','income_account','company','grand_fee_amount','outstanding_fees'],order_by="idx asc")
 		for i in ref_details:
