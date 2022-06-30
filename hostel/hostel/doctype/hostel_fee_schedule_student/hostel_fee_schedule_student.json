@@ -19,43 +19,30 @@
  ],
  "fields": [
   {
-   "fetch_from": "room_allotment_id.student",
-   "fieldname": "student",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Student",
-   "read_only": 1
-  },
-  {
-   "fetch_from": "room_allotment_id.room_number",
    "fieldname": "room_number",
    "fieldtype": "Data",
    "label": "Room Number",
    "read_only": 1
   },
   {
-   "fetch_from": "room_allotment_id.room_type",
    "fieldname": "room_type",
    "fieldtype": "Data",
    "label": "Room Type",
    "read_only": 1
   },
   {
-   "fetch_from": "room_allotment_id.hostel_id",
    "fieldname": "hostel_id",
    "fieldtype": "Data",
    "label": "Hostel",
    "read_only": 1
   },
   {
-   "fetch_from": "room_allotment_id.start_date",
    "fieldname": "start_date",
    "fieldtype": "Data",
    "label": "Start Date",
    "read_only": 1
   },
   {
-   "fetch_from": "room_allotment_id.end_date",
    "fieldname": "end_date",
    "fieldtype": "Data",
    "label": "End Date",
@@ -69,10 +56,11 @@
    "fieldname": "room_allotment_id",
    "fieldtype": "Link",
    "label": "Room Allotment Id",
-   "options": "Room Allotment"
+   "options": "Room Allotment",
+   "read_only": 1,
+   "reqd": 1
   },
   {
-   "fetch_from": "room_allotment_id.student_name",
    "fieldname": "student_name",
    "fieldtype": "Data",
    "label": "Student Name",
@@ -83,12 +71,19 @@
    "fieldtype": "Data",
    "label": "Hostel Registration No.",
    "read_only": 1
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Student",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-05-26 11:07:30.482501",
+ "modified": "2022-06-30 12:40:24.375688",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Fee Schedule Student",
