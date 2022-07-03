@@ -50,8 +50,6 @@ class StudentHostelAdmission(Document):
 							WHERE S.name="%s" """%(student))
 		frappe.msgprint("Your Application is cancelled")
 		frappe.db.set_value("Student Hostel Admission",doc.name, "allotment_status", "Cancelled") 
-		frappe.db.set_value("Student Hostel Admission",doc.name,"hostel_fees","")	
-		frappe.db.set_value("Student Hostel Admission",doc.name,"hostel_fees_id","")
 
 
 
