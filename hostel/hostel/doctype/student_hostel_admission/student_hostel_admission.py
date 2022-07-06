@@ -43,8 +43,7 @@ class StudentHostelAdmission(Document):
 
 
 	def on_cancel(doc):
-		# fee_structure_id = fee_structure_validation(doc)
-		# cancel_fees(doc)
+		cancel_fees(doc)
 		student = doc.student
 		frappe.db.sql(""" UPDATE `tabStudent Applicant` as SA 
 							JOIN `tabStudent` S on S.student_applicant=SA.name
@@ -54,10 +53,11 @@ class StudentHostelAdmission(Document):
 		frappe.db.set_value("Student Hostel Admission",doc.name, "allotment_status", "Cancelled") 
 
 
+
 def fee_structure_validation(doc): 
-	existed_fs = frappe.db.get_list("Fee Structure Hostel", {'docstatus':1},["name","cost_center"])
+	existed_fs = frappe.db.get_list("Fee Structure Hostel", {"name":doc.hostel_fee_structure,'docstatus':1},["name","cost_center"])
 	if len(existed_fs) != 0:
-		fee_structure_id = existed_fs[0]['name']
+		fee_structure_id =doc.hostel_fee_structure
 		cost_center=existed_fs[0]['cost_center']
 		return [fee_structure_id,cost_center]
 	else:
@@ -100,6 +100,10 @@ def create_fees(doc,fee_structure_id,cost_center=None,on_submit=0):
 	frappe.db.set_value("Student Hostel Admission",doc.name,"hostel_fees",fees.fees_id)	
 	frappe.db.set_value("Student Hostel Admission",doc.name,"hostel_fees_id",fees.name)
 
+def cancel_fees(doc):
+	hostel_fee_object= frappe.get_doc("Hostel Fees",doc.hostel_fees_id)
+	hostel_fee_object.cancel()
+	frappe.msgprint("Hostel Fees is also cancelled")
 
 
 @frappe.whitelist()
