@@ -4,6 +4,7 @@
 import frappe
 from frappe.model.document import Document
 from erpnext.accounts.general_ledger import make_reverse_gl_entries
+import json
 
 class StudentHostelAdmission(Document):
 	def validate(doc):
@@ -99,18 +100,6 @@ def create_fees(doc,fee_structure_id,cost_center=None,on_submit=0):
 	frappe.db.set_value("Student Hostel Admission",doc.name,"hostel_fees",fees.fees_id)	
 	frappe.db.set_value("Student Hostel Admission",doc.name,"hostel_fees_id",fees.name)
 
-# def cancel_fees(doc):
-#     # for ce in frappe.get_all("Hostel Fees",{"Student Hostel Admission":doc.name,"hostel_fee_structure":fee_structure_id}):
-#     #     make_reverse_gl_entries(voucher_type="Hostel Fees", voucher_no=ce.name)
-# 	data=frappe.ge_all("Hostel Fees",{"name":doc.hostel_fees_id},["docstatus"])
-# 	if data[0]["docstatus"]==2 :
-# 		pass
-# 	else:
-# 		frappe.throw("Please cancel the Hostel Fees first")
-# 	# hostel_fee_object= frappe.get_doc("Hostel Fees",doc.hostel_fees_id)
-# 	# hostel_fee_object.cancel()
-# 	# hostel_fee_object.save(ignore_permissions=True)
-# 	# frappe.db.commit()
 
 
 @frappe.whitelist()
@@ -124,4 +113,14 @@ def hostel_query(doctype, txt, searchfield, start, page_len, filters):
 def room_query(doctype, txt, searchfield, start, page_len, filters):
 	return frappe.db.sql("""SELECT `name`,`feature`,`capacity` from `tabRoom Type` WHERE `start_date`<=now() and `end_date`>=now()""")
 
-
+@frappe.whitelist()
+def fst_query(doc):
+	doc = json.loads(doc)
+	current_education_fetch=doc.get("current_education_fetch")
+	filtered_fst={'programs':current_education_fetch[0]['programs'],
+				'semesters':current_education_fetch[0]['semesters'],
+				"room_type":doc.get("room_type"),
+				'academic_year':current_education_fetch[0]['academic_year'],
+				'academic_term':current_education_fetch[0]['academic_term']
+				}		
+	return filtered_fst

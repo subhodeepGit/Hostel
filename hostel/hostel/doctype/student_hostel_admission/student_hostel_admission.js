@@ -3,14 +3,6 @@
 
 frappe.ui.form.on('Student Hostel Admission', {
 	setup: function (frm) {
-		frm.set_query("hostel_fee_structure", function () {
-			return {
-				filters: [
-					["Fee Structure Hostel", "room_type", "=", frm.doc.room_type]
-				]
-			}
-
-		});
 		frm.set_query("hostel", function () {
 			return {
 				query: "hostel.hostel.doctype.student_hostel_admission.student_hostel_admission.hostel_query"
@@ -20,6 +12,31 @@ frappe.ui.form.on('Student Hostel Admission', {
 			return {
 				query: "hostel.hostel.doctype.student_hostel_admission.student_hostel_admission.room_query"
 			};
+		});
+	},
+	hostel_fee_applicable: function(frm) {
+		frappe.call({
+			method: "hostel.hostel.doctype.student_hostel_admission.student_hostel_admission.fst_query",                
+			args: {
+				"doc": frm.doc,
+				"room_type": frm.doc.room_type
+			},
+			callback: function(r) {
+				if(r.message){
+					var utr=r.message;
+					frm.set_query("hostel_fee_structure", function () {
+						return {
+							filters: [
+								["Fee Structure Hostel", "programs", "=", utr['programs']],
+								["Fee Structure Hostel", "program", "=", utr['semesters']],
+								["Fee Structure Hostel", "academic_year", "=", utr['academic_year']],
+								["Fee Structure Hostel", "academic_term", "=", utr['academic_term']],
+								["Fee Structure Hostel", "room_type", "=", utr['room_type']],
+							]
+						}
+						});
+				}
+			}
 		});
 	},
 	refresh: function (frm) {
