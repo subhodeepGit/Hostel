@@ -64,14 +64,14 @@ class HostelFeeSchedule(Document):
 
 # Student fetch after clicking on Get Student button
 @frappe.whitelist()
-def get_students(academic_term=None, programs=None,program=None,academic_year=None,room_type=None):   
+def get_students(academic_term=None, programs=None,program=None,academic_year=None,room_type=None):
 	a=frappe.db.sql(""" Select RA.*,CED.*,RA.name as room_allotment  from `tabRoom Allotment` as RA
 	Join `tabCurrent Educational Details` as CED on CED.parent=RA.Student
-	where CED.programs="%s" and CED.semesters="%s" and CED.academic_term="%s" and CED.academic_year="%s" and (RA.room_type="%s" and RA.docstatus=1 and (RA.start_date <=now() and RA.end_date>=now()))
-	"""%(programs,program,academic_term,academic_year,room_type),as_dict = True)     
-	
+	where CED.programs="%s" and CED.semesters="%s" and CED.academic_term="%s" and CED.academic_year="%s" and 
+	(RA.room_type="%s" and RA.docstatus=1 and (RA.start_date <=now() and RA.end_date>=now()))
+	"""%(programs,program,academic_term,academic_year,room_type),as_dict=True)     
 	if len(a)!=0:
-		return a[0]
+		return a
 	else:
 		frappe.throw("No Student Found in Room Allotment")
 

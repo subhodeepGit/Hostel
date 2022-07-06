@@ -3,7 +3,6 @@
  "allow_rename": 1,
  "creation": "2022-05-18 13:02:06.820410",
  "doctype": "DocType",
- "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "room_allotment_id",
@@ -21,8 +20,7 @@
   {
    "fieldname": "room_number",
    "fieldtype": "Data",
-   "label": "Room Number",
-   "read_only": 1
+   "label": "Room Number"
   },
   {
    "fieldname": "room_type",
@@ -57,7 +55,6 @@
    "fieldtype": "Link",
    "label": "Room Allotment Id",
    "options": "Room Allotment",
-   "read_only": 1,
    "reqd": 1
   },
   {
@@ -76,14 +73,13 @@
    "fieldname": "student",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Student",
-   "read_only": 1
+   "label": "Student"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-06-30 12:40:24.375688",
+ "modified": "2022-07-06 16:42:49.286416",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Fee Schedule Student",
