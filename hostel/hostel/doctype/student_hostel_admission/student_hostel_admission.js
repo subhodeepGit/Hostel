@@ -61,6 +61,7 @@ frappe.ui.form.on("Student Hostel Admission", "student", function (frm) {
 
 	}else{
 	frappe.model.with_doc("Student", frm.doc.student, function () {
+		frm.clear_table("current_education_fetch");
 		var tabletransfer = frappe.model.get_doc("Student", frm.doc.student);
 		cur_frm.doc.current_education = "";
 		cur_frm.refresh_field("current_education");
