@@ -4,6 +4,7 @@
 import frappe
 from frappe.model.document import Document
 from erpnext.accounts.general_ledger import make_reverse_gl_entries
+import json
 
 class StudentHostelAdmission(Document):
 	def validate(doc):
@@ -116,4 +117,14 @@ def hostel_query(doctype, txt, searchfield, start, page_len, filters):
 def room_query(doctype, txt, searchfield, start, page_len, filters):
 	return frappe.db.sql("""SELECT `name`,`feature`,`capacity` from `tabRoom Type` WHERE `start_date`<=now() and `end_date`>=now()""")
 
-
+@frappe.whitelist()
+def fst_query(doc):
+	doc = json.loads(doc)
+	current_education_fetch=doc.get("current_education_fetch")
+	filtered_fst={'programs':current_education_fetch[0]['programs'],
+				'semesters':current_education_fetch[0]['semesters'],
+				"room_type":doc.get("room_type"),
+				'academic_year':current_education_fetch[0]['academic_year'],
+				'academic_term':current_education_fetch[0]['academic_term']
+				}		
+	return filtered_fst
