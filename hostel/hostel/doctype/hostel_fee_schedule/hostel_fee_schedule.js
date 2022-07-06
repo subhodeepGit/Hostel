@@ -2,29 +2,40 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Hostel Fee Schedule", {
+	// Student fetch after clicking on Get Student button
 	get_students: function (frm) {
 		frm.clear_table("student_room_alloted");
-		frappe.call({
-			method: "hostel.hostel.doctype.hostel_fee_schedule.hostel_fee_schedule.get_students",
-			args: {
-				programs: frm.doc.programs,
-				program: frm.doc.program,
-				academic_term: frm.doc.academic_term,
-				academic_year: frm.doc.academic_year,
-				room_type: frm.doc.room_type
-
-			},
-
-			callback: function (r) {
-				(r.message).forEach(element => {
-					var row = frm.add_child("student_room_alloted")
-					row.room_allotment_id = element.room_allotment
-					row.hostel_registration_no = element.hostel_registration_no
-				});
-				frm.refresh_field("student_room_alloted")
-				frm.save();
-			}
-		});
+			frappe.call({
+				method: "hostel.hostel.doctype.hostel_fee_schedule.hostel_fee_schedule.get_students",
+				args:{
+					programs: frm.doc.programs,
+					program: frm.doc.program,
+					academic_term: frm.doc.academic_term,
+					academic_year: frm.doc.academic_year,
+					room_type: frm.doc.room_type
+	
+				},
+			
+				callback: function(r) {
+					if(r.message){
+                        frappe.model.clear_table(frm.doc, 'student_room_alloted');
+                        (r.message).forEach(element => {
+                            var row = frm.add_child("student_room_alloted")
+							row.room_allotment_id = element.room_allotment
+							row.student = element.student
+							row.hostel_registration_no = element.hostel_registration_no
+							row.student_name = element.student_name
+							row.room_number = element.room_number
+							row.room_type = element.room_type
+							row.hostel_id = element.hostel_id
+							row.start_date = element.start_date
+							row.end_date = element.end_date
+                        });
+                    } 
+                    frm.refresh();
+                    frm.refresh_field("student_room_alloted")
+				}
+			});
 		frappe.realtime.on('fee_schedule_progress', function (data) {
 			if (data.reload && data.reload === 1) {
 				frm.reload_doc();

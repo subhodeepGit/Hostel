@@ -171,7 +171,8 @@
   {
    "fieldname": "student_room_alloted",
    "fieldtype": "Table",
-   "options": "Hostel Fee Schedule Student"
+   "options": "Hostel Fee Schedule Student",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_14",
@@ -287,6 +288,7 @@
    "label": "Error Log"
   },
   {
+   "depends_on": "eval:doc.docstatus==0",
    "fieldname": "get_students",
    "fieldtype": "Button",
    "label": "Get Students"
@@ -315,7 +317,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-30 13:02:38.179698",
+ "modified": "2022-06-30 12:38:53.865543",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Fee Schedule",
