@@ -15,6 +15,11 @@ frappe.ui.form.on("Hostel Fees", {
 	},
 
 	onload: function(frm) {
+		frm.set_query("student", function() {
+			return {
+				query: 'hostel.hostel.doctype.hostel_fees.hostel_fees.get_allotted_students',
+			};
+		});
 		frm.set_query("academic_term", function() {
 			return{
 				"filters": {

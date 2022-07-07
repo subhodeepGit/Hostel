@@ -100,3 +100,7 @@ def get_fee_structures(doctype, txt, searchfield, start, page_len, filters):
     for d in frappe.get_all("Current Educational Details",{"parent":filters.get("student")},['semesters']):
         program+=d.semesters
     return frappe.db.sql("""select name,program,academic_year from `tabFee Structure Hostel` where program IN ('{0}') and (name like '%{1}%' or program like '%{1}%' or  academic_year like '%{1}%')""".format(program,txt))
+
+@frappe.whitelist()
+def get_allotted_students(doctype, txt, searchfield, start, page_len, filters):
+	return frappe.db.sql(" select student, name, roll_no from `tabRoom Allotment` where allotment_type='Allotted' ")
