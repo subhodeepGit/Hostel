@@ -23,21 +23,21 @@ def set_custom_role_permission():
 
 
 # #   bench execute hostel.patches.migrate_patch.add_roles
-# def add_roles():
-#     with open(frappe.get_app_path("hostel","fixtures","role.json")) as f:
-#         for d in json.load(f):
-#             if len(frappe.get_all('Role',{'role_name':d.get('role_name')}))==0:
-#                 role=frappe.new_doc('Role')
-#                 for k in d.keys():
-#                     role.set(k,d.get(k))
-#                 role.save()
+def add_roles():
+    with open(frappe.get_app_path("hostel","fixtures","role.json")) as f:
+        for d in json.load(f):
+            if len(frappe.get_all('Role',{'role_name':d.get('role_name')}))==0:
+                role=frappe.new_doc('Role')
+                for k in d.keys():
+                    role.set(k,d.get(k))
+                role.save()
 
 # #   bench execute hostel.patches.migrate_patch.add_roles
-# def add_module_profile():
-#     with open(frappe.get_app_path("hostel","fixtures","module_profile.json")) as f:
-#         for d in json.load(f):
-#             if len(frappe.get_all('Module Profile',{'name':d.get('name')}))==0:
-#                 mp=frappe.new_doc('Module Profile')
-#                 for k in d.keys():
-#                     mp.set(k,d.get(k))
-#                 mp.save()
+def add_module_profile():
+    with open(frappe.get_app_path("hostel","fixtures","module_profile.json")) as f:
+        for d in json.load(f):
+            if len(frappe.get_all('Module Profile',{'name':d.get('name')}))==0:
+                mp=frappe.new_doc('Module Profile')
+                for k in d.keys():
+                    mp.set(k,d.get(k))
+                mp.save()

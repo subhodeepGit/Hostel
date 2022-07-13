@@ -3,7 +3,7 @@
  "charts": [],
  "creation": "2021-11-16 10:33:19.268985",
  "developer_mode_only": 0,
- "disable_user_customization": 0,
+ "disable_user_customization": 1,
  "docstatus": 0,
  "doctype": "Workspace",
  "extends_another_page": 0,
@@ -273,6 +273,15 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Hostel Fee Schedule",
+   "link_to": "Hostel Fee Schedule",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Hostel Fees",
    "link_to": "Hostel Fees",
    "link_type": "DocType",
@@ -323,7 +332,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-11-25 13:24:38.347470",
+ "modified": "2022-07-13 17:12:38.722883",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel - HOD",
@@ -332,10 +341,9 @@
  "pin_to_top": 0,
  "shortcuts": [
   {
-   "color": "Grey",
    "doc_view": "List",
-   "label": "Room De-Allotment",
-   "link_to": "Deallotment Process",
+   "label": "Student",
+   "link_to": "Student",
    "type": "DocType"
   },
   {
@@ -348,15 +356,22 @@
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Indisciplinary Complaint Registration",
-   "link_to": "Indisciplinary Complaint Registration",
+   "label": "Room Info",
+   "link_to": "Room Masters",
    "type": "DocType"
   },
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Room Info",
-   "link_to": "Room Masters",
+   "label": "Room Allotment",
+   "link_to": "Room Allotment",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Room De-Allotment",
+   "link_to": "Deallotment Process",
    "type": "DocType"
   },
   {
@@ -369,8 +384,8 @@
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Room Allotment",
-   "link_to": "Room Allotment",
+   "label": "Indisciplinary Complaint Registration",
+   "link_to": "Indisciplinary Complaint Registration",
    "type": "DocType"
   },
   {
