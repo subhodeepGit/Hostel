@@ -82,7 +82,7 @@ def generate_fee(hostel_fee_schedule):
 	created_records = 0
 
 	if not total_records:
-		frappe.throw(_("Please click get student button"))
+		frappe.throw("Please click get student button")
 
 	for d in doc.get("student_room_alloted"):
 			try:
