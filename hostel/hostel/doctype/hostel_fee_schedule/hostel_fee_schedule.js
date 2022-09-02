@@ -132,6 +132,13 @@ frappe.ui.form.on("Hostel Fee Schedule", "fee_structure", function (frm) {
 
 });
 
+frappe.ui.form.on("Hostel Fee Schedule", {
+	onload:function(frm){
+		//cannot able to add rows
+		frm.set_df_property("student_room_alloted", "cannot_add_rows", true);
+	}
+});
+
 // "Hostel Fee Schedule Student" Child table length are calculated
 // frappe.ui.form.on("Hostel Fee Schedule", {
 //     refresh:function(frm){
