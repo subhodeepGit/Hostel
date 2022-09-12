@@ -83,7 +83,7 @@ frappe.ui.form.on("Hostel Fee Schedule", {
 		if (frm.doc.fee_creation_status === 'Successful') {
 			frm.add_custom_button(__('View Fees Records'), function () {
 				frappe.route_options = {
-					fee_schedule: frm.doc.name
+					hostel_fee_schedule: frm.doc.name
 				};
 				frappe.set_route('List', 'Hostel Fees');
 			});
