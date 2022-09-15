@@ -84,6 +84,7 @@ frappe.ui.form.on("Student Hostel Admission", "hostel_fee_structure", function (
 	}else{
 	frappe.model.with_doc("Fee Structure Hostel", frm.doc.hostel_fee_structure, function () {
 		var tabletransfer = frappe.model.get_doc("Fee Structure Hostel", frm.doc.hostel_fee_structure)
+		frm.clear_table("hostel_fee_components");
 		$.each(tabletransfer.components, function (index, row) {
 			var d = frappe.model.add_child(cur_frm.doc, "Fee Component", "hostel_fee_components");
 			d.fees_category = row.fees_category;
