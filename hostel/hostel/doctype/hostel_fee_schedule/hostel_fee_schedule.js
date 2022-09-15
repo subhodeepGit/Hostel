@@ -83,7 +83,7 @@ frappe.ui.form.on("Hostel Fee Schedule", {
 		if (frm.doc.fee_creation_status === 'Successful') {
 			frm.add_custom_button(__('View Fees Records'), function () {
 				frappe.route_options = {
-					fee_schedule: frm.doc.name
+					hostel_fee_schedule: frm.doc.name
 				};
 				frappe.set_route('List', 'Hostel Fees');
 			});
@@ -130,6 +130,13 @@ frappe.ui.form.on("Hostel Fee Schedule", "fee_structure", function (frm) {
 		});
 	}
 
+});
+
+frappe.ui.form.on("Hostel Fee Schedule", {
+	onload:function(frm){
+		//cannot able to add rows
+		frm.set_df_property("student_room_alloted", "cannot_add_rows", true);
+	}
 });
 
 // "Hostel Fee Schedule Student" Child table length are calculated
