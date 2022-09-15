@@ -29,11 +29,11 @@ class StudentLeaveProcess(Document):
 		St_leave_df=St_leave_df[(St_leave_df['workflow_state']!="Approved")|(St_leave_df['workflow_state']!="Withdrawl of Application")|
 								(St_leave_df['workflow_state']!="Rejected")|(St_leave_df['workflow_state']!="Approve By Hostel Warden")].reset_index()							
 		if workflow_state=="Submit":
-			St_leave_df=St_leave_df[(St_leave_df['status']=="Open")|(St_leave_df['status'].isnull())]
-			if len(St_leave_df)!=0:
-					frappe.throw("Document already Present Dco no %s"%(St_leave_df['Leave_doc_no'][0]))
-			else:
-				if ST_date<=ED_date and (ST_date<=datetime.date.today()):
+			# St_leave_df=St_leave_df[(St_leave_df['status']=="Open")|(St_leave_df['status'].isnull())]
+			# if len(St_leave_df)!=0:
+			# 		frappe.throw("Document already Present Dco no %s"%(St_leave_df['Leave_doc_no'][0]))
+			# else:
+				if ST_date<=ED_date and (ST_date>=datetime.date.today()):
 					pass
 				else:
 					frappe.throw("Please check Start Date and End Date of Leave")	
