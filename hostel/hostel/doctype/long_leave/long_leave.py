@@ -8,6 +8,8 @@ import pandas as pd
 class LongLeave(Document):
 	# @frappe.whitelist()
 	def validate(doc):
+		pincode_validation(doc)
+		mobile_number_validation(doc)
 		Al_no=doc.allotment_number
 		workflow_state=doc.workflow_state
 		if workflow_state=="Submit":
@@ -81,4 +83,21 @@ def Long_leave_def(info):
 								'medium_of_communicatinon_from_student','communication_phone_no','reply_of_letter'])
 			Long_leave_df=Long_leave_df.append(s,ignore_index=True)
 		return Long_leave_df	
+
+def mobile_number_validation(doc):
+	if doc.phone_no:
+		if not (doc.phone_no).isdigit():
+			frappe.throw("Field Contact Number Accept Digits Only")
+		if len(doc.phone_no)>10:
+			frappe.throw("Field Contact Number must be 10 Digits")
+		if len(doc.phone_no)<10:
+			frappe.throw("Field Contact Number must be 10 Digits")
 	
+def pincode_validation(doc):
+	if doc.pincode:
+		if not (doc.pincode).isdigit():
+			frappe.throw("Field Contact Number Accept Digits Only")
+		if len(doc.pincode)>6:
+			frappe.throw("Field Contact Number must be 6 Digits")
+		if len(doc.pincode)<6:
+			frappe.throw("Field Contact Number must be 6 Digits")
