@@ -2,6 +2,16 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Hostel Fee Schedule", {
+	setup: function (frm) {
+		frm.set_query("fee_structure", function () {
+			return {
+				filters: [
+					["Fee Structure Hostel", "programs", "=", frm.doc.program_filter],
+					["Fee Structure Hostel", "academic_year", "=", frm.doc.academic_year_filter],
+				]
+			}
+		});
+	},
 	// Student fetch after clicking on Get Student button
 	get_students: function (frm) {
 		frm.clear_table("student_room_alloted");
@@ -110,6 +120,7 @@ frappe.ui.form.on("Hostel Fee Schedule", "fee_structure", function (frm) {
 	} else {
 		frappe.model.with_doc("Fee Structure Hostel", frm.doc.fee_structure, function () {
 			var tabletransfer = frappe.model.get_doc("Fee Structure Hostel", frm.doc.fee_structure);
+			frm.clear_table("componentss");
 			$.each(tabletransfer.components, function (index, row) {
 				var d = frappe.model.add_child(cur_frm.doc, "Fee Component", "componentss");
 				d.fees_category = row.fees_category;

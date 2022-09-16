@@ -7,6 +7,8 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "program_filter",
+  "academic_year_filter",
   "fee_structure",
   "posting_date",
   "due_date",
@@ -312,12 +314,24 @@
    "fieldtype": "Link",
    "label": "Institution",
    "options": "Company"
+  },
+  {
+   "fieldname": "program_filter",
+   "fieldtype": "Link",
+   "label": "Program Filter",
+   "options": "Programs"
+  },
+  {
+   "fieldname": "academic_year_filter",
+   "fieldtype": "Link",
+   "label": "Academic Year Filter",
+   "options": "Academic Year"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-06-30 12:38:53.865543",
+ "modified": "2022-09-16 13:27:40.301014",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Hostel Fee Schedule",
