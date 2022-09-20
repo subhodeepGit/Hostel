@@ -73,7 +73,9 @@ def get_students(academic_term=None, programs=None,program=None,academic_year=No
 	if len(a)!=0:
 		return a
 	else:
-		frappe.throw("No Student Found in Room Allotment")
+		frappe.msgprint("No Student Found in Room Allotment")
+		a = []
+		return a
 
 def generate_fee(hostel_fee_schedule):
 	doc = frappe.get_doc("Hostel Fee Schedule", hostel_fee_schedule)
