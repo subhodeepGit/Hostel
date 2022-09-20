@@ -24,6 +24,18 @@ frappe.ui.form.on('Room Allotment', {
 				query: "hostel.hostel.doctype.room_allotment.room_allotment.hostel_req_query"
 			};
 		});
+		frappe.call({
+            method: "hostel.hostel.doctype.room_allotment.room_allotment.employee",
+            // args: {
+            //     employee: frm.doc.employee,
+            // },
+            callback: function(r) { 
+                if (r.message){
+                    frm.set_value("employee",r.message)
+                }
+            } 
+            
+        });    
 			
 		
 	},

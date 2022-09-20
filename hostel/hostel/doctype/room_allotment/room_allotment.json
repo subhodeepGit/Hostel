@@ -19,7 +19,6 @@
   "registration_number",
   "blood_group",
   "hostel_registration_no",
-  "section_break_7",
   "section_break_4",
   "hostel_id",
   "start_date",
@@ -136,7 +135,8 @@
    "fieldname": "employee",
    "fieldtype": "Link",
    "label": "Employee",
-   "options": "Employee"
+   "options": "Employee",
+   "read_only": 1
   },
   {
    "fetch_from": "employee.employee_name",
@@ -184,10 +184,6 @@
   {
    "fieldname": "column_break_18",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_7",
-   "fieldtype": "Section Break"
   },
   {
    "fetch_from": "employee.designation",
@@ -413,7 +409,7 @@
    "link_fieldname": "room_allotment_no"
   }
  ],
- "modified": "2022-06-21 13:19:21.909218",
+ "modified": "2022-09-20 14:53:32.846560",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Allotment",

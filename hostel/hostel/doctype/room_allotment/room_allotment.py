@@ -1,6 +1,7 @@
 # Copyright (c) 2021, SOUL and contributors
 # For license information, please see license.txt
 
+from dataclasses import fields
 import re
 import frappe
 from frappe.exceptions import Redirect
@@ -174,3 +175,18 @@ def allotment(student):
 		return data[0]
 			
 
+@frappe.whitelist()
+# @frappe.validate_and_sanitize_search_inputs
+def employee():
+	user=frappe.session.user
+	if user == "Administrator":
+		pass
+	else:
+		employee_name=frappe.get_all("Employee",fields=[["prefered_email","=",user]])
+	if user == "Administrator":
+		name=""
+	else:
+		name=employee_name[0]['name']
+	if len(name)>0:
+		return name
+	
