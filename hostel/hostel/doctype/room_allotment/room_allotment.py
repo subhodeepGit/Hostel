@@ -84,7 +84,7 @@ def test_query(doctype, txt, searchfield, start, page_len, filters):
 	User=frappe.session.user
 	if frappe.session.user!="Administrator":
 		return frappe.db.sql("""
-				SELECT `hostel_masters` from `tabEmployee Hostel Allotment` WHERE employees="%s" and
+				SELECT `hostel_masters` from `tabEmployee Hostel Allotment` WHERE user_name="%s" and
 				(`start_date`<=now() and `end_date`>=now())"""%(User))
 	else:
 		return frappe.db.sql("""
