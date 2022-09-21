@@ -11,6 +11,9 @@ frappe.ui.form.on('Withdrawal of Suspension', {
 	}
 })
 frappe.ui.form.on("Withdrawal of Suspension", "indisciplinary_action_id", function(frm){
+	if (frm.doc.indisciplinary_action_id == undefined || frm.doc.indisciplinary_action_id == "" || frm.doc.indisciplinary_action_id == null) {
+
+	} else {
 	frappe.model.with_doc("Indisciplinary Actions", frm.doc.indisciplinary_action_id, function(){
 		var tabletransfer = frappe.model.get_doc("Indisciplinary Actions", frm.doc.indisciplinary_action_id);
 		cur_frm.doc.student_fetch = "";
@@ -26,4 +29,5 @@ frappe.ui.form.on("Withdrawal of Suspension", "indisciplinary_action_id", functi
 			cur_frm.refresh_field("student_fetch");
 		});
 	});
+}
 });
