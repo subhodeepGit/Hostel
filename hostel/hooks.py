@@ -32,7 +32,10 @@ app_include_js = "/assets/js/aka.min.js"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-doctype_js = {"Student" : "public/js/student.js",}
+doctype_js = {
+        "Student" : "public/js/student.js",
+        "Fees" : "public/js/fees.js"
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
