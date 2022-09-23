@@ -22,7 +22,8 @@ frappe.ui.form.on("Hostel Fee Schedule", {
 					program: frm.doc.program,
 					academic_term: frm.doc.academic_term,
 					academic_year: frm.doc.academic_year,
-					room_type: frm.doc.room_type
+					room_type: frm.doc.room_type,
+					fee_structure:frm.doc.fee_structure
 	
 				},
 			

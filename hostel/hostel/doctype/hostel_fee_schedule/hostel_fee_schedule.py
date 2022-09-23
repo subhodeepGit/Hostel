@@ -64,18 +64,35 @@ class HostelFeeSchedule(Document):
 
 # Student fetch after clicking on Get Student button
 @frappe.whitelist()
-def get_students(academic_term=None, programs=None,program=None,academic_year=None,room_type=None):
-	a=frappe.db.sql(""" Select RA.*,CED.*,RA.name as room_allotment  from `tabRoom Allotment` as RA
+def get_students(self=None,academic_term=None, programs=None,program=None,academic_year=None,room_type=None,fee_structure=None):
+	stud_info=frappe.db.sql(""" Select RA.*,CED.*,RA.name as room_allotment  from `tabRoom Allotment` as RA
 	Join `tabCurrent Educational Details` as CED on CED.parent=RA.Student
 	where CED.programs="%s" and CED.semesters="%s" and CED.academic_term="%s" and CED.academic_year="%s" and 
 	(RA.room_type="%s" and RA.docstatus=1 and (RA.start_date <=now() and RA.end_date>=now()))
-	"""%(programs,program,academic_term,academic_year,room_type),as_dict=True)     
-	if len(a)!=0:
-		return a
+	"""%(programs,program,academic_term,academic_year,room_type),as_dict=True)
+
+
+	alrdy_chrg = frappe.get_all("Fees",{"hostel_fee_structure":fee_structure,"docstatus":1},{"name","student"})
+	stu_list=[]
+	for t in alrdy_chrg:
+		stu_list.append(t['student'])
+	stu_list=list(set(stu_list))
+
+	final_list_student=[]
+	for t in stud_info:
+		flag=0
+		for j in stu_list:
+			if t['parent']==j:
+				flag=1
+		if flag==0:
+			final_list_student.append(t)
+	print(final_list_student)
+	if len(final_list_student)!=0:
+		return final_list_student
 	else:
 		frappe.msgprint("No Student Found in Room Allotment")
-		a = []
-		return a
+		stud_info = []
+		return stud_info
 
 def generate_fee(hostel_fee_schedule):
 	doc = frappe.get_doc("Hostel Fee Schedule", hostel_fee_schedule)
