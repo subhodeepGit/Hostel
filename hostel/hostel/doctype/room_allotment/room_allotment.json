@@ -409,7 +409,7 @@
    "link_fieldname": "room_allotment_no"
   }
  ],
- "modified": "2022-09-20 14:53:32.846560",
+ "modified": "2023-08-08 17:09:55.548688",
  "modified_by": "Administrator",
  "module": "Hostel",
  "name": "Room Allotment",
@@ -428,6 +428,7 @@
    "write": 1
   }
  ],
+ "search_fields": "student,roll_no,student_name,registration_number,hostel_registration_no",
  "sort_field": "modified",
  "sort_order": "DESC",
  "title_field": "student_name",
