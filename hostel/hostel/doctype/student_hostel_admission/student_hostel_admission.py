@@ -3,14 +3,13 @@
 
 import frappe
 from frappe.model.document import Document
-from erpnext.accounts.general_ledger import make_reverse_gl_entries
 import json
 
 class StudentHostelAdmission(Document):
 	def validate(doc):
 		doc.allotment_status = "Not Reported"
-		data=frappe.get_all("Student Hostel Admission",fields=[["student","=",doc.student],["allotment_status","!=","Allotted"],
-					["allotment_status","!=","De-Allotted"],["docstatus","=",1]])		
+		data=frappe.db.sql("""SELECT name from `tabStudent Hostel Admission` where student = "%s" and 
+		    					(allotment_status != 'Allotted' or allotment_status != 'De-Allotted') and docstatus=1 """%(doc.student))
 		if len(data)!=0:
 			frappe.throw("Student record already present")
 
