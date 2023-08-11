@@ -105,7 +105,8 @@ def create_fees(doc,fee_structure_id,cost_center=None,on_submit=0):
 def cancel_fees(doc):
 	if doc.hostel_fees_id:
 		hostel_fee_object= frappe.get_doc("Hostel Fees",doc.hostel_fees_id)
-		hostel_fee_object.cancel()
+		if hostel_fee_object.docstatus!=2 and hostel_fee_object.docstatus!=0:
+			hostel_fee_object.cancel()
 		frappe.msgprint("Hostel Fees is also cancelled")
 
 
